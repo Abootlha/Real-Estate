@@ -1,0 +1,363 @@
+---
+const steps = [
+    {
+        num: "01",
+        title: "Tell us about yourself",
+        desc: "Complete a quick lifestyle quiz covering your work schedule, social habits, cleanliness standards, and what you value most in a roommate.",
+        visual: "quiz",
+    },
+    {
+        num: "02",
+        title: "Get matched instantly",
+        desc: "Our AI analyzes your preferences against thousands of profiles to surface the most compatible roommates and available spaces in your area.",
+        visual: "matches",
+    },
+    {
+        num: "03",
+        title: "Connect and move in",
+        desc: "Chat with matches, schedule visits, and when you're ready, use our digital agreements to make it official. Simple.",
+        visual: "connect",
+    },
+];
+---
+
+<section class="how-section" id="how-it-works">
+    <div class="container">
+        <div class="how-header">
+            <span class="section-label">How it works</span>
+            <h2 class="section-title">
+                From stranger to roommate
+                <br />
+                <span class="gradient-text-mint">in three simple steps</span>
+            </h2>
+        </div>
+
+        <div class="steps-container">
+            {
+                steps.map((step, i) => (
+                    <div class="step-row" style={`--index: ${i}`}>
+                        <div class="step-content">
+                            <span class="step-num">{step.num}</span>
+                            <h3 class="step-title">{step.title}</h3>
+                            <p class="step-desc">{step.desc}</p>
+                        </div>
+                        <div class="step-visual">
+                            {step.visual === "quiz" && (
+                                <div class="visual-quiz">
+                                    <div class="quiz-header">
+                                        <span class="quiz-progress">
+                                            <span
+                                                class="progress-fill"
+                                                style="width: 65%"
+                                            />
+                                        </span>
+                                        <span class="quiz-label">
+                                            Question 4 of 6
+                                        </span>
+                                    </div>
+                                    <p class="quiz-question">
+                                        What's your ideal social situation at
+                                        home?
+                                    </p>
+                                    <div class="quiz-options">
+                                        <button class="quiz-option">
+                                            Love hanging out together
+                                        </button>
+                                        <button class="quiz-option selected">
+                                            Friendly but independent
+                                        </button>
+                                        <button class="quiz-option">
+                                            Prefer privacy mostly
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                            {step.visual === "matches" && (
+                                <div class="visual-matches">
+                                    <div class="match-header">
+                                        <span class="match-label">
+                                            Top matches in Koramangala
+                                        </span>
+                                    </div>
+                                    <div class="mini-match">
+                                        <div
+                                            class="mini-avatar"
+                                            style="background: #ff7849"
+                                        >
+                                            A
+                                        </div>
+                                        <span class="mini-name">Arjun</span>
+                                        <span class="mini-score">94%</span>
+                                    </div>
+                                    <div class="mini-match">
+                                        <div
+                                            class="mini-avatar"
+                                            style="background: #3ecf8e"
+                                        >
+                                            P
+                                        </div>
+                                        <span class="mini-name">Priya</span>
+                                        <span class="mini-score">91%</span>
+                                    </div>
+                                    <div class="mini-match">
+                                        <div
+                                            class="mini-avatar"
+                                            style="background: #8b5cf6"
+                                        >
+                                            R
+                                        </div>
+                                        <span class="mini-name">Rahul</span>
+                                        <span class="mini-score">89%</span>
+                                    </div>
+                                </div>
+                            )}
+                            {step.visual === "connect" && (
+                                <div class="visual-connect">
+                                    <div class="chat-bubble outgoing">
+                                        Hey! Saw we're a 94% match. Love that
+                                        you're also into early mornings ☀️
+                                    </div>
+                                    <div class="chat-bubble incoming">
+                                        Hi Arjun! Yes! Finally someone who gets
+                                        it 😄 Would love to check out the place
+                                    </div>
+                                    <div class="chat-bubble outgoing">
+                                        Perfect! Free this Saturday?
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .how-section {
+        padding: var(--section-padding) 0;
+        background: linear-gradient(
+            180deg,
+            transparent 0%,
+            rgba(62, 207, 142, 0.02) 50%,
+            transparent 100%
+        );
+    }
+
+    .how-header {
+        text-align: center;
+        margin-bottom: 100px;
+    }
+
+    .steps-container {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+    }
+
+    .step-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+    }
+
+    .step-row:nth-child(even) {
+        direction: rtl;
+    }
+
+    .step-row:nth-child(even) > * {
+        direction: ltr;
+    }
+
+    .step-content {
+        max-width: 440px;
+    }
+
+    .step-num {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--accent-mint);
+        background: rgba(62, 207, 142, 0.1);
+        border: 1px solid rgba(62, 207, 142, 0.2);
+        padding: 4px 12px;
+        border-radius: 100px;
+        margin-bottom: 20px;
+    }
+
+    .step-title {
+        font-family: var(--font-display);
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
+    }
+
+    .step-desc {
+        font-size: 17px;
+        color: var(--text-secondary);
+        line-height: 1.7;
+    }
+
+    /* Visuals */
+    .step-visual {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--card-radius);
+        padding: 28px;
+    }
+
+    /* Quiz Visual */
+    .quiz-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+    }
+
+    .quiz-progress {
+        flex: 1;
+        height: 4px;
+        background: var(--bg-elevated);
+        border-radius: 4px;
+        margin-right: 16px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        display: block;
+        height: 100%;
+        background: var(--gradient-mint);
+        border-radius: 4px;
+    }
+
+    .quiz-label {
+        font-size: 12px;
+        color: var(--text-tertiary);
+    }
+
+    .quiz-question {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .quiz-options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .quiz-option {
+        padding: 14px 18px;
+        background: var(--bg-glass);
+        border: 1px solid var(--border-subtle);
+        border-radius: 12px;
+        text-align: left;
+        font-size: 14px;
+        color: var(--text-secondary);
+        transition: all var(--duration-normal);
+    }
+
+    .quiz-option:hover {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: var(--border-hover);
+    }
+
+    .quiz-option.selected {
+        background: rgba(62, 207, 142, 0.1);
+        border-color: var(--accent-mint);
+        color: var(--text-primary);
+    }
+
+    /* Matches Visual */
+    .match-header {
+        margin-bottom: 16px;
+    }
+
+    .match-label {
+        font-size: 13px;
+        color: var(--text-tertiary);
+    }
+
+    .mini-match {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        background: var(--bg-glass);
+        border-radius: 12px;
+        margin-bottom: 8px;
+    }
+
+    .mini-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: #000;
+    }
+
+    .mini-name {
+        flex: 1;
+        font-weight: 500;
+        font-size: 15px;
+    }
+
+    .mini-score {
+        font-family: var(--font-display);
+        font-weight: 700;
+        color: var(--accent-mint);
+    }
+
+    /* Connect Visual */
+    .visual-connect {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .chat-bubble {
+        max-width: 85%;
+        padding: 12px 16px;
+        border-radius: 16px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .chat-bubble.outgoing {
+        align-self: flex-end;
+        background: var(--accent-primary);
+        color: #000;
+        border-bottom-right-radius: 4px;
+    }
+
+    .chat-bubble.incoming {
+        align-self: flex-start;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-subtle);
+        border-bottom-left-radius: 4px;
+    }
+
+    @media (max-width: 900px) {
+        .step-row,
+        .step-row:nth-child(even) {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            direction: ltr;
+        }
+        .step-row:nth-child(even) > * {
+            direction: ltr;
+        }
+        .step-content {
+            max-width: 100%;
+        }
+    }
+</style>

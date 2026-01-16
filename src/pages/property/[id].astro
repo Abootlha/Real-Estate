@@ -1,0 +1,843 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+export function getStaticPaths() {
+    const listings = [
+        {
+            id: "1",
+            title: "Shared Room in 3BHK",
+            location: "Andheri East, Mumbai",
+            price: "₹8,000",
+            roommates: 2,
+            gender: "Any",
+            available: "Immediate",
+        },
+        {
+            id: "2",
+            title: "Private Room in Shared Flat",
+            location: "Koramangala, Bangalore",
+            price: "₹12,000",
+            roommates: 1,
+            gender: "Male",
+            available: "1st Feb",
+        },
+        {
+            id: "3",
+            title: "Looking for Female Flatmate",
+            location: "Hinjewadi, Pune",
+            price: "₹6,500",
+            roommates: 1,
+            gender: "Female",
+            available: "15th Jan",
+        },
+        {
+            id: "4",
+            title: "Premium Shared Apartment",
+            location: "Dwarka, Delhi",
+            price: "₹15,000",
+            roommates: 2,
+            gender: "Any",
+            available: "Immediate",
+        },
+        {
+            id: "5",
+            title: "Cozy Room Near IT Park",
+            location: "HITEC City, Hyderabad",
+            price: "₹9,000",
+            roommates: 1,
+            gender: "Male",
+            available: "This Week",
+        },
+        {
+            id: "6",
+            title: "Spacious Shared Room",
+            location: "OMR, Chennai",
+            price: "₹7,500",
+            roommates: 2,
+            gender: "Any",
+            available: "Immediate",
+        },
+    ];
+
+    return listings.map((listing) => ({
+        params: { id: listing.id },
+        props: { listing },
+    }));
+}
+
+const { listing } = Astro.props;
+
+const images = [
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&q=90",
+    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop&q=90",
+    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop&q=90",
+    "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop&q=90",
+];
+
+const amenities = [
+    { icon: "wifi", name: "High-Speed WiFi" },
+    { icon: "ac", name: "Air Conditioning" },
+    { icon: "kitchen", name: "Shared Kitchen" },
+    { icon: "laundry", name: "Washing Machine" },
+    { icon: "fridge", name: "Refrigerator" },
+    { icon: "security", name: "Gated Security" },
+    { icon: "power", name: "Power Backup" },
+    { icon: "furnished", name: "Fully Furnished" },
+];
+---
+
+<Layout
+    title={`${listing.title} | RoomieMatch`}
+    description={`${listing.title} - ${listing.roommates} roommate${listing.roommates > 1 ? "s" : ""} available at ${listing.price}/month in ${listing.location}`}
+>
+    <Navbar />
+
+    <main class="property-detail">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="/">Home</a>
+                <span class="separator">/</span>
+                <a href="/properties">Listings</a>
+                <span class="separator">/</span>
+                <span class="current">{listing.title}</span>
+            </nav>
+
+            <!-- Property Header -->
+            <div class="property-header">
+                <div class="header-content">
+                    <span class="property-badge">Verified</span>
+                    <h1 class="property-title">{listing.title}</h1>
+                    <p class="property-location">
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"
+                            ></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        {listing.location}
+                    </p>
+                </div>
+                <div class="header-actions">
+                    <button class="action-btn">
+                        <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"
+                            ></path>
+                            <polyline points="16,6 12,2 8,6"></polyline>
+                            <line x1="12" y1="2" x2="12" y2="15"></line>
+                        </svg>
+                        Share
+                    </button>
+                    <button class="action-btn">
+                        <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+                            ></path>
+                        </svg>
+                        Save
+                    </button>
+                </div>
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="image-gallery">
+                <div class="gallery-main">
+                    <img src={images[0]} alt={listing.title} />
+                </div>
+                <div class="gallery-grid">
+                    {
+                        images.slice(1).map((img, i) => (
+                            <div class="gallery-item">
+                                <img
+                                    src={img}
+                                    alt={`${listing.title} - Image ${i + 2}`}
+                                    loading="lazy"
+                                />
+                            </div>
+                        ))
+                    }
+                    <button class="view-all-btn">
+                        <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                        </svg>
+                        View All Photos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="property-content">
+                <div class="content-main">
+                    <!-- Quick Stats -->
+                    <div class="quick-stats">
+                        <div class="stat">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            >
+                                <path
+                                    d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
+                                ></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                            </svg>
+                            <div>
+                                <span class="stat-value"
+                                    >{listing.roommates}</span
+                                >
+                                <span class="stat-label"
+                                    >Roommate{
+                                        listing.roommates > 1 ? "s" : ""
+                                    }</span
+                                >
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            >
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 6v6l4 2"></path>
+                            </svg>
+                            <div>
+                                <span class="stat-value"
+                                    >{listing.available}</span
+                                >
+                                <span class="stat-label">Available</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            >
+                                <path
+                                    d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"
+                                ></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <div>
+                                <span class="stat-value">{listing.gender}</span>
+                                <span class="stat-label">Preferred</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            >
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"
+                                ></path>
+                                <polyline points="22,4 12,14.01 9,11.01"
+                                ></polyline>
+                            </svg>
+                            <div>
+                                <span class="stat-value">Verified</span>
+                                <span class="stat-label">Profile</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <section class="content-section">
+                        <h2>About this room</h2>
+                        <p>
+                            Looking for a compatible roommate to share this
+                            amazing space in {listing.location}. The room is
+                            fully furnished with modern amenities and offers a
+                            comfortable living experience. Perfect for working
+                            professionals or students looking for a hassle-free
+                            shared accommodation.
+                        </p>
+                        <p>
+                            The apartment includes a fully equipped kitchen,
+                            common areas, and all essential facilities. The
+                            prime location ensures easy access to offices, metro
+                            stations, restaurants, and entertainment.
+                        </p>
+                    </section>
+
+                    <!-- Amenities -->
+                    <section class="content-section">
+                        <h2>Amenities</h2>
+                        <div class="amenities-grid">
+                            {
+                                amenities.map((amenity) => (
+                                    <div class="amenity-item">
+                                        <svg
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                                            <polyline points="22,4 12,14.01 9,11.01" />
+                                        </svg>
+                                        <span>{amenity.name}</span>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </section>
+
+                    <!-- Location Map Placeholder -->
+                    <section class="content-section">
+                        <h2>Location</h2>
+                        <div class="map-placeholder">
+                            <svg
+                                width="48"
+                                height="48"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            >
+                                <path
+                                    d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"
+                                ></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <p>{listing.location}</p>
+                            <button class="btn btn-outline">View on Map</button>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="content-sidebar">
+                    <div class="price-card">
+                        <div class="price-header">
+                            <span class="price-amount">{listing.price}</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <p class="price-note">Rent • {listing.available}</p>
+
+                        <button class="btn btn-primary btn-full">
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <rect x="3" y="4" width="18" height="18" rx="2"
+                                ></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            Schedule Visit
+                        </button>
+
+                        <button class="btn btn-secondary btn-full">
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+                                ></path>
+                            </svg>
+                            Contact Owner
+                        </button>
+
+                        <div class="owner-info">
+                            <div class="owner-avatar">
+                                <img
+                                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
+                                    alt="Owner"
+                                />
+                            </div>
+                            <div class="owner-details">
+                                <span class="owner-name">Rajesh Kumar</span>
+                                <span class="owner-role">Property Owner</span>
+                            </div>
+                            <span class="verified-tag">
+                                <svg
+                                    width="14"
+                                    height="14"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    ></path>
+                                </svg>
+                                Verified
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="safety-tips">
+                        <h4>Safety Tips</h4>
+                        <ul>
+                            <li>Always verify documents before payment</li>
+                            <li>Visit the property in person</li>
+                            <li>Don't pay advance without receipts</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</Layout>
+
+<style>
+    .property-detail {
+        padding-top: 32px;
+        padding-bottom: 80px;
+    }
+
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        margin-bottom: 24px;
+    }
+
+    .breadcrumb a:hover {
+        color: var(--accent);
+    }
+
+    .breadcrumb .separator {
+        color: var(--border-default);
+    }
+
+    /* Property Header */
+    .property-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 24px;
+        margin-bottom: 24px;
+    }
+
+    .property-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background: var(--color-emerald);
+        color: white;
+        font-size: var(--text-xs);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-radius: var(--radius-full);
+        margin-bottom: 12px;
+    }
+
+    .property-title {
+        font-family: var(--font-display);
+        font-size: var(--text-4xl);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+        letter-spacing: -0.02em;
+    }
+
+    .property-location {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: var(--text-lg);
+        color: var(--text-secondary);
+    }
+
+    .header-actions {
+        display: flex;
+        gap: 12px;
+    }
+
+    .action-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 20px;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-lg);
+        font-size: var(--text-sm);
+        font-weight: 500;
+        color: var(--text-secondary);
+        transition: all var(--duration-fast);
+    }
+
+    .action-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+
+    /* Image Gallery */
+    .image-gallery {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 16px;
+        margin-bottom: 48px;
+        border-radius: var(--radius-2xl);
+        overflow: hidden;
+    }
+
+    .gallery-main img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-height: 400px;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        position: relative;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .view-all-btn {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 20px;
+        background: var(--bg-elevated);
+        border-radius: var(--radius-lg);
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--text-primary);
+        box-shadow: var(--shadow-lg);
+    }
+
+    /* Main Content */
+    .property-content {
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 48px;
+    }
+
+    /* Quick Stats */
+    .quick-stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        padding: 24px;
+        background: var(--bg-secondary);
+        border-radius: var(--radius-xl);
+        margin-bottom: 40px;
+    }
+
+    .stat {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .stat svg {
+        color: var(--accent);
+    }
+
+    .stat-value {
+        display: block;
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    .stat-label {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+    }
+
+    /* Content Sections */
+    .content-section {
+        margin-bottom: 40px;
+    }
+
+    .content-section h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 20px;
+    }
+
+    .content-section p {
+        font-size: var(--text-base);
+        line-height: 1.8;
+        color: var(--text-secondary);
+        margin-bottom: 16px;
+    }
+
+    /* Amenities */
+    .amenities-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .amenity-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px;
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+    }
+
+    .amenity-item svg {
+        color: var(--color-emerald);
+    }
+
+    /* Map Placeholder */
+    .map-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 60px;
+        background: var(--bg-secondary);
+        border-radius: var(--radius-xl);
+        text-align: center;
+    }
+
+    .map-placeholder svg {
+        color: var(--text-muted);
+    }
+
+    .map-placeholder p {
+        font-size: var(--text-lg);
+        color: var(--text-secondary);
+        margin: 0;
+    }
+
+    /* Sidebar */
+    .content-sidebar {
+        position: sticky;
+        top: 100px;
+    }
+
+    .price-card {
+        padding: 28px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-2xl);
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 24px;
+    }
+
+    .price-header {
+        margin-bottom: 4px;
+    }
+
+    .price-amount {
+        font-family: var(--font-display);
+        font-size: var(--text-4xl);
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    .price-period {
+        font-size: var(--text-lg);
+        color: var(--text-muted);
+    }
+
+    .price-note {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        margin-bottom: 24px;
+    }
+
+    .btn-full {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 12px;
+    }
+
+    .owner-info {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding-top: 20px;
+        margin-top: 20px;
+        border-top: 1px solid var(--border-subtle);
+    }
+
+    .owner-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .owner-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .owner-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .owner-name {
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    .owner-role {
+        font-size: var(--text-xs);
+        color: var(--text-muted);
+    }
+
+    .verified-tag {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: var(--text-xs);
+        font-weight: 600;
+        color: var(--color-emerald);
+    }
+
+    .safety-tips {
+        padding: 24px;
+        background: var(--accent-light);
+        border-radius: var(--radius-xl);
+    }
+
+    .safety-tips h4 {
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+    }
+
+    .safety-tips ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .safety-tips li {
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .safety-tips li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+    }
+
+    @media (max-width: 1024px) {
+        .property-content {
+            grid-template-columns: 1fr;
+        }
+
+        .content-sidebar {
+            position: static;
+        }
+
+        .quick-stats {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .image-gallery {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .property-header {
+            flex-direction: column;
+        }
+
+        .property-title {
+            font-size: var(--text-3xl);
+        }
+
+        .quick-stats {
+            grid-template-columns: 1fr;
+        }
+
+        .amenities-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

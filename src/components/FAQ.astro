@@ -1,0 +1,168 @@
+---
+const faqs = [
+    {
+        question: "Can I schedule a visit to a home?",
+        answer: "Yes. You can request a visit to see a home and decide if it's the right fit for you.",
+        isOpen: true,
+    },
+    {
+        question: "How often are new homes added?",
+        answer: "We add new listings every day. Subscribe to get notified about new properties in your preferred locations.",
+        isOpen: false,
+    },
+    {
+        question: "Do I need to decide immediately?",
+        answer: "No. Take your time to explore and compare different options before making a decision.",
+        isOpen: false,
+    },
+    {
+        question: "Can I get help with financing when buying a home?",
+        answer: "Yes, we partner with leading banks to help you get the best home loan rates.",
+        isOpen: false,
+    },
+];
+---
+
+<section class="faq">
+    <div class="faq-container">
+        <div class="faq-content">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+                {
+                    faqs.map((faq, index) => (
+                        <details class="faq-item" open={faq.isOpen}>
+                            <summary class="faq-question">
+                                <span>{faq.question}</span>
+                                <span class="faq-icon">
+                                    <svg
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path d="M12 5v14M5 12h14" />
+                                    </svg>
+                                </span>
+                            </summary>
+                            <div class="faq-answer">
+                                <p>{faq.answer}</p>
+                            </div>
+                        </details>
+                    ))
+                }
+            </div>
+        </div>
+
+        <div class="faq-image">
+            <img
+                src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=900&fit=crop&q=90"
+                alt="Beautiful home"
+                loading="lazy"
+            />
+        </div>
+    </div>
+</section>
+
+<style>
+    .faq {
+        padding: 80px 0;
+        background: #fff;
+    }
+
+    .faq-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: start;
+    }
+
+    .faq-title {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        font-weight: 600;
+        color: #0f172a;
+        margin-bottom: 32px;
+    }
+
+    .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #0f172a;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .faq-question::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #f1f5f9;
+        color: #64748b;
+        transition: all 0.2s ease;
+    }
+
+    .faq-item[open] .faq-icon {
+        background: #3b82f6;
+        color: white;
+        transform: rotate(45deg);
+    }
+
+    .faq-answer {
+        padding-bottom: 20px;
+    }
+
+    .faq-answer p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #64748b;
+    }
+
+    .faq-image {
+        border-radius: 24px;
+        overflow: hidden;
+        height: 500px;
+    }
+
+    .faq-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
+        .faq-container {
+            grid-template-columns: 1fr;
+        }
+
+        .faq-image {
+            display: none;
+        }
+    }
+</style>

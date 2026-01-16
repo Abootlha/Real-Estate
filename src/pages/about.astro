@@ -1,0 +1,619 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const team = [
+    {
+        name: "Arun Sharma",
+        role: "Founder & CEO",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop",
+        bio: "Former Google engineer with 15 years in tech.",
+    },
+    {
+        name: "Priya Patel",
+        role: "Co-Founder & COO",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop",
+        bio: "Ex-McKinsey with expertise in scaling startups.",
+    },
+    {
+        name: "Rahul Mehta",
+        role: "Head of Product",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop",
+        bio: "Product leader from Flipkart and Ola.",
+    },
+    {
+        name: "Sneha Gupta",
+        role: "Head of Design",
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop",
+        bio: "Award-winning designer from Airbnb.",
+    },
+];
+
+const values = [
+    {
+        icon: "trust",
+        title: "Trust & Safety",
+        description:
+            "Every profile is verified. ID checks, LinkedIn verification, and reviews ensure you connect with real people.",
+    },
+    {
+        icon: "user",
+        title: "Smart Matching",
+        description:
+            "Our AI analyzes 50+ compatibility factors to match you with roommates who share your lifestyle.",
+    },
+    {
+        icon: "innovation",
+        title: "Transparency",
+        description:
+            "No hidden fees, no fake listings. What you see is what you get – always.",
+    },
+    {
+        icon: "community",
+        title: "Community",
+        description:
+            "We're building more than a platform – we're creating a community of happy roommates.",
+    },
+];
+
+const milestones = [
+    {
+        year: "2022",
+        title: "Founded",
+        description: "Started with a mission to fix roommate hunting",
+    },
+    {
+        year: "2023",
+        title: "5K Matches",
+        description: "Helped 5,000 people find their perfect roommate",
+    },
+    {
+        year: "2024",
+        title: "AI Launch",
+        description: "Launched AI-powered compatibility matching",
+    },
+    {
+        year: "2025",
+        title: "8 Cities",
+        description: "Expanded to 8 major Indian cities",
+    },
+    {
+        year: "2026",
+        title: "50K Users",
+        description: "Growing community of happy roommates",
+    },
+];
+---
+
+<Layout
+    title="About Us | RoomieMatch"
+    description="Learn about RoomieMatch's mission to help people find compatible roommates in India. Meet our team and discover our values."
+>
+    <Navbar />
+
+    <main class="about-page">
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-label">About Us</span>
+                    <h1 class="hero-title">
+                        Making roommate finding<br />
+                        <span class="text-gradient">simple & safe</span>
+                    </h1>
+                    <p class="hero-text">
+                        We're on a mission to help millions of Indians find
+                        their perfect roommate. No more awkward searches, no
+                        more stress – just compatible matches in minutes.
+                    </p>
+                </div>
+                <div class="hero-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop&q=90"
+                        alt="Happy roommates"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">Happy Users</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">12K+</span>
+                        <span class="stat-label">Active Listings</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Cities</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.9</span>
+                        <span class="stat-label">App Rating</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="story-section">
+            <div class="container">
+                <div class="story-content">
+                    <span class="section-label">Our Story</span>
+                    <h2 class="section-title">
+                        Built from frustration,<br />driven by purpose
+                    </h2>
+                    <p>
+                        In 2022, our founders experienced firsthand how
+                        frustrating finding a roommate could be. Fake profiles,
+                        ghosting, incompatible lifestyles – they knew there had
+                        to be a better way.
+                    </p>
+                    <p>
+                        Today, RoomieMatch is India's most trusted roommate
+                        finding platform. Every profile is verified, matching is
+                        based on compatibility, and thousands have found their
+                        perfect living situation.
+                    </p>
+                </div>
+
+                <div class="timeline">
+                    {
+                        milestones.map((milestone, i) => (
+                            <div class="timeline-item">
+                                <div class="timeline-marker">
+                                    <span class="year">{milestone.year}</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <h4>{milestone.title}</h4>
+                                    <p>{milestone.description}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Our Values</span>
+                    <h2 class="section-title">What we stand for</h2>
+                </div>
+
+                <div class="values-grid">
+                    {
+                        values.map((value) => (
+                            <div class="value-card">
+                                <div class="value-icon">
+                                    <svg
+                                        width="28"
+                                        height="28"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                    >
+                                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                                        <polyline points="22,4 12,14.01 9,11.01" />
+                                    </svg>
+                                </div>
+                                <h3>{value.title}</h3>
+                                <p>{value.description}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Our Team</span>
+                    <h2 class="section-title">
+                        Meet the people behind RoomieMatch
+                    </h2>
+                </div>
+
+                <div class="team-grid">
+                    {
+                        team.map((member) => (
+                            <div class="team-card">
+                                <div class="member-image">
+                                    <img
+                                        src={member.image}
+                                        alt={member.name}
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <div class="member-info">
+                                    <h3>{member.name}</h3>
+                                    <span class="role">{member.role}</span>
+                                    <p>{member.bio}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-card">
+                    <h2>Join our growing team</h2>
+                    <p>
+                        We're always looking for talented people to help us
+                        build the future of shared living.
+                    </p>
+                    <a href="#" class="btn btn-primary btn-lg">
+                        View Open Positions
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</Layout>
+
+<style>
+    .about-page {
+        min-height: 100vh;
+    }
+
+    .section-label {
+        display: inline-block;
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 12px;
+    }
+
+    .section-title {
+        font-family: var(--font-display);
+        font-size: var(--text-4xl);
+        font-weight: 600;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    /* Hero Section */
+    .about-hero {
+        padding: 80px 0;
+        overflow: hidden;
+    }
+
+    .about-hero .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+    }
+
+    .hero-label {
+        display: inline-block;
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 16px;
+    }
+
+    .hero-title {
+        font-family: var(--font-display);
+        font-size: var(--text-5xl);
+        font-weight: 600;
+        color: var(--text-primary);
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+    }
+
+    .hero-text {
+        font-size: var(--text-lg);
+        color: var(--text-secondary);
+        line-height: 1.7;
+        max-width: 480px;
+    }
+
+    .hero-image {
+        border-radius: var(--radius-3xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-2xl);
+    }
+
+    .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Stats Section */
+    .stats-section {
+        padding: 60px 0;
+        background: var(--bg-secondary);
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 48px;
+        text-align: center;
+    }
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .stat-number {
+        font-family: var(--font-display);
+        font-size: var(--text-5xl);
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    .stat-label {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+    }
+
+    /* Story Section */
+    .story-section {
+        padding: 100px 0;
+    }
+
+    .story-section .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+    }
+
+    .story-content p {
+        font-size: var(--text-base);
+        line-height: 1.8;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+    }
+
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: relative;
+    }
+
+    .timeline::before {
+        content: "";
+        position: absolute;
+        left: 40px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--border-subtle);
+    }
+
+    .timeline-item {
+        display: flex;
+        gap: 24px;
+        padding: 20px 0;
+    }
+
+    .timeline-marker {
+        width: 80px;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .year {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 36px;
+        background: var(--accent);
+        color: white;
+        font-size: var(--text-sm);
+        font-weight: 600;
+        border-radius: var(--radius-full);
+    }
+
+    .timeline-content h4 {
+        font-size: var(--text-lg);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+    }
+
+    .timeline-content p {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        margin: 0;
+    }
+
+    /* Values Section */
+    .values-section {
+        padding: 100px 0;
+        background: var(--bg-secondary);
+    }
+
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+    }
+
+    .value-card {
+        padding: 32px;
+        background: var(--bg-elevated);
+        border-radius: var(--radius-2xl);
+        border: 1px solid var(--border-subtle);
+        text-align: center;
+    }
+
+    .value-icon {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--accent-light);
+        color: var(--accent);
+        border-radius: var(--radius-xl);
+        margin: 0 auto 20px;
+    }
+
+    .value-card h3 {
+        font-size: var(--text-lg);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+    }
+
+    .value-card p {
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+        line-height: 1.7;
+    }
+
+    /* Team Section */
+    .team-section {
+        padding: 100px 0;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+    }
+
+    .team-card {
+        text-align: center;
+    }
+
+    .member-image {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 20px;
+        border: 4px solid var(--bg-primary);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .member-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .member-info h3 {
+        font-size: var(--text-lg);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+    }
+
+    .member-info .role {
+        display: block;
+        font-size: var(--text-sm);
+        color: var(--accent);
+        margin-bottom: 12px;
+    }
+
+    .member-info p {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+    }
+
+    /* CTA Section */
+    .cta-section {
+        padding: 80px 0;
+        background: var(--bg-secondary);
+    }
+
+    .cta-card {
+        text-align: center;
+        padding: 60px;
+        background: var(--color-midnight);
+        border-radius: var(--radius-3xl);
+        color: white;
+    }
+
+    .cta-card h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-3xl);
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+
+    .cta-card p {
+        font-size: var(--text-base);
+        opacity: 0.8;
+        margin-bottom: 28px;
+    }
+
+    @media (max-width: 1024px) {
+        .about-hero .container,
+        .story-section .container {
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        .values-grid,
+        .team-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: var(--text-4xl);
+        }
+
+        .values-grid,
+        .team-grid,
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

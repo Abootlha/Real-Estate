@@ -1,0 +1,249 @@
+---
+const testimonials = [
+    {
+        id: 1,
+        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&h=300&fit=crop&q=90",
+        quote: "The home felt right the moment we walked in. It matched our needs and fit perfectly into our daily routine.",
+        author: "Ravi Sharma",
+        role: "Delhi, India",
+        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+        date: "Aug 2025",
+    },
+    {
+        id: 2,
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&h=300&fit=crop&q=90",
+        quote: "We were looking for something comfortable and well-located. The home we chose truly feels like ours now.",
+        author: "Priya Mehra",
+        role: "Delhi, India",
+        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+        date: "May 2025",
+    },
+    {
+        id: 3,
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&h=300&fit=crop&q=90",
+        quote: "We were looking for a place that felt right and well-located. This home feels like ours today.",
+        author: "Karan Kumar",
+        role: "Mumbai, India",
+        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+        date: "Jun 2025",
+    },
+];
+---
+
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <div class="section-header">
+            <div class="header-text">
+                <h2 class="section-title">What Home Seekers Say</h2>
+                <p class="section-subtitle">
+                    Real experiences from people who found homes with us
+                </p>
+            </div>
+            <div class="nav-arrows">
+                <button class="nav-arrow" aria-label="Previous">
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M15 18l-6-6 6-6"></path>
+                    </svg>
+                </button>
+                <button class="nav-arrow active" aria-label="Next">
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="testimonials-grid">
+            {
+                testimonials.map((t) => (
+                    <article class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img
+                                src={t.image}
+                                alt="Happy home"
+                                loading="lazy"
+                            />
+                        </div>
+
+                        <div class="testimonial-content">
+                            <p class="testimonial-quote">"{t.quote}"</p>
+
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src={t.avatar} alt={t.author} />
+                                </div>
+                                <div class="author-info">
+                                    <span class="author-name">{t.author}</span>
+                                    <span class="author-role">{t.role}</span>
+                                </div>
+                                <span class="date">{t.date}</span>
+                            </div>
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .testimonials {
+        padding: 80px 0;
+        background: #fff;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 40px;
+    }
+
+    .section-title {
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #0f172a;
+        margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+        color: #64748b;
+    }
+
+    .nav-arrows {
+        display: flex;
+        gap: 8px;
+    }
+
+    .nav-arrow {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #f8fafc;
+        color: #64748b;
+        border: 1px solid #e2e8f0;
+        transition: all 0.2s ease;
+    }
+
+    .nav-arrow:hover,
+    .nav-arrow.active {
+        background: #3b82f6;
+        color: white;
+        border-color: #3b82f6;
+    }
+
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    .testimonial-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #f1f5f9;
+    }
+
+    .testimonial-image {
+        aspect-ratio: 16/10;
+        overflow: hidden;
+    }
+
+    .testimonial-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .testimonial-content {
+        padding: 20px;
+    }
+
+    .testimonial-quote {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: #334155;
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .author-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+
+    .author-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .author-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .author-name {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #0f172a;
+    }
+
+    .author-role {
+        font-size: 0.8rem;
+        color: #64748b;
+    }
+
+    .date {
+        font-size: 0.8rem;
+        color: #94a3b8;
+    }
+
+    @media (max-width: 1024px) {
+        .testimonials-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .testimonials-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

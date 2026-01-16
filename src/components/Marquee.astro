@@ -1,0 +1,83 @@
+---
+
+---
+
+<section class="logos-section">
+    <div class="container">
+        <p class="logos-label">Trusted by professionals from</p>
+        <div class="logos-track">
+            <div class="logos-slide">
+                <span class="logo-item">Google</span>
+                <span class="logo-item">Microsoft</span>
+                <span class="logo-item">Amazon</span>
+                <span class="logo-item">Flipkart</span>
+                <span class="logo-item">Swiggy</span>
+                <span class="logo-item">Razorpay</span>
+                <span class="logo-item">CRED</span>
+                <span class="logo-item">Zerodha</span>
+            </div>
+            <div class="logos-slide" aria-hidden="true">
+                <span class="logo-item">Google</span>
+                <span class="logo-item">Microsoft</span>
+                <span class="logo-item">Amazon</span>
+                <span class="logo-item">Flipkart</span>
+                <span class="logo-item">Swiggy</span>
+                <span class="logo-item">Razorpay</span>
+                <span class="logo-item">CRED</span>
+                <span class="logo-item">Zerodha</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .logos-section {
+        padding: 60px 0;
+        border-top: 1px solid var(--border-subtle);
+        border-bottom: 1px solid var(--border-subtle);
+        overflow: hidden;
+    }
+
+    .logos-label {
+        text-align: center;
+        font-size: 13px;
+        color: var(--text-tertiary);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 32px;
+    }
+
+    .logos-track {
+        display: flex;
+        gap: 80px;
+        animation: scroll 30s linear infinite;
+    }
+
+    .logos-slide {
+        display: flex;
+        gap: 80px;
+        flex-shrink: 0;
+    }
+
+    .logo-item {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--text-quaternary);
+        white-space: nowrap;
+        transition: color var(--duration-normal);
+    }
+
+    .logo-item:hover {
+        color: var(--text-secondary);
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-100% - 80px));
+        }
+    }
+</style>

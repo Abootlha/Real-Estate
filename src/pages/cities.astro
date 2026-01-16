@@ -1,0 +1,513 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const cities = [
+    {
+        slug: "mumbai",
+        name: "Mumbai",
+        image: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=600&h=400&fit=crop&q=90",
+        listings: 2450,
+        avgPrice: "₹10,000",
+        description:
+            "Find roommates in Andheri, Bandra, Powai and more. Perfect for young professionals.",
+    },
+    {
+        slug: "bangalore",
+        name: "Bangalore",
+        image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=600&h=400&fit=crop&q=90",
+        listings: 1890,
+        avgPrice: "₹11,000",
+        description:
+            "India's tech hub with active roommate community in HSR, Koramangala, and Indiranagar.",
+    },
+    {
+        slug: "delhi",
+        name: "Delhi NCR",
+        image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&h=400&fit=crop&q=90",
+        listings: 2120,
+        avgPrice: "₹12,000",
+        description:
+            "From South Delhi's charm to Gurgaon's corporate hubs - find flatmates across NCR.",
+    },
+    {
+        slug: "hyderabad",
+        name: "Hyderabad",
+        image: "https://images.unsplash.com/photo-1572445271230-a78b5944a659?w=600&h=400&fit=crop&q=90",
+        listings: 1340,
+        avgPrice: "₹8,000",
+        description:
+            "Affordable shared living in HITEC City, Gachibowli, and Madhapur tech corridors.",
+    },
+    {
+        slug: "chennai",
+        name: "Chennai",
+        image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&h=400&fit=crop&q=90",
+        listings: 980,
+        avgPrice: "₹7,500",
+        description:
+            "Find roommates in OMR IT corridor, Anna Nagar, and T. Nagar neighborhoods.",
+    },
+    {
+        slug: "pune",
+        name: "Pune",
+        image: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=600&h=400&fit=crop&q=90",
+        listings: 1560,
+        avgPrice: "₹7,000",
+        description:
+            "Student and young professional hub with vibrant flatsharing in Kothrud and Hinjewadi.",
+    },
+    {
+        slug: "kolkata",
+        name: "Kolkata",
+        image: "https://images.unsplash.com/photo-1558431382-27e303142255?w=600&h=400&fit=crop&q=90",
+        listings: 890,
+        avgPrice: "₹6,000",
+        description:
+            "Affordable shared accommodations in Salt Lake, Park Street, and New Town areas.",
+    },
+    {
+        slug: "ahmedabad",
+        name: "Ahmedabad",
+        image: "https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=600&h=400&fit=crop&q=90",
+        listings: 720,
+        avgPrice: "₹5,500",
+        description:
+            "Growing roommate community in SG Highway, Vastrapur, and CG Road areas.",
+    },
+];
+---
+
+<Layout
+    title="Explore Cities | RoomieMatch"
+    description="Find roommates and shared rooms across India's top cities. Explore Mumbai, Bangalore, Delhi, and more."
+>
+    <Navbar />
+
+    <main class="cities-page">
+        <!-- Hero Section -->
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="hero-title">Explore Cities</h1>
+                <p class="hero-subtitle">
+                    Find roommates in India's most popular cities. From tech
+                    hubs to cultural capitals.
+                </p>
+
+                <div class="search-cities">
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" placeholder="Search for a city..." />
+                </div>
+            </div>
+
+            <div class="hero-bg">
+                <div class="bg-gradient"></div>
+            </div>
+        </section>
+
+        <!-- Cities Grid -->
+        <section class="cities-section">
+            <div class="container">
+                <div class="cities-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Major Cities</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">12K+</span>
+                        <span class="stat-label">Active Listings</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">Happy Roommates</span>
+                    </div>
+                </div>
+
+                <div class="cities-grid">
+                    {
+                        cities.map((city, index) => (
+                            <a
+                                href={`/city/${city.slug}`}
+                                class={`city-card animate-fade-in-up delay-${Math.min(index + 1, 6)}`}
+                            >
+                                <div class="city-image">
+                                    <img
+                                        src={city.image}
+                                        alt={city.name}
+                                        loading="lazy"
+                                    />
+                                    <div class="city-overlay" />
+                                </div>
+                                <div class="city-content">
+                                    <h3 class="city-name">{city.name}</h3>
+                                    <p class="city-description">
+                                        {city.description}
+                                    </p>
+                                    <div class="city-meta">
+                                        <span class="meta-item">
+                                            <svg
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                            >
+                                                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                                <circle cx="9" cy="7" r="4" />
+                                            </svg>
+                                            {city.listings.toLocaleString()}{" "}
+                                            roommates
+                                        </span>
+                                        <span class="meta-item">
+                                            <svg
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                            >
+                                                <line
+                                                    x1="12"
+                                                    y1="1"
+                                                    x2="12"
+                                                    y2="23"
+                                                />
+                                                <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                                            </svg>
+                                            Avg. {city.avgPrice}/mo
+                                        </span>
+                                    </div>
+                                    <span class="explore-link">
+                                        Find Roommates
+                                        <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Can't find your city?</h2>
+                    <p>
+                        We're expanding rapidly. Let us know where you'd like to
+                        see us next.
+                    </p>
+                    <button class="btn btn-primary btn-lg">
+                        Request a City
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</Layout>
+
+<style>
+    .cities-page {
+        min-height: 100vh;
+    }
+
+    /* Page Hero */
+    .page-hero {
+        position: relative;
+        padding: 80px 0;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+    }
+
+    .bg-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            180deg,
+            var(--bg-secondary) 0%,
+            var(--bg-primary) 100%
+        );
+    }
+
+    .hero-title {
+        font-family: var(--font-display);
+        font-size: var(--text-5xl);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-lg);
+        color: var(--text-muted);
+        max-width: 500px;
+        margin: 0 auto 40px;
+        line-height: 1.7;
+    }
+
+    .search-cities {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-full);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .search-cities svg {
+        color: var(--text-muted);
+        flex-shrink: 0;
+    }
+
+    .search-cities input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        font-size: var(--text-base);
+        color: var(--text-primary);
+        font-family: var(--font-body);
+    }
+
+    .search-cities input:focus {
+        outline: none;
+    }
+
+    .search-cities input::placeholder {
+        color: var(--text-muted);
+    }
+
+    /* Cities Section */
+    .cities-section {
+        padding: 60px 0 100px;
+    }
+
+    .cities-stats {
+        display: flex;
+        justify-content: center;
+        gap: 48px;
+        margin-bottom: 60px;
+    }
+
+    .stat-card {
+        text-align: center;
+    }
+
+    .stat-number {
+        display: block;
+        font-family: var(--font-display);
+        font-size: var(--text-4xl);
+        font-weight: 600;
+        color: var(--accent);
+    }
+
+    .stat-label {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+    }
+
+    .cities-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+
+    .city-card {
+        display: flex;
+        background: var(--bg-elevated);
+        border-radius: var(--radius-2xl);
+        overflow: hidden;
+        border: 1px solid var(--border-subtle);
+        box-shadow: var(--shadow-card);
+        transition: all var(--duration-slow) var(--ease-out);
+    }
+
+    .city-card:hover {
+        box-shadow: var(--shadow-card-hover);
+        transform: translateY(-6px);
+    }
+
+    .city-image {
+        position: relative;
+        width: 45%;
+        min-height: 280px;
+        overflow: hidden;
+    }
+
+    .city-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--duration-slow) var(--ease-out);
+    }
+
+    .city-card:hover .city-image img {
+        transform: scale(1.08);
+    }
+
+    .city-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            90deg,
+            transparent 50%,
+            rgba(12, 20, 33, 0.3) 100%
+        );
+    }
+
+    .city-content {
+        flex: 1;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .city-name {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+    }
+
+    .city-description {
+        font-size: var(--text-sm);
+        line-height: 1.7;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        flex: 1;
+    }
+
+    .city-meta {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+    }
+
+    .meta-item svg {
+        color: var(--accent);
+    }
+
+    .explore-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--accent);
+        transition: gap var(--duration-fast);
+    }
+
+    .city-card:hover .explore-link {
+        gap: 10px;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        padding: 80px 0;
+        background: var(--bg-secondary);
+    }
+
+    .cta-content {
+        text-align: center;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .cta-content h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-3xl);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+    }
+
+    .cta-content p {
+        font-size: var(--text-base);
+        color: var(--text-muted);
+        margin-bottom: 28px;
+    }
+
+    @media (max-width: 1024px) {
+        .cities-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .city-card {
+            flex-direction: column;
+        }
+
+        .city-image {
+            width: 100%;
+            min-height: 200px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: var(--text-4xl);
+        }
+
+        .cities-stats {
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .stat-card {
+            flex: 1 1 30%;
+        }
+    }
+</style>
