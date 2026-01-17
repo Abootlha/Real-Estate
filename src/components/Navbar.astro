@@ -9,33 +9,50 @@ const { transparent = false } = Astro.props;
 <nav class={`navbar ${transparent ? "navbar-transparent" : ""}`}>
     <div class="container">
         <div class="nav-inner">
+            <!-- Logo -->
             <a href="/" class="logo">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L2 7V10H22V7L12 2Z" fill="currentColor"
+                        ></path>
+                        <path
+                            d="M4 12V22H10V16H14V22H20V12H4Z"
+                            fill="currentColor"></path>
+                    </svg>
+                </div>
                 <span class="logo-text">RoomieMatch</span>
             </a>
 
-            <div class="nav-center">
-                <a href="/" class="nav-link active">
-                    <span>Home</span>
-                </a>
-                <a href="/properties" class="nav-link">
-                    <span>Find Rooms</span>
-                </a>
-                <a href="/cities" class="nav-link">
-                    <span>Cities</span>
-                </a>
-                <a href="/about" class="nav-link">
-                    <span>About Us</span>
-                </a>
-                <a href="/contact" class="nav-link">
-                    <span>Contact</span>
-                </a>
+            <!-- Nav Links -->
+            <div class="nav-links">
+                <a href="/" class="nav-link active">Home</a>
+                <a href="/properties" class="nav-link">Find Rooms</a>
+                <a href="/cities" class="nav-link">Cities</a>
+                <a href="/about" class="nav-link">About Us</a>
+                <a href="/contact" class="nav-link">Contact</a>
             </div>
 
-            <div class="nav-end">
-                <a href="#" class="login-link">log in</a>
-                <button class="btn-signup"> Sign Up </button>
+            <!-- Nav Actions -->
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline btn-sm">Get help</a>
+                <button class="menu-btn">
+                    Menu
+                    <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="12" cy="5" r="1"></circle>
+                        <circle cx="12" cy="19" r="1"></circle>
+                    </svg>
+                </button>
             </div>
 
+            <!-- Mobile Toggle -->
             <button class="mobile-toggle" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -47,20 +64,31 @@ const { transparent = false } = Astro.props;
 
 <style>
     .navbar {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
         z-index: 1000;
         padding: 16px 0;
-        transition: all 0.3s ease;
+        transition: all 0.4s var(--ease-out);
     }
 
-    .navbar:not(.navbar-transparent) {
-        position: sticky;
-        background: white;
-        border-bottom: 1px solid #e2e8f0;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    .navbar::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        opacity: 0;
+        transition: opacity 0.4s var(--ease-out);
+    }
+
+    .navbar.scrolled::before {
+        opacity: 1;
+    }
+
+    .navbar-transparent::before {
+        opacity: 0;
     }
 
     .nav-inner {
@@ -68,112 +96,104 @@ const { transparent = false } = Astro.props;
         align-items: center;
         justify-content: space-between;
         gap: 32px;
+        position: relative;
+        z-index: 1;
     }
 
     /* Logo */
     .logo {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         flex-shrink: 0;
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--accent);
+        border-radius: var(--radius-md);
+        color: var(--color-dark);
+        transition: transform 0.3s var(--ease-spring);
+    }
+
+    .logo:hover .logo-icon {
+        transform: rotate(-5deg) scale(1.05);
     }
 
     .logo-text {
         font-family: var(--font-display);
-        font-size: 1.4rem;
-        font-weight: 600;
+        font-size: var(--text-xl);
+        font-weight: 700;
+        color: var(--text-primary);
         letter-spacing: -0.02em;
     }
 
     .navbar-transparent .logo-text {
-        color: white;
+        color: var(--text-primary);
     }
 
-    .navbar:not(.navbar-transparent) .logo-text {
-        color: var(--color-midnight);
-    }
-
-    /* Nav Center */
-    .nav-center {
+    /* Nav Links */
+    .nav-links {
         display: flex;
         align-items: center;
-        gap: 4px;
+        gap: 8px;
     }
 
     .nav-link {
-        position: relative;
-        padding: 10px 16px;
-        font-size: 0.9rem;
+        padding: 10px 18px;
+        font-family: var(--font-display);
+        font-size: var(--text-sm);
         font-weight: 500;
-        border-radius: 100px;
-        transition: all 0.2s ease;
+        color: var(--text-secondary);
+        border-radius: var(--radius-full);
+        transition: all 0.3s var(--ease-out);
     }
 
-    .navbar-transparent .nav-link {
-        color: rgba(255, 255, 255, 0.85);
+    .nav-link:hover {
+        color: var(--text-primary);
+        background: var(--color-cloud);
     }
 
-    .navbar-transparent .nav-link:hover,
-    .navbar-transparent .nav-link.active {
-        color: white;
+    .nav-link.active {
+        color: var(--text-primary);
+        background: var(--color-cloud);
     }
 
-    .navbar:not(.navbar-transparent) .nav-link {
-        color: #64748b;
-    }
-
-    .navbar:not(.navbar-transparent) .nav-link:hover {
-        color: var(--color-midnight);
-        background: #f1f5f9;
-    }
-
-    .navbar:not(.navbar-transparent) .nav-link.active {
-        color: var(--color-midnight);
-        font-weight: 600;
-    }
-
-    /* Nav End */
-    .nav-end {
+    /* Nav Actions */
+    .nav-actions {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 12px;
     }
 
-    .login-link {
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: color 0.2s ease;
+    .btn-sm {
+        padding: 10px 20px;
+        font-size: var(--text-sm);
     }
 
-    .navbar-transparent .login-link {
-        color: rgba(255, 255, 255, 0.85);
-    }
-
-    .navbar-transparent .login-link:hover {
-        color: white;
-    }
-
-    .navbar:not(.navbar-transparent) .login-link {
-        color: #64748b;
-    }
-
-    .navbar:not(.navbar-transparent) .login-link:hover {
-        color: var(--color-midnight);
-    }
-
-    .btn-signup {
-        padding: 10px 22px;
-        font-size: 0.85rem;
+    .menu-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        background: var(--color-white);
+        border: 2px solid var(--color-silver);
+        border-radius: var(--radius-full);
+        font-family: var(--font-display);
+        font-size: var(--text-sm);
         font-weight: 600;
-        border-radius: 100px;
-        background: #3b82f6;
-        color: white;
-        transition: all 0.2s ease;
+        color: var(--text-primary);
+        transition: all 0.3s var(--ease-out);
     }
 
-    .btn-signup:hover {
-        background: #2563eb;
-        transform: translateY(-1px);
+    .menu-btn:hover {
+        border-color: var(--color-dark);
+        background: var(--color-dark);
+        color: var(--text-inverse);
     }
 
     /* Mobile Toggle */
@@ -185,21 +205,16 @@ const { transparent = false } = Astro.props;
         width: 44px;
         height: 44px;
         padding: 12px;
+        background: var(--color-cloud);
+        border-radius: var(--radius-md);
     }
 
     .mobile-toggle span {
         display: block;
         height: 2px;
+        background: var(--color-dark);
         border-radius: 2px;
-        transition: all 0.3s;
-    }
-
-    .navbar-transparent .mobile-toggle span {
-        background: white;
-    }
-
-    .navbar:not(.navbar-transparent) .mobile-toggle span {
-        background: var(--color-midnight);
+        transition: all 0.3s var(--ease-out);
     }
 
     .mobile-toggle span:nth-child(2) {
@@ -208,7 +223,7 @@ const { transparent = false } = Astro.props;
 
     /* Responsive */
     @media (max-width: 1024px) {
-        .nav-center {
+        .nav-links {
             display: none;
         }
     }
@@ -218,12 +233,28 @@ const { transparent = false } = Astro.props;
             padding: 12px 0;
         }
 
-        .nav-end {
+        .nav-actions {
             display: none;
         }
 
         .mobile-toggle {
             display: flex;
         }
+
+        .logo-text {
+            font-size: var(--text-lg);
+        }
     }
 </style>
+
+<script>
+    const navbar = document.querySelector(".navbar");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            navbar?.classList.add("scrolled");
+        } else {
+            navbar?.classList.remove("scrolled");
+        }
+    });
+</script>

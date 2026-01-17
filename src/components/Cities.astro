@@ -2,70 +2,121 @@
 const cities = [
     {
         name: "Mumbai",
+        lat: 19.076,
+        lng: 72.8777,
+        count: "2,450+",
         image: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=300&h=300&fit=crop&q=90",
     },
     {
         name: "Bangalore",
+        lat: 12.9716,
+        lng: 77.5946,
+        count: "1,820+",
         image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=300&h=300&fit=crop&q=90",
     },
     {
         name: "Delhi",
+        lat: 28.6139,
+        lng: 77.209,
+        count: "2,100+",
         image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=300&h=300&fit=crop&q=90",
     },
     {
         name: "Hyderabad",
+        lat: 17.385,
+        lng: 78.4867,
+        count: "1,350+",
         image: "https://images.unsplash.com/photo-1572445271230-a78b5944a659?w=300&h=300&fit=crop&q=90",
     },
     {
         name: "Chennai",
+        lat: 13.0827,
+        lng: 80.2707,
+        count: "980+",
         image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=300&h=300&fit=crop&q=90",
     },
+    {
+        name: "Pune",
+        lat: 18.5204,
+        lng: 73.8567,
+        count: "1,150+",
+        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=300&h=300&fit=crop&q=90",
+    },
+];
+
+// Property markers on the map
+const properties = [
+    { city: "Mumbai", price: "₹18,000", lat: 19.033, lng: 72.8296 },
+    { city: "Delhi", price: "₹25,000", lat: 28.5672, lng: 77.21 },
+    { city: "Bangalore", price: "₹22,000", lat: 12.9352, lng: 77.6245 },
+    { city: "Hyderabad", price: "₹15,000", lat: 17.44, lng: 78.3489 },
+    { city: "Pune", price: "₹12,000", lat: 18.5679, lng: 73.9143 },
+    { city: "Chennai", price: "₹16,000", lat: 13.0604, lng: 80.2496 },
+    { city: "Kolkata", price: "₹14,000", lat: 22.5726, lng: 88.3639 },
+    { city: "Ahmedabad", price: "₹11,000", lat: 23.0225, lng: 72.5714 },
 ];
 ---
 
-<section class="cities" id="cities">
+<!-- Interactive Map Section -->
+<section class="explore-map section section-dark">
+    <div class="map-wrapper">
+        <!-- Content Overlay -->
+        <div class="map-content" data-animate="fade-up">
+            <h2 class="map-title">Explore Nearby Homes</h2>
+            <p class="map-subtitle">
+                Browse available homes across India and explore<br />
+                listings in your favorite cities.
+            </p>
+            <a href="/properties" class="btn btn-lime">
+                Explore All Properties
+                <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Leaflet Map Container -->
+        <div id="india-map" class="leaflet-map"></div>
+
+        <!-- Floating Stats -->
+        <div class="map-stats" data-animate="pop" data-delay="2">
+            <div class="stat">
+                <span class="stat-value">12K+</span>
+                <span class="stat-label">Listings</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">120+</span>
+                <span class="stat-label">Cities</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cities Grid Section -->
+<section class="cities section section-curved" id="cities">
     <div class="container">
-        <div class="section-header">
-            <div class="header-text">
-                <h2 class="section-title">Popular Cities</h2>
-                <p class="section-subtitle">
-                    Explore homes across major cities
-                </p>
-            </div>
-            <div class="nav-arrows">
-                <button class="nav-arrow" aria-label="Previous">
-                    <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                    >
-                        <path d="M15 18l-6-6 6-6"></path>
-                    </svg>
-                </button>
-                <button class="nav-arrow active" aria-label="Next">
-                    <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                    >
-                        <path d="M9 18l6-6-6-6"></path>
-                    </svg>
-                </button>
-            </div>
+        <div class="section-header" data-animate="fade-up">
+            <h2 class="section-title">Popular Cities</h2>
+            <p class="section-subtitle">
+                Explore homes across major cities in India
+            </p>
         </div>
 
         <div class="cities-grid">
             {
-                cities.map((city) => (
+                cities.map((city, i) => (
                     <a
                         href={`/city/${city.name.toLowerCase()}`}
                         class="city-card"
+                        data-animate="pop"
+                        data-delay={i + 1}
                     >
                         <div class="city-image">
                             <img
@@ -74,7 +125,12 @@ const cities = [
                                 loading="lazy"
                             />
                         </div>
-                        <h3 class="city-name">{city.name}</h3>
+                        <div class="city-info">
+                            <h3 class="city-name">{city.name}</h3>
+                            <span class="city-count">
+                                {city.count} listings
+                            </span>
+                        </div>
                     </a>
                 ))
             }
@@ -82,78 +138,220 @@ const cities = [
     </div>
 </section>
 
+<!-- Map Initialization Script -->
+<script define:vars={{ properties }}>
+    // Wait for DOM and Leaflet to be ready
+    document.addEventListener("DOMContentLoaded", () => {
+        // Check if Leaflet is loaded
+        if (typeof L === "undefined") {
+            console.log("Leaflet not loaded yet");
+            return;
+        }
+
+        // Initialize the map centered on India
+        const map = L.map("india-map", {
+            center: [20.5937, 78.9629],
+            zoom: 5,
+            zoomControl: false,
+            attributionControl: false,
+            scrollWheelZoom: false,
+            dragging: true,
+        });
+
+        // Add dark-themed map tiles (CartoDB Dark Matter)
+        L.tileLayer(
+            "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+            {
+                subdomains: "abcd",
+                maxZoom: 19,
+            },
+        ).addTo(map);
+
+        // Custom marker icon
+        const priceIcon = (price) =>
+            L.divIcon({
+                className: "custom-price-marker",
+                html: `<div class="price-marker">${price}</div>`,
+                iconSize: [80, 32],
+                iconAnchor: [40, 16],
+            });
+
+        // Add property markers
+        properties.forEach((prop) => {
+            L.marker([prop.lat, prop.lng], { icon: priceIcon(prop.price) })
+                .addTo(map)
+                .bindPopup(
+                    `<strong>${prop.city}</strong><br>${prop.price}/month`,
+                );
+        });
+
+        // Add zoom control to bottom right
+        L.control.zoom({ position: "bottomright" }).addTo(map);
+    });
+</script>
+
 <style>
-    .cities {
-        padding: 80px 0;
-        background: #f8fafc;
+    /* ═══════════════════════════════════════════════════════════════════════════
+       EXPLORE MAP SECTION - With Real Leaflet Map
+       ═══════════════════════════════════════════════════════════════════════════ */
+    .explore-map {
+        position: relative;
+        padding: 0;
+        overflow: hidden;
+        min-height: 700px;
     }
 
-    .section-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-bottom: 40px;
-    }
-
-    .section-title {
-        font-family: var(--font-display);
-        font-size: 1.75rem;
-        font-weight: 600;
-        color: #0f172a;
-        margin-bottom: 8px;
-    }
-
-    .section-subtitle {
-        font-size: 0.95rem;
-        color: #64748b;
-    }
-
-    .nav-arrows {
-        display: flex;
-        gap: 8px;
-    }
-
-    .nav-arrow {
-        width: 44px;
-        height: 44px;
+    .map-wrapper {
+        position: relative;
+        height: 700px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
-        background: white;
-        color: #64748b;
-        border: 1px solid #e2e8f0;
-        transition: all 0.2s ease;
     }
 
-    .nav-arrow:hover,
-    .nav-arrow.active {
-        background: #3b82f6;
-        color: white;
-        border-color: #3b82f6;
+    /* Leaflet Map */
+    .leaflet-map {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
+
+    /* Custom Price Markers */
+    :global(.custom-price-marker) {
+        background: none;
+        border: none;
+    }
+
+    :global(.price-marker) {
+        padding: 8px 16px;
+        background: var(--color-white);
+        border-radius: 9999px;
+        font-family: var(--font-display);
+        font-size: 13px;
+        font-weight: 700;
+        color: #1a1a1a;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        white-space: nowrap;
+        animation: markerPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    :global(.price-marker:hover) {
+        background: #c8e644;
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+
+    @keyframes markerPop {
+        from {
+            opacity: 0;
+            transform: scale(0.5) translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    /* Content Overlay */
+    .map-content {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        padding: 40px;
+        background: rgba(26, 26, 26, 0.9);
+        backdrop-filter: blur(20px);
+        border-radius: var(--radius-2xl);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .map-title {
+        font-family: var(--font-display);
+        font-size: clamp(1.75rem, 3vw, var(--text-3xl));
+        font-weight: 700;
+        color: var(--text-inverse);
+        margin-bottom: 12px;
+    }
+
+    .map-subtitle {
+        font-size: var(--text-base);
+        color: var(--color-gray);
+        margin-bottom: 24px;
+        line-height: 1.6;
+    }
+
+    /* Floating Stats */
+    .map-stats {
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+        z-index: 10;
+        display: flex;
+        gap: 24px;
+        padding: 20px 28px;
+        background: var(--color-white);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-xl);
+    }
+
+    .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-value {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: var(--text-xl);
+        color: var(--text-primary);
+    }
+
+    .stat-label {
+        font-size: var(--text-xs);
+        color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       CITIES SECTION
+       ═══════════════════════════════════════════════════════════════════════════ */
+    .cities {
+        background: var(--bg-primary);
     }
 
     .cities-grid {
-        display: flex;
-        gap: 32px;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 24px;
     }
 
     .city-card {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
-        text-decoration: none;
+        gap: 16px;
+        padding: 24px;
+        background: var(--bg-secondary);
+        border-radius: var(--radius-xl);
+        transition: all 0.4s var(--ease-spring);
+    }
+
+    .city-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        background: var(--color-white);
+        box-shadow: var(--shadow-xl);
     }
 
     .city-image {
-        width: 100px;
-        height: 100px;
-        border-radius: 16px;
+        width: 90px;
+        height: 90px;
+        border-radius: var(--radius-lg);
         overflow: hidden;
-        border: 3px solid white;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        box-shadow: var(--shadow-md);
+        transition: transform 0.4s var(--ease-spring);
+    }
+
+    .city-card:hover .city-image {
+        transform: scale(1.1) rotate(-3deg);
     }
 
     .city-image img {
@@ -162,27 +360,86 @@ const cities = [
         object-fit: cover;
     }
 
+    .city-info {
+        text-align: center;
+    }
+
     .city-name {
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: #0f172a;
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+    }
+
+    .city-count {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+        .cities-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 
     @media (max-width: 768px) {
-        .section-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 16px;
+        .cities-grid {
+            grid-template-columns: repeat(2, 1fr);
         }
 
-        .cities-grid {
-            flex-wrap: wrap;
-            gap: 24px;
+        .map-wrapper {
+            height: 500px;
+        }
+
+        .map-stats {
+            bottom: 20px;
+            left: 20px;
+            padding: 16px 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .map-wrapper {
+            height: 450px;
+        }
+
+        .city-card {
+            padding: 16px;
         }
 
         .city-image {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
         }
+
+        .map-content {
+            margin: 20px;
+            padding: 24px;
+        }
+    }
+</style>
+
+<style is:global>
+    /* Leaflet Popup Customization */
+    .leaflet-popup-content-wrapper {
+        background: #1a1a1a;
+        color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .leaflet-popup-content {
+        margin: 12px 16px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+    }
+
+    .leaflet-popup-tip {
+        background: #1a1a1a;
+    }
+
+    .leaflet-container {
+        font-family: "Plus Jakarta Sans", sans-serif;
     }
 </style>

@@ -1,39 +1,70 @@
 ---
 const faqs = [
     {
-        question: "Can I schedule a visit to a home?",
-        answer: "Yes. You can request a visit to see a home and decide if it's the right fit for you.",
+        question: "How does RoomieMatch work?",
+        answer: "Simply create a profile, set your preferences for location, budget, and roommate characteristics. Our AI-powered matching system will suggest compatible listings and roommates. You can browse, connect, and schedule visits all within our platform.",
         isOpen: true,
     },
     {
-        question: "How often are new homes added?",
-        answer: "We add new listings every day. Subscribe to get notified about new properties in your preferred locations.",
+        question: "Are the listings verified?",
+        answer: "Yes! Every listing on RoomieMatch goes through our verification process. We verify property ownership, photos, and ensure all details are accurate before publishing.",
         isOpen: false,
     },
     {
-        question: "Do I need to decide immediately?",
-        answer: "No. Take your time to explore and compare different options before making a decision.",
+        question: "How much does it cost to use RoomieMatch?",
+        answer: "Searching and browsing listings is completely free. We only charge a small service fee when you successfully find and move into a property through our platform.",
         isOpen: false,
     },
     {
-        question: "Can I get help with financing when buying a home?",
-        answer: "Yes, we partner with leading banks to help you get the best home loan rates.",
+        question: "Can I schedule property visits through the app?",
+        answer: "Absolutely! You can request visits directly through our platform. Property owners will receive your request and you'll be notified once they confirm a time slot.",
+        isOpen: false,
+    },
+    {
+        question: "What if I have issues with my roommate or property?",
+        answer: "We have a dedicated support team available 24/7 to help resolve any disputes. We also offer mediation services and can help you find alternative accommodations if needed.",
         isOpen: false,
     },
 ];
 ---
 
-<section class="faq">
-    <div class="faq-container">
-        <div class="faq-content">
-            <h2 class="faq-title">Frequently Asked Questions</h2>
+<section class="faq section">
+    <div class="container">
+        <div class="faq-layout">
+            <!-- Left: Content -->
+            <div class="faq-content">
+                <span class="section-label" data-animate="fade-up">FAQs</span>
+                <h2 class="section-title" data-animate="fade-up" data-delay="1">
+                    Frequently Asked<br />Questions
+                </h2>
+                <p class="faq-intro" data-animate="fade-up" data-delay="2">
+                    Everything you need to know about finding your perfect home
+                    with RoomieMatch.
+                </p>
 
+                <div class="faq-cta" data-animate="fade-up" data-delay="3">
+                    <p>Still have questions?</p>
+                    <a href="/contact" class="btn btn-lime">Contact Support</a>
+                </div>
+            </div>
+
+            <!-- Right: FAQ List -->
             <div class="faq-list">
                 {
                     faqs.map((faq, index) => (
-                        <details class="faq-item" open={faq.isOpen}>
+                        <details
+                            class="faq-item"
+                            open={faq.isOpen}
+                            data-animate="fade-left"
+                            data-delay={index + 1}
+                        >
                             <summary class="faq-question">
-                                <span>{faq.question}</span>
+                                <span class="question-number">
+                                    {String(index + 1).padStart(2, "0")}
+                                </span>
+                                <span class="question-text">
+                                    {faq.question}
+                                </span>
                                 <span class="faq-icon">
                                     <svg
                                         width="20"
@@ -55,113 +86,167 @@ const faqs = [
                 }
             </div>
         </div>
-
-        <div class="faq-image">
-            <img
-                src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=900&fit=crop&q=90"
-                alt="Beautiful home"
-                loading="lazy"
-            />
-        </div>
     </div>
 </section>
 
 <style>
     .faq {
-        padding: 80px 0;
-        background: #fff;
+        background: var(--bg-secondary);
     }
 
-    .faq-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
+    .faq-layout {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 64px;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 80px;
         align-items: start;
     }
 
-    .faq-title {
+    /* Left Content */
+    .faq-content {
+        position: sticky;
+        top: 120px;
+    }
+
+    .section-label {
+        display: inline-block;
         font-family: var(--font-display);
-        font-size: 2rem;
+        font-size: var(--text-sm);
         font-weight: 600;
-        color: #0f172a;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 16px;
+        padding: 6px 14px;
+        background: var(--color-lime-glow);
+        border-radius: var(--radius-full);
+    }
+
+    .faq .section-title {
+        font-size: clamp(2rem, 4vw, var(--text-4xl));
+        margin-bottom: 16px;
+    }
+
+    .faq-intro {
+        font-size: var(--text-lg);
+        color: var(--text-secondary);
+        line-height: 1.7;
         margin-bottom: 32px;
     }
 
+    .faq-cta p {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        margin-bottom: 12px;
+    }
+
+    /* FAQ List */
     .faq-list {
         display: flex;
         flex-direction: column;
-        gap: 0;
+        gap: 16px;
     }
 
     .faq-item {
-        border-bottom: 1px solid #e2e8f0;
+        background: var(--color-white);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s var(--ease-out);
+    }
+
+    .faq-item:hover {
+        box-shadow: var(--shadow-md);
+    }
+
+    .faq-item[open] {
+        box-shadow: var(--shadow-lg);
     }
 
     .faq-question {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: 20px 0;
-        font-size: 1rem;
-        font-weight: 500;
-        color: #0f172a;
+        gap: 16px;
+        padding: 24px;
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        font-weight: 600;
+        color: var(--text-primary);
         cursor: pointer;
         list-style: none;
+        transition: background 0.3s var(--ease-out);
+    }
+
+    .faq-question:hover {
+        background: var(--color-cloud);
     }
 
     .faq-question::-webkit-details-marker {
         display: none;
     }
 
+    .question-number {
+        font-family: var(--font-display);
+        font-size: var(--text-sm);
+        font-weight: 700;
+        color: var(--accent);
+        flex-shrink: 0;
+    }
+
+    .question-text {
+        flex: 1;
+    }
+
     .faq-icon {
+        width: 36px;
+        height: 36px;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 32px;
-        height: 32px;
+        background: var(--color-cloud);
         border-radius: 50%;
-        background: #f1f5f9;
-        color: #64748b;
-        transition: all 0.2s ease;
+        color: var(--text-secondary);
+        transition: all 0.3s var(--ease-out);
+        flex-shrink: 0;
     }
 
     .faq-item[open] .faq-icon {
-        background: #3b82f6;
-        color: white;
+        background: var(--accent);
+        color: var(--color-dark);
         transform: rotate(45deg);
     }
 
     .faq-answer {
-        padding-bottom: 20px;
+        padding: 0 24px 24px 56px;
     }
 
     .faq-answer p {
-        font-size: 0.95rem;
+        font-size: var(--text-base);
         line-height: 1.7;
-        color: #64748b;
+        color: var(--text-secondary);
     }
 
-    .faq-image {
-        border-radius: 24px;
-        overflow: hidden;
-        height: 500px;
-    }
-
-    .faq-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    @media (max-width: 900px) {
-        .faq-container {
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .faq-layout {
             grid-template-columns: 1fr;
+            gap: 48px;
         }
 
-        .faq-image {
+        .faq-content {
+            position: static;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .faq-question {
+            padding: 20px;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px 20px;
+        }
+
+        .question-number {
             display: none;
         }
     }
