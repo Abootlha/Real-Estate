@@ -1,189 +1,240 @@
 ---
-const features = [
-    {
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/></svg>`,
-        title: "AI-Powered Matching",
-        desc: "Our algorithm analyzes 50+ compatibility factors including lifestyle, work schedule, and personal preferences to find your perfect match.",
-    },
-    {
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>`,
-        title: "Hyper-Local Search",
-        desc: "Search by neighborhood, metro station, or even specific streets. Get granular with areas you love and commute times that work.",
-    },
-    {
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
-        title: "Verified Profiles",
-        desc: "Every user goes through ID verification, LinkedIn, or employment verification. Your safety is our top priority.",
-    },
-    {
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.132a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>`,
-        title: "Smart Messaging",
-        desc: "AI-suggested icebreakers, in-app chat, voice notes, and video calls. Connect meaningfully before meeting in person.",
-    },
-    {
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`,
-        title: "Virtual Home Tours",
-        desc: "Explore spaces through 360° virtual tours and video walkthroughs. Save time by knowing the place before you visit.",
-    },
-    {
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>`,
-        title: "Digital Agreements",
-        desc: "Generate legally-sound roommate agreements, track shared expenses, and split bills automatically within the app.",
-    },
-];
+import Blob from "./Blob.astro";
+import { Icon } from "astro-icon/components";
 ---
 
-<section class="features" id="features">
+<section class="features section">
     <div class="container">
-        <div class="features-header">
-            <span class="section-label">Features</span>
-            <h2 class="section-title">
-                Everything you need to find
-                <br />
-                <span class="gradient-text">the perfect living situation</span>
-            </h2>
-            <p class="section-desc">
-                Built specifically for the modern renter who wants more than
-                just any random room or roommate.
-            </p>
+        <!-- Feature Block 1 -->
+        <div class="feature-block">
+            <div class="feature-visual" data-animate="fade-right">
+                <div class="visual-blob">
+                    <Blob
+                        color="var(--color-peach)"
+                        size="100%"
+                        opacity={0.3}
+                    />
+                </div>
+                <div class="visual-image-wrapper">
+                    <img
+                        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=90"
+                        alt="Best room booking experience"
+                        class="visual-image"
+                    />
+                </div>
+            </div>
+
+            <div class="feature-content" data-animate="fade-left">
+                <div class="feature-header">
+                    <h2 class="feature-title">Best room booking experience</h2>
+                    <p class="feature-desc">
+                        Browse thousands of verified rooms and apartments.
+                        Filter by location, budget, and amenities to find
+                        exactly what you need in seconds.
+                    </p>
+                </div>
+                <ul class="feature-list">
+                    <li>
+                        <span class="check-icon"
+                            ><Icon name="ph:check-bold" size={14} /></span
+                        >
+                        <span>Verified listings with real photos</span>
+                    </li>
+                    <li>
+                        <span class="check-icon"
+                            ><Icon name="ph:check-bold" size={14} /></span
+                        >
+                        <span>Secure payments & transparent pricing</span>
+                    </li>
+                    <li>
+                        <span class="check-icon"
+                            ><Icon name="ph:check-bold" size={14} /></span
+                        >
+                        <span>Direct chat with verified owners</span>
+                    </li>
+                </ul>
+                <a href="/properties" class="btn btn-primary">Find a Room</a>
+            </div>
         </div>
 
-        <div class="features-grid">
-            {
-                features.map((feature, i) => (
-                    <div class="feature-card" style={`--index: ${i}`}>
-                        <div class="feature-icon" set:html={feature.icon} />
-                        <h3 class="feature-title">{feature.title}</h3>
-                        <p class="feature-desc">{feature.desc}</p>
-                    </div>
-                ))
-            }
+        <!-- Feature Block 2 -->
+        <div class="feature-block reverse">
+            <div class="feature-content" data-animate="fade-right">
+                <div class="feature-header">
+                    <h2 class="feature-title">Easy to find a best roommate</h2>
+                    <p class="feature-desc">
+                        Our intelligent matching system finds people who share
+                        your lifestyle. No more awkward living situations—just
+                        great vibes.
+                    </p>
+                </div>
+                <ul class="feature-list">
+                    <li>
+                        <span class="check-icon"
+                            ><Icon name="ph:check-bold" size={14} /></span
+                        >
+                        <span>AI-powered compatibility matching</span>
+                    </li>
+                    <li>
+                        <span class="check-icon"
+                            ><Icon name="ph:check-bold" size={14} /></span
+                        >
+                        <span>Detailed lifestyle profiles</span>
+                    </li>
+                    <li>
+                        <span class="check-icon"
+                            ><Icon name="ph:check-bold" size={14} /></span
+                        >
+                        <span>Safe in-app messaging</span>
+                    </li>
+                </ul>
+                <a href="/signup" class="btn btn-primary">Join RoomieMatch</a>
+            </div>
+
+            <div class="feature-visual" data-animate="fade-left">
+                <div class="visual-blob">
+                    <!-- Adjusted blob position for variety -->
+                    <Blob
+                        color="var(--color-pink-light)"
+                        size="90%"
+                        right="0"
+                        opacity={0.3}
+                    />
+                </div>
+                <div class="visual-image-wrapper">
+                    <img
+                        src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=90"
+                        alt="Find best roommate"
+                        class="visual-image"
+                    />
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <style>
     .features {
-        padding: var(--section-padding) 0;
-        position: relative;
+        overflow: hidden;
     }
 
-    .features-header {
-        text-align: center;
-        max-width: 700px;
-        margin: 0 auto 80px;
-    }
-
-    .features-header .section-desc {
-        margin: 0 auto;
-    }
-
-    .features-grid {
+    .feature-block {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-    }
-
-    .feature-card {
-        position: relative;
-        padding: 32px;
-        background: var(--bg-card);
-        border: 1px solid var(--border-subtle);
-        border-radius: var(--card-radius);
-        transition: all var(--duration-slow) var(--ease-out-expo);
-        animation: fadeInUp 0.5s ease-out backwards;
-        animation-delay: calc(var(--index) * 0.08s);
-    }
-
-    .feature-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: var(--card-radius);
-        background: linear-gradient(
-            135deg,
-            rgba(255, 120, 73, 0.08) 0%,
-            transparent 60%
-        );
-        opacity: 0;
-        transition: opacity var(--duration-normal);
-    }
-
-    .feature-card:hover {
-        border-color: var(--border-accent);
-        transform: translateY(-4px);
-    }
-
-    .feature-card:hover::before {
-        opacity: 1;
-    }
-
-    .feature-icon {
-        width: 48px;
-        height: 48px;
-        display: flex;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
         align-items: center;
-        justify-content: center;
-        background: linear-gradient(
-            135deg,
-            rgba(255, 120, 73, 0.15) 0%,
-            rgba(255, 120, 73, 0.05) 100%
-        );
-        border: 1px solid rgba(255, 120, 73, 0.2);
-        border-radius: 12px;
-        color: var(--accent-primary);
-        margin-bottom: 20px;
-        transition: all var(--duration-normal);
+        margin-bottom: 120px;
     }
 
-    .feature-icon :global(svg) {
-        width: 24px;
-        height: 24px;
+    .feature-block:last-child {
+        margin-bottom: 0;
     }
 
-    .feature-card:hover .feature-icon {
-        background: var(--accent-primary);
-        color: #000;
+    .feature-block.reverse .feature-content {
+        order: 1;
+    }
+    .feature-block.reverse .feature-visual {
+        order: 2;
+    }
+
+    /* Visuals */
+    .feature-visual {
+        position: relative;
+    }
+
+    .visual-blob {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 120%;
+        height: 120%;
+        z-index: 0;
+    }
+
+    .visual-image-wrapper {
+        position: relative;
+        z-index: 1;
+        border-radius: 40px;
+        overflow: hidden;
+        box-shadow: var(--shadow-xl);
+    }
+
+    .visual-image {
+        width: 100%;
+        height: 480px;
+        object-fit: cover;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .feature-visual:hover .visual-image {
         transform: scale(1.05);
     }
 
+    /* Content */
     .feature-title {
-        font-family: var(--font-display);
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 12px;
-        letter-spacing: -0.01em;
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        margin-bottom: 20px;
+        color: var(--text-primary);
+        line-height: 1.2;
     }
 
     .feature-desc {
-        font-size: 15px;
+        font-size: 1.1rem;
         color: var(--text-secondary);
+        margin-bottom: 32px;
         line-height: 1.7;
     }
 
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(24px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .feature-list {
+        list-style: none;
+        margin-bottom: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .feature-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text-primary);
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    .check-icon {
+        width: 24px;
+        height: 24px;
+        background: rgba(255, 90, 95, 0.1);
+        color: var(--color-pink-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 800;
+        flex-shrink: 0;
+        box-shadow: 0 4px 10px rgba(255, 90, 95, 0.2);
     }
 
     @media (max-width: 900px) {
-        .features-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (max-width: 600px) {
-        .features-grid {
+        .feature-block {
             grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
         }
-        .feature-card {
-            padding: 24px;
+
+        .feature-block.reverse .feature-content {
+            order: 2;
+        }
+        .feature-block.reverse .feature-visual {
+            order: 1;
+        }
+
+        .visual-image {
+            height: 320px;
         }
     }
 </style>

@@ -1,122 +1,89 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const testimonials = [
     {
-        id: 1,
-        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&h=350&fit=crop&q=90",
-        quote: "The home felt right the moment we walked in. It matched our needs and fit perfectly into our daily routine. RoomieMatch made it so easy!",
-        author: "Ravi Sharma",
-        location: "Delhi, India",
-        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-        saved: "₹45,000",
+        name: "Sarah Jenkins",
+        role: "Found a room in Indiranagar",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=faces",
+        text: "I was so stressed about moving to a new city, but RoomieMatch made it incredibly easy. I found a great apartment and an amazing roommate in just 3 days!",
     },
     {
-        id: 2,
-        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&h=350&fit=crop&q=90",
-        quote: "We were looking for something comfortable and well-located. The home we chose truly feels like ours now. Great platform!",
-        author: "Priya Mehra",
-        location: "Bangalore, India",
-        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-        saved: "₹32,000",
+        name: "Rahul Sharma",
+        role: "Found a flatmate in Mumbai",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=faces",
+        text: "The compatibility matching is spot on. My roommate and I have the same schedule and habits. It feels like living with an old friend.",
     },
     {
-        id: 3,
-        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&h=350&fit=crop&q=90",
-        quote: "Found my perfect roommate within a week. The verification process gave me confidence. Highly recommend RoomieMatch!",
-        author: "Karan Kumar",
-        location: "Mumbai, India",
-        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
-        saved: "₹28,000",
+        name: "Priya Patel",
+        role: "Rented out spare room",
+        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=faces",
+        text: "As a host, safety was my main concern. The verification process gave me peace of mind, and I found a trusted tenant very quickly.",
     },
 ];
 ---
 
-<section class="testimonials section section-gray" id="testimonials">
+<section class="testimonials section">
     <div class="container">
-        <!-- Section Header -->
-        <div class="testimonials-header" data-animate="fade-up">
-            <div class="header-left">
-                <span class="section-label">Success Stories</span>
-                <h2 class="section-title">What Home Seekers Say</h2>
-                <p class="section-subtitle">
-                    Real experiences from people who found their perfect homes
+        <div class="section-header" data-animate="fade-up">
+            <span class="badge badge-pink">Happy Community</span>
+            <h2 class="section-title">What our members say</h2>
+        </div>
+
+        <div class="testimonials-wrapper">
+            <!-- Decorative elements -->
+            <div class="decor-circle circle-1"></div>
+            <div class="decor-circle circle-2"></div>
+
+            <div class="testimonial-card centered" data-animate="scale-up">
+                <div class="quote-icon">
+                    <Icon name="ph:quotes-fill" />
+                </div>
+                <p class="testimonial-text">
+                    Great experience from roommate app. I found a great
+                    apartment and an amazing roommate in just 3 days!
                 </p>
-            </div>
-            <div class="nav-arrows">
-                <button class="nav-arrow" aria-label="Previous">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6"></path>
-                    </svg>
-                </button>
-                <button class="nav-arrow active" aria-label="Next">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18l6-6-6-6"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
 
-        <!-- Testimonials Grid -->
-        <div class="testimonials-grid">
-            {testimonials.map((t, i) => (
-                <article class="testimonial-card" data-animate="fade-up" data-delay={i + 1}>
-                    <div class="testimonial-image">
-                        <img src={t.image} alt="Home" loading="lazy" />
-                        
-                        <!-- Saved Badge -->
-                        <div class="saved-badge">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2L2 7V10H22V7L12 2Z"/>
-                                <path d="M4 12V22H10V16H14V22H20V12H4Z"/>
-                            </svg>
-                            Saved {t.saved}
+                <div class="user-profile">
+                    <div class="user-image-wrapper">
+                        <img
+                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=faces"
+                            alt="User"
+                            class="user-image"
+                        />
+                        <div class="verified-badge">
+                            <Icon name="ph:check-bold" size={12} />
                         </div>
                     </div>
-
-                    <div class="testimonial-content">
-                        <div class="quote-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z"/>
-                            </svg>
-                        </div>
-                        
-                        <p class="testimonial-quote">{t.quote}</p>
-
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <img src={t.avatar} alt={t.author} />
-                            </div>
-                            <div class="author-info">
-                                <span class="author-name">{t.author}</span>
-                                <span class="author-location">{t.location}</span>
-                            </div>
-                            <div class="rating">
-                                {[1,2,3,4,5].map(() => (
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                    </svg>
-                                ))}
-                            </div>
-                        </div>
+                    <div class="user-info">
+                        <h4 class="user-name">David Cohen</h4>
+                        <span class="user-role">Resident in Bangalore</span>
                     </div>
-                </article>
-            ))}
-        </div>
+                </div>
+            </div>
 
-        <!-- Trust Indicators -->
-        <div class="trust-bar" data-animate="fade-up" data-delay="4">
-            <div class="trust-item">
-                <span class="trust-value">4.9/5</span>
-                <span class="trust-label">Average Rating</span>
-            </div>
-            <div class="trust-divider"></div>
-            <div class="trust-item">
-                <span class="trust-value">8,000+</span>
-                <span class="trust-label">Happy Users</span>
-            </div>
-            <div class="trust-divider"></div>
-            <div class="trust-item">
-                <span class="trust-value">₹2.5Cr+</span>
-                <span class="trust-label">Total Saved</span>
+            <!-- Floating avatars representing community -->
+            <div class="floating-faces">
+                <img
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces"
+                    class="face face-1"
+                    alt="Face"
+                />
+                <img
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces"
+                    class="face face-2"
+                    alt="Face"
+                />
+                <img
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=faces"
+                    class="face face-3"
+                    alt="Face"
+                />
+                <img
+                    src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&h=100&fit=crop&crop=faces"
+                    class="face face-4"
+                    alt="Face"
+                />
             </div>
         </div>
     </div>
@@ -124,254 +91,159 @@ const testimonials = [
 
 <style>
     .testimonials {
+        padding-bottom: 160px;
         overflow: hidden;
     }
 
-    /* Header */
-    .testimonials-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-bottom: 48px;
-        flex-wrap: wrap;
-        gap: 24px;
-    }
-
-    .header-left {
-        flex: 1;
-    }
-
-    .section-label {
-        display: inline-block;
-        font-family: var(--font-display);
-        font-size: var(--text-sm);
-        font-weight: 600;
-        color: var(--accent);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 12px;
-        padding: 6px 14px;
-        background: var(--color-lime-glow);
-        border-radius: var(--radius-full);
-    }
-
-    .testimonials .section-title {
-        margin-bottom: 8px;
-    }
-
-    .testimonials .section-subtitle {
-        text-align: left;
-        margin: 0;
-    }
-
-    /* Nav Arrows */
-    .nav-arrows {
-        display: flex;
-        gap: 12px;
-    }
-
-    .nav-arrow {
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background: var(--color-white);
-        color: var(--text-secondary);
-        border: 2px solid var(--color-silver);
-        transition: all 0.3s var(--ease-out);
-    }
-
-    .nav-arrow:hover,
-    .nav-arrow.active {
-        background: var(--color-dark);
-        color: var(--text-inverse);
-        border-color: var(--color-dark);
-    }
-
-    /* Grid */
-    .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 28px;
-        margin-bottom: 60px;
-    }
-
-    /* Card */
-    .testimonial-card {
-        background: var(--color-white);
-        border-radius: var(--radius-xl);
-        overflow: hidden;
-        box-shadow: var(--shadow-sm);
-        transition: all 0.4s var(--ease-spring);
-    }
-
-    .testimonial-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-xl);
-    }
-
-    /* Image */
-    .testimonial-image {
+    .testimonials-wrapper {
         position: relative;
-        aspect-ratio: 16/11;
-        overflow: hidden;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 0;
     }
 
-    .testimonial-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.6s var(--ease-out);
-    }
-
-    .testimonial-card:hover .testimonial-image img {
-        transform: scale(1.05);
-    }
-
-    .saved-badge {
-        position: absolute;
-        bottom: 16px;
-        left: 16px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 16px;
-        background: var(--accent);
-        border-radius: var(--radius-full);
-        font-family: var(--font-display);
-        font-size: var(--text-sm);
-        font-weight: 700;
-        color: var(--color-dark);
-        box-shadow: var(--shadow-md);
-    }
-
-    /* Content */
-    .testimonial-content {
-        padding: 24px;
+    .testimonial-card {
+        text-align: center;
+        position: relative;
+        z-index: 2;
     }
 
     .quote-icon {
-        color: var(--accent);
-        margin-bottom: 12px;
+        font-family: serif;
+        font-size: 120px;
+        line-height: 1;
+        color: rgba(255, 90, 95, 0.1);
+        margin-bottom: -40px;
+        display: block;
     }
 
-    .testimonial-quote {
-        font-size: var(--text-base);
-        line-height: 1.7;
-        color: var(--text-secondary);
-        margin-bottom: 20px;
+    .testimonial-text {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 500;
+        color: var(--text-primary);
+        line-height: 1.4;
+        margin-bottom: 40px;
+        position: relative;
     }
 
-    /* Author */
-    .testimonial-author {
+    .user-profile {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 16px;
     }
 
-    .author-avatar {
-        width: 44px;
-        height: 44px;
+    .user-image-wrapper {
+        position: relative;
+    }
+
+    .user-image {
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
-        overflow: hidden;
-        flex-shrink: 0;
-        border: 2px solid var(--color-silver);
-    }
-
-    .author-avatar img {
-        width: 100%;
-        height: 100%;
         object-fit: cover;
+        box-shadow: var(--shadow-lg);
+        border: 4px solid var(--color-white);
     }
 
-    .author-info {
-        flex: 1;
+    .verified-badge {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--color-teal);
+        color: white;
+        border-radius: 50%;
         display: flex;
-        flex-direction: column;
-    }
-
-    .author-name {
-        font-family: var(--font-display);
-        font-size: var(--text-sm);
-        font-weight: 700;
-        color: var(--text-primary);
-    }
-
-    .author-location {
-        font-size: var(--text-xs);
-        color: var(--text-muted);
-    }
-
-    .rating {
-        display: flex;
-        gap: 2px;
-        color: #fbbf24;
-    }
-
-    /* Trust Bar */
-    .trust-bar {
-        display: flex;
+        align-items: center;
         justify-content: center;
-        align-items: center;
-        gap: 48px;
-        padding: 32px;
-        background: var(--color-white);
-        border-radius: var(--radius-xl);
-        box-shadow: var(--shadow-sm);
+        font-size: 14px;
+        font-weight: 700;
+        border: 2px solid white;
     }
 
-    .trust-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-    }
-
-    .trust-value {
-        font-family: var(--font-display);
-        font-size: var(--text-2xl);
-        font-weight: 800;
+    .user-name {
+        font-size: 1.1rem;
+        margin-bottom: 4px;
         color: var(--text-primary);
     }
 
-    .trust-label {
-        font-size: var(--text-sm);
-        color: var(--text-muted);
+    .user-role {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
     }
 
-    .trust-divider {
-        width: 1px;
-        height: 40px;
-        background: var(--color-silver);
+    /* Floating Faces Background */
+    .floating-faces {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
     }
 
-    /* Responsive */
-    @media (max-width: 1024px) {
-        .testimonials-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
+    .face {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        opacity: 0.6;
+        filter: grayscale(20%);
+        transition: all 0.3s;
+        animation: floatContinuous 6s ease-in-out infinite;
     }
 
-    @media (max-width: 768px) {
-        .testimonials-header {
-            flex-direction: column;
-            align-items: flex-start;
-        }
+    .face:hover {
+        opacity: 1;
+        filter: grayscale(0);
+        transform: scale(1.1);
+        z-index: 3;
+    }
 
-        .testimonials-grid {
-            grid-template-columns: 1fr;
-        }
+    .face-1 {
+        top: 0;
+        left: 0;
+        animation-delay: 0s;
+    }
+    .face-2 {
+        top: 20%;
+        right: -50px;
+        animation-delay: 1.5s;
+        width: 60px;
+        height: 60px;
+    }
+    .face-3 {
+        bottom: 0;
+        left: -40px;
+        animation-delay: 2.5s;
+        width: 55px;
+        height: 55px;
+    }
+    .face-4 {
+        bottom: 20%;
+        right: 20px;
+        animation-delay: 3.5s;
+    }
 
-        .trust-bar {
-            flex-direction: column;
-            gap: 24px;
-        }
+    /* Decorative Circles */
+    .decor-circle {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 90, 95, 0.1);
+        z-index: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-        .trust-divider {
-            width: 60px;
-            height: 1px;
-        }
+    .circle-1 {
+        width: 400px;
+        height: 400px;
+    }
+    .circle-2 {
+        width: 600px;
+        height: 600px;
+        border-color: rgba(255, 90, 95, 0.05);
     }
 </style>

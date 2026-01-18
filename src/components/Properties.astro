@@ -1,499 +1,308 @@
 ---
-const listings = [
+import { Icon } from "astro-icon/components";
+
+const properties = [
     {
-        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=450&fit=crop&q=90",
+        id: 1,
+        title: "Modern 2BHK in Indiranagar",
+        location: "Indiranagar, Bangalore",
         price: "₹18,000",
-        period: "/month",
-        title: "Andheri East, Mumbai",
-        beds: 4,
-        baths: 2,
-        sqft: "1,850 sq ft",
-        tag: "Popular",
+        type: "Private Room",
+        image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=90",
+        roommates: [
+            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop&crop=faces",
+            "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop&crop=faces",
+        ],
     },
     {
-        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=450&fit=crop&q=90",
+        id: 2,
+        title: "Sunny Room in Koramangala",
+        location: "Koramangala 4th Block",
+        price: "₹12,500",
+        type: "Shared Room",
+        image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=800&q=90",
+        roommates: [
+            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&h=64&fit=crop&crop=faces",
+        ],
+    },
+    {
+        id: 3,
+        title: "Luxury Apartment HSR Layout",
+        location: "HSR Layout, Bangalore",
         price: "₹22,000",
-        period: "/month",
-        title: "Whitefield, Bangalore",
-        beds: 3,
-        baths: 2,
-        sqft: "1,950 sq ft",
-        tag: "New",
-    },
-    {
-        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=450&fit=crop&q=90",
-        price: "₹15,000",
-        period: "/month",
-        title: "Hinjewadi, Pune",
-        beds: 2,
-        baths: 2,
-        sqft: "1,250 sq ft",
-        tag: null,
-    },
-    {
-        image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&h=450&fit=crop&q=90",
-        price: "₹35,000",
-        period: "/month",
-        title: "Dwarka, Delhi",
-        beds: 4,
-        baths: 3,
-        sqft: "2,100 sq ft",
-        tag: "Premium",
-    },
-    {
-        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=450&fit=crop&q=90",
-        price: "₹19,000",
-        period: "/month",
-        title: "Anna Nagar, Chennai",
-        beds: 3,
-        baths: 2,
-        sqft: "1,650 sq ft",
-        tag: null,
-    },
-    {
-        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=450&fit=crop&q=90",
-        price: "₹28,000",
-        period: "/month",
-        title: "Gachibowli, Hyderabad",
-        beds: 4,
-        baths: 2,
-        sqft: "1,850 sq ft",
-        tag: "Hot",
+        type: "Private Room",
+        image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=90",
+        roommates: [
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=faces",
+            "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=64&h=64&fit=crop&crop=faces",
+        ],
     },
 ];
 ---
 
-<section class="properties section" id="listings">
+<section class="properties section section-gray">
     <div class="container">
-        <!-- Section Header -->
-        <div class="properties-header" data-animate="fade-up">
-            <div class="header-left">
-                <span class="section-label">Featured Listings</span>
-                <h2 class="section-title">Find Your Perfect Space</h2>
+        <div class="section-header-row">
+            <div class="header-content">
+                <h2 class="section-title">Explore trending rooms</h2>
                 <p class="section-subtitle">
-                    Homes people are exploring right now
+                    Handpicked homes with verified roommates
                 </p>
             </div>
-            <a
-                href="/properties"
-                class="btn btn-outline"
-                data-animate="fade-left"
-                data-delay="1"
-            >
-                View All Properties
-                <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </a>
+            <a href="/properties" class="btn btn-outline">View All Listings</a>
         </div>
 
-        <!-- Properties Grid -->
         <div class="properties-grid">
             {
-                listings.map((listing, i) => (
-                    <article
+                properties.map((prop, i) => (
+                    <div
                         class="property-card"
                         data-animate="fade-up"
                         data-delay={i + 1}
                     >
-                        <div class="property-image">
+                        <div class="card-image-wrapper">
                             <img
-                                src={listing.image}
-                                alt={listing.title}
-                                loading="lazy"
+                                src={prop.image}
+                                alt={prop.title}
+                                class="card-image"
                             />
-
-                            {/* Floating Price Tag */}
-                            <div class="price-badge">
-                                <span class="price">{listing.price}</span>
-                                <span class="period">{listing.period}</span>
-                            </div>
-
-                            {/* Tag */}
-                            {listing.tag && (
-                                <span class="property-tag">{listing.tag}</span>
-                            )}
-
-                            {/* Favorite Button */}
                             <button
-                                class="favorite-btn"
-                                aria-label="Add to favorites"
+                                class="wishlist-btn"
+                                aria-label="Add to wishlist"
                             >
-                                <svg
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                                </svg>
+                                <Icon name="ph:heart-bold" size={20} />
                             </button>
-
-                            {/* Quick View Overlay - NEW! */}
-                            <div class="quick-view-overlay">
-                                <button class="quick-view-btn">
-                                    <svg
-                                        width="18"
-                                        height="18"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                    >
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                        <circle cx="12" cy="12" r="3" />
-                                    </svg>
-                                    Quick View
-                                </button>
-                                <button class="schedule-btn">
-                                    Schedule Tour
-                                </button>
+                            <div class="price-badge">
+                                {prop.price}
+                                <span class="period">/mo</span>
                             </div>
                         </div>
 
-                        <div class="property-content">
-                            <h3 class="property-title">{listing.title}</h3>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="room-type">{prop.type}</span>
+                            </div>
+                            <h3 class="card-title">{prop.title}</h3>
+                            <p class="card-location">
+                                <span class="icon text-pink">
+                                    <Icon name="ph:map-pin-fill" />
+                                </span>
+                                {prop.location}
+                            </p>
 
-                            <div class="property-meta">
-                                <span class="meta-item">
-                                    <svg
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                    >
-                                        <path d="M3 12h18M3 6h18M3 18h18" />
-                                    </svg>
-                                    {listing.beds} Beds
-                                </span>
-                                <span class="meta-item">
-                                    <svg
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                    >
-                                        <path d="M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01" />
-                                    </svg>
-                                    {listing.baths} Baths
-                                </span>
-                                <span class="meta-item">
-                                    <svg
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                    >
-                                        <rect
-                                            x="3"
-                                            y="3"
-                                            width="18"
-                                            height="18"
-                                            rx="2"
-                                        />
-                                    </svg>
-                                    {listing.sqft}
-                                </span>
+                            <div class="card-footer">
+                                <div class="roommates-preview">
+                                    <span class="label">Roommates:</span>
+                                    <div class="avatars">
+                                        {prop.roommates.map((img) => (
+                                            <img src={img} alt="Roommate" />
+                                        ))}
+                                    </div>
+                                </div>
+                                <a
+                                    href={`/property/${prop.id}`}
+                                    class="btn-link"
+                                >
+                                    Details →
+                                </a>
                             </div>
                         </div>
-                    </article>
+                    </div>
                 ))
             }
-        </div>
-
-        <!-- See More Button -->
-        <div class="see-more" data-animate="fade-up">
-            <a href="/properties" class="btn btn-lime">
-                Explore All Properties
-                <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </a>
         </div>
     </div>
 </section>
 
 <style>
-    .properties {
-        background: var(--bg-secondary);
-    }
-
-    /* Header */
-    .properties-header {
+    .section-header-row {
         display: flex;
+        align-items: end;
         justify-content: space-between;
-        align-items: flex-end;
-        margin-bottom: 48px;
-        flex-wrap: wrap;
-        gap: 24px;
+        margin-bottom: 60px;
+        gap: 20px;
     }
 
-    .header-left {
-        flex: 1;
-    }
-
-    .section-label {
-        display: inline-block;
-        font-family: var(--font-display);
-        font-size: var(--text-sm);
-        font-weight: 600;
-        color: var(--accent);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 12px;
-        padding: 6px 14px;
-        background: var(--color-lime-glow);
-        border-radius: var(--radius-full);
-    }
-
-    .properties .section-title {
+    .section-title {
         margin-bottom: 8px;
+        font-size: 2.5rem;
     }
 
-    .properties .section-subtitle {
-        text-align: left;
-        margin: 0;
-    }
-
-    /* Grid */
     .properties-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 28px;
-        margin-bottom: 48px;
+        gap: 32px;
     }
 
-    /* Card */
     .property-card {
         background: var(--color-white);
-        border-radius: var(--radius-xl);
+        border-radius: 24px;
         overflow: hidden;
-        box-shadow: var(--shadow-sm);
-        transition: all 0.4s var(--ease-spring);
+        transition:
+            transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+            box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 1px solid rgba(0, 0, 0, 0.04);
     }
 
     .property-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-xl);
+        transform: translateY(-12px);
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
     }
 
-    .property-card:hover .property-image img {
-        transform: scale(1.08);
-    }
-
-    /* Image */
-    .property-image {
+    /* Image Area */
+    .card-image-wrapper {
         position: relative;
-        aspect-ratio: 4/3;
+        height: 240px;
         overflow: hidden;
     }
 
-    .property-image img {
+    .card-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.6s var(--ease-out);
+        transition: transform 0.5s ease;
     }
 
-    /* Price Badge */
-    .price-badge {
-        position: absolute;
-        bottom: 16px;
-        left: 16px;
-        display: flex;
-        align-items: baseline;
-        gap: 4px;
-        padding: 10px 16px;
-        background: var(--accent);
-        border-radius: var(--radius-full);
-        box-shadow: var(--shadow-md);
+    .property-card:hover .card-image {
+        transform: scale(1.05);
     }
 
-    .price {
-        font-family: var(--font-display);
-        font-size: var(--text-lg);
-        font-weight: 700;
-        color: var(--color-dark);
-    }
-
-    .period {
-        font-size: var(--text-sm);
-        color: rgba(0, 0, 0, 0.6);
-    }
-
-    /* Property Tag */
-    .property-tag {
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        padding: 6px 14px;
-        background: var(--color-dark);
-        color: var(--text-inverse);
-        border-radius: var(--radius-full);
-        font-family: var(--font-display);
-        font-size: var(--text-xs);
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    /* Favorite Button */
-    .favorite-btn {
+    .wishlist-btn {
         position: absolute;
         top: 16px;
         right: 16px;
         width: 40px;
         height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--color-white);
-        border-radius: 50%;
-        color: var(--text-secondary);
-        box-shadow: var(--shadow-md);
-        transition: all 0.3s var(--ease-out);
-        z-index: 5;
+        color: var(--color-pink-primary);
+        transition: all 0.2s;
+        backdrop-filter: blur(4px);
     }
 
-    .favorite-btn:hover {
-        color: #ef4444;
+    .wishlist-btn:hover {
+        background: var(--color-pink-primary);
+        color: white;
         transform: scale(1.1);
     }
 
-    /* Quick View Overlay - NEW! */
-    .quick-view-overlay {
+    .price-badge {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        padding: 16px;
-        background: linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.8) 0%,
-            transparent 100%
-        );
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.4s var(--ease-out);
-        z-index: 4;
-    }
-
-    .property-card:hover .quick-view-overlay {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .quick-view-btn,
-    .schedule-btn {
-        padding: 10px 16px;
-        border-radius: var(--radius-full);
+        bottom: 16px;
+        left: 16px;
+        background: var(--color-darker);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 12px;
+        font-weight: 700;
         font-family: var(--font-display);
-        font-size: var(--text-sm);
-        font-weight: 600;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        transition: all 0.3s var(--ease-out);
+        align-items: baseline;
+        gap: 4px;
     }
 
-    .quick-view-btn {
-        background: var(--color-white);
-        color: var(--text-primary);
+    .price-badge .period {
+        font-size: 0.8em;
+        font-weight: 400;
+        opacity: 0.8;
     }
 
-    .quick-view-btn:hover {
-        background: var(--accent);
-        color: var(--color-dark);
+    /* Content Area */
+    .card-content {
+        padding: 24px;
     }
 
-    .schedule-btn {
-        background: var(--accent);
-        color: var(--color-dark);
-    }
-
-    .schedule-btn:hover {
-        background: var(--accent-hover);
-        transform: scale(1.02);
-    }
-
-    /* Content */
-    .property-content {
-        padding: 20px;
-    }
-
-    .property-title {
-        font-family: var(--font-display);
-        font-size: var(--text-lg);
-        font-weight: 600;
-        color: var(--text-primary);
+    .room-type {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 700;
+        color: var(--color-pink-primary);
+        background: rgba(255, 90, 95, 0.08);
+        padding: 6px 12px;
+        border-radius: 6px;
+        display: inline-block;
         margin-bottom: 12px;
     }
 
-    .property-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
+    .card-title {
+        font-size: 1.25rem;
+        margin-bottom: 8px;
+        font-weight: 700;
+        color: var(--text-primary);
     }
 
-    .meta-item {
-        display: inline-flex;
+    .card-location {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        display: flex;
         align-items: center;
         gap: 6px;
-        font-size: var(--text-sm);
+        margin-bottom: 20px;
+    }
+
+    .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 20px;
+        border-top: 1px solid var(--color-cloud);
+    }
+
+    .roommates-preview {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .roommates-preview .label {
+        font-size: 0.75rem;
         color: var(--text-muted);
     }
 
-    .meta-item svg {
-        color: var(--color-gray);
-    }
-
-    /* See More */
-    .see-more {
+    .avatars {
         display: flex;
-        justify-content: center;
     }
 
-    /* Responsive */
-    @media (max-width: 1024px) {
-        .properties-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
+    .avatars img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid white;
+        margin-left: -8px;
+        object-fit: cover;
     }
 
-    @media (max-width: 768px) {
-        .properties-header {
-            flex-direction: column;
-            align-items: flex-start;
-        }
+    .avatars img:first-child {
+        margin-left: 0;
+    }
 
+    .btn-link {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        transition: gap 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .btn-link:hover {
+        gap: 8px;
+        color: var(--color-pink-primary);
+    }
+
+    @media (max-width: 900px) {
         .properties-grid {
             grid-template-columns: 1fr;
+        }
+
+        .section-header-row {
+            flex-direction: column;
+            align-items: start;
         }
     }
 </style>

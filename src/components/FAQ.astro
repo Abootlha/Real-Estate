@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const faqs = [
     {
         question: "How does RoomieMatch work?",
@@ -33,7 +35,8 @@ const faqs = [
         <div class="faq-layout">
             <!-- Left: Content -->
             <div class="faq-content">
-                <span class="section-label" data-animate="fade-up">FAQs</span>
+                <span class="badge badge-pink" data-animate="fade-up">FAQs</span
+                >
                 <h2 class="section-title" data-animate="fade-up" data-delay="1">
                     Frequently Asked<br />Questions
                 </h2>
@@ -44,7 +47,9 @@ const faqs = [
 
                 <div class="faq-cta" data-animate="fade-up" data-delay="3">
                     <p>Still have questions?</p>
-                    <a href="/contact" class="btn btn-lime">Contact Support</a>
+                    <a href="/contact" class="btn btn-outline"
+                        >Contact Support</a
+                    >
                 </div>
             </div>
 
@@ -66,16 +71,7 @@ const faqs = [
                                     {faq.question}
                                 </span>
                                 <span class="faq-icon">
-                                    <svg
-                                        width="20"
-                                        height="20"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                    >
-                                        <path d="M12 5v14M5 12h14" />
-                                    </svg>
+                                    <Icon name="ph:plus-bold" size={20} />
                                 </span>
                             </summary>
                             <div class="faq-answer">
@@ -91,7 +87,7 @@ const faqs = [
 
 <style>
     .faq {
-        background: var(--bg-secondary);
+        background: var(--color-white);
     }
 
     .faq-layout {
@@ -107,34 +103,21 @@ const faqs = [
         top: 120px;
     }
 
-    .section-label {
-        display: inline-block;
-        font-family: var(--font-display);
-        font-size: var(--text-sm);
-        font-weight: 600;
-        color: var(--accent);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 16px;
-        padding: 6px 14px;
-        background: var(--color-lime-glow);
-        border-radius: var(--radius-full);
-    }
-
     .faq .section-title {
-        font-size: clamp(2rem, 4vw, var(--text-4xl));
+        font-size: clamp(2rem, 4vw, 3rem);
         margin-bottom: 16px;
+        line-height: 1.1;
     }
 
     .faq-intro {
-        font-size: var(--text-lg);
+        font-size: 1.1rem;
         color: var(--text-secondary);
         line-height: 1.7;
         margin-bottom: 32px;
     }
 
     .faq-cta p {
-        font-size: var(--text-sm);
+        font-size: 0.9rem;
         color: var(--text-muted);
         margin-bottom: 12px;
     }
@@ -147,18 +130,19 @@ const faqs = [
     }
 
     .faq-item {
-        background: var(--color-white);
-        border-radius: var(--radius-xl);
+        background: var(--bg-secondary);
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: var(--shadow-sm);
         transition: all 0.3s var(--ease-out);
     }
 
     .faq-item:hover {
+        background: var(--color-white);
         box-shadow: var(--shadow-md);
     }
 
     .faq-item[open] {
+        background: var(--color-white);
         box-shadow: var(--shadow-lg);
     }
 
@@ -168,7 +152,7 @@ const faqs = [
         gap: 16px;
         padding: 24px;
         font-family: var(--font-display);
-        font-size: var(--text-base);
+        font-size: 1.1rem;
         font-weight: 600;
         color: var(--text-primary);
         cursor: pointer;
@@ -177,7 +161,7 @@ const faqs = [
     }
 
     .faq-question:hover {
-        background: var(--color-cloud);
+        color: var(--color-pink-primary);
     }
 
     .faq-question::-webkit-details-marker {
@@ -186,10 +170,11 @@ const faqs = [
 
     .question-number {
         font-family: var(--font-display);
-        font-size: var(--text-sm);
+        font-size: 0.9rem;
         font-weight: 700;
-        color: var(--accent);
+        color: var(--color-pink-primary);
         flex-shrink: 0;
+        opacity: 0.5;
     }
 
     .question-text {
@@ -202,7 +187,7 @@ const faqs = [
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--color-cloud);
+        background: rgba(0, 0, 0, 0.03);
         border-radius: 50%;
         color: var(--text-secondary);
         transition: all 0.3s var(--ease-out);
@@ -210,17 +195,17 @@ const faqs = [
     }
 
     .faq-item[open] .faq-icon {
-        background: var(--accent);
-        color: var(--color-dark);
+        background: var(--color-pink-primary);
+        color: white;
         transform: rotate(45deg);
     }
 
     .faq-answer {
-        padding: 0 24px 24px 56px;
+        padding: 0 24px 24px 60px;
     }
 
     .faq-answer p {
-        font-size: var(--text-base);
+        font-size: 1rem;
         line-height: 1.7;
         color: var(--text-secondary);
     }

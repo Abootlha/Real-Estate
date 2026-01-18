@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const cities = [
     {
         name: "Mumbai",
@@ -58,7 +60,7 @@ const properties = [
 ---
 
 <!-- Interactive Map Section -->
-<section class="explore-map section section-dark">
+<section class="explore-map section">
     <div class="map-wrapper">
         <!-- Content Overlay -->
         <div class="map-content" data-animate="fade-up">
@@ -67,40 +69,19 @@ const properties = [
                 Browse available homes across India and explore<br />
                 listings in your favorite cities.
             </p>
-            <a href="/properties" class="btn btn-lime">
+            <a href="/properties" class="btn btn-primary">
                 Explore All Properties
-                <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
+                <Icon name="ph:arrow-right-bold" size={16} />
             </a>
         </div>
 
         <!-- Leaflet Map Container -->
         <div id="india-map" class="leaflet-map"></div>
-
-        <!-- Floating Stats -->
-        <div class="map-stats" data-animate="pop" data-delay="2">
-            <div class="stat">
-                <span class="stat-value">12K+</span>
-                <span class="stat-label">Listings</span>
-            </div>
-            <div class="stat">
-                <span class="stat-value">120+</span>
-                <span class="stat-label">Cities</span>
-            </div>
-        </div>
     </div>
 </section>
 
 <!-- Cities Grid Section -->
-<section class="cities section section-curved" id="cities">
+<section class="cities section" id="cities">
     <div class="container">
         <div class="section-header" data-animate="fade-up">
             <h2 class="section-title">Popular Cities</h2>
@@ -158,9 +139,9 @@ const properties = [
             dragging: true,
         });
 
-        // Add dark-themed map tiles (CartoDB Dark Matter)
+        // Add Light-themed map tiles (CartoDB Positron) for cleaner look
         L.tileLayer(
-            "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+            "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
             {
                 subdomains: "abcd",
                 maxZoom: 19,
@@ -198,12 +179,13 @@ const properties = [
         position: relative;
         padding: 0;
         overflow: hidden;
-        min-height: 700px;
+        min-height: 600px;
+        background: var(--color-white);
     }
 
     .map-wrapper {
         position: relative;
-        height: 700px;
+        height: 600px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -214,6 +196,8 @@ const properties = [
         position: absolute;
         inset: 0;
         z-index: 1;
+        mix-blend-mode: multiply; /* Blends map nicely with bg */
+        opacity: 0.8;
     }
 
     /* Custom Price Markers */
@@ -229,14 +213,16 @@ const properties = [
         font-family: var(--font-display);
         font-size: 13px;
         font-weight: 700;
-        color: #1a1a1a;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        color: var(--color-pink-primary);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         white-space: nowrap;
         animation: markerPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 2px solid var(--color-pink-primary);
     }
 
     :global(.price-marker:hover) {
-        background: #c8e644;
+        background: var(--color-pink-primary);
+        color: white;
         transform: scale(1.1);
         cursor: pointer;
     }
@@ -258,57 +244,27 @@ const properties = [
         z-index: 10;
         text-align: center;
         padding: 40px;
-        background: rgba(26, 26, 26, 0.9);
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border-radius: var(--radius-2xl);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     }
 
     .map-title {
         font-family: var(--font-display);
         font-size: clamp(1.75rem, 3vw, var(--text-3xl));
         font-weight: 700;
-        color: var(--text-inverse);
+        color: var(--text-primary);
         margin-bottom: 12px;
     }
 
     .map-subtitle {
         font-size: var(--text-base);
-        color: var(--color-gray);
+        color: var(--text-secondary);
         margin-bottom: 24px;
         line-height: 1.6;
-    }
-
-    /* Floating Stats */
-    .map-stats {
-        position: absolute;
-        bottom: 40px;
-        left: 40px;
-        z-index: 10;
-        display: flex;
-        gap: 24px;
-        padding: 20px 28px;
-        background: var(--color-white);
-        border-radius: var(--radius-xl);
-        box-shadow: var(--shadow-xl);
-    }
-
-    .stat {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .stat-value {
-        font-family: var(--font-display);
-        font-weight: 800;
-        font-size: var(--text-xl);
-        color: var(--text-primary);
-    }
-
-    .stat-label {
-        font-size: var(--text-xs);
-        color: var(--text-muted);
     }
 
     /* ═══════════════════════════════════════════════════════════════════════════
@@ -316,6 +272,7 @@ const properties = [
        ═══════════════════════════════════════════════════════════════════════════ */
     .cities {
         background: var(--bg-primary);
+        padding-top: 80px;
     }
 
     .cities-grid {
@@ -342,12 +299,13 @@ const properties = [
     }
 
     .city-image {
-        width: 90px;
-        height: 90px;
-        border-radius: var(--radius-lg);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
         overflow: hidden;
         box-shadow: var(--shadow-md);
         transition: transform 0.4s var(--ease-spring);
+        border: 3px solid white;
     }
 
     .city-card:hover .city-image {
@@ -392,12 +350,6 @@ const properties = [
         .map-wrapper {
             height: 500px;
         }
-
-        .map-stats {
-            bottom: 20px;
-            left: 20px;
-            padding: 16px 20px;
-        }
     }
 
     @media (max-width: 480px) {
@@ -422,12 +374,12 @@ const properties = [
 </style>
 
 <style is:global>
-    /* Leaflet Popup Customization */
+    /* Leaflet Popup Customization - Light Theme */
     .leaflet-popup-content-wrapper {
-        background: #1a1a1a;
-        color: #fff;
+        background: #fff;
+        color: #1a1a1a;
         border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
     .leaflet-popup-content {
@@ -435,8 +387,12 @@ const properties = [
         font-family: "Plus Jakarta Sans", sans-serif;
     }
 
+    .leaflet-popup-content strong {
+        color: var(--color-pink-primary);
+    }
+
     .leaflet-popup-tip {
-        background: #1a1a1a;
+        background: #fff;
     }
 
     .leaflet-container {

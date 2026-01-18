@@ -1,483 +1,192 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const steps = [
     {
         number: "01",
-        title: "Search smarter, tour easier",
-        desc: "Discover personalized listings and schedule home tours directly through our AI-powered platform.",
-        link: "Explore listings",
-        linkUrl: "/properties",
+        title: "Sign up",
+        desc: "Create your profile and tell us what you're looking for in a room or roommate.",
+        icon: "ph:user-plus-fill",
     },
     {
         number: "02",
-        title: "Get pre-approved instantly",
-        desc: "Connect with verified owners and get your booking confirmed in minutes, not days.",
-        link: "Get started",
-        linkUrl: "/signup",
+        title: "Find Your Match",
+        desc: "Browse verified listings and use our AI to find roommates who match your vibe.",
+        icon: "ph:house-fill",
     },
     {
         number: "03",
-        title: "Move in with confidence",
-        desc: "Our verified listings and secure payments ensure a smooth move-in. Get up to ₹5,000 cashback.",
-        link: "Learn more",
-        linkUrl: "/about",
+        title: "Chat & Connect",
+        desc: "Connect safely through our app, schedule a tour, and move in stress-free.",
+        icon: "ph:chat-circle-dots-fill",
     },
 ];
 ---
 
-<section class="how-it-works section section-dark">
+<section class="how-it-works section">
     <div class="container">
         <!-- Section Header -->
         <div class="section-header" data-animate="fade-up">
-            <h2 class="section-title">How It Works?</h2>
+            <span class="badge badge-pink">Simple Process</span>
+            <h2 class="section-title">Explore Our App</h2>
             <p class="section-subtitle">
-                Smart tools. Expert guidance. Real value.
+                Find your perfect spot in just three simple steps.
             </p>
         </div>
 
-        <!-- Main Content -->
-        <div class="hiw-content">
-            <!-- Left: Steps -->
-            <div class="hiw-steps">
+        <!-- Steps Container -->
+        <div class="steps-container">
+            <!-- Curved Line SVG (Decorative) -->
+            <div class="steps-line">
+                <svg
+                    width="100%"
+                    height="100"
+                    viewBox="0 0 1000 100"
+                    preserveAspectRatio="none"
+                >
+                    <path
+                        d="M0,50 C250,100 250,0 500,50 C750,100 750,0 1000,50"
+                        fill="none"
+                        stroke="var(--color-pink-light)"
+                        stroke-width="2"
+                        stroke-dasharray="8 8"
+                        opacity="0.5"></path>
+                </svg>
+            </div>
+
+            <div class="steps-grid">
                 {
                     steps.map((step, i) => (
                         <div
-                            class="step-card"
-                            data-animate="fade-left"
+                            class="step-item"
+                            data-animate="fade-up"
                             data-delay={i + 1}
                         >
-                            <span class="step-number">{step.number}</span>
-                            <div class="step-content">
-                                <h3 class="step-title">{step.title}</h3>
-                                <p class="step-desc">{step.desc}</p>
-                                <a href={step.linkUrl} class="step-link">
-                                    {step.link}
-                                    <svg
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                    >
-                                        <path d="M5 12h14M12 5l7 7-7 7" />
-                                    </svg>
-                                </a>
+                            <div class="step-icon-wrapper">
+                                <div class="step-icon">
+                                    <Icon name={step.icon} size={32} />
+                                </div>
+                                <div class="step-number">{step.number}</div>
                             </div>
+                            <h3 class="step-title">{step.title}</h3>
+                            <p class="step-desc">{step.desc}</p>
                         </div>
                     ))
                 }
             </div>
-
-            <!-- Right: Visual with App Mockup -->
-            <div class="hiw-visual" data-animate="scale-up" data-delay="2">
-                <div class="visual-container">
-                    <img
-                        src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=900&fit=crop&q=90"
-                        alt="Modern apartment building"
-                        class="building-image"
-                    />
-
-                    <!-- App Mockup Card - Shows actual UI -->
-                    <div class="app-mockup" data-animate="pop" data-delay="4">
-                        <div class="mockup-header">
-                            <span class="mockup-dot"></span>
-                            <span class="mockup-dot"></span>
-                            <span class="mockup-dot"></span>
-                        </div>
-                        <div class="mockup-content">
-                            <div class="mockup-search">
-                                <svg
-                                    width="14"
-                                    height="14"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="M21 21l-4.35-4.35"></path>
-                                </svg>
-                                <span>Koramangala, Bangalore</span>
-                            </div>
-                            <div class="mockup-results">
-                                <div class="mockup-result">
-                                    <div class="result-img"></div>
-                                    <div class="result-info">
-                                        <span class="result-price">₹18,000</span
-                                        >
-                                        <span class="result-type">2 BHK</span>
-                                    </div>
-                                </div>
-                                <div class="mockup-result">
-                                    <div class="result-img"></div>
-                                    <div class="result-info">
-                                        <span class="result-price">₹12,000</span
-                                        >
-                                        <span class="result-type">1 BHK</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mockup-badge">12 rooms found</div>
-                        </div>
-                    </div>
-
-                    <!-- Floating Room Preview -->
-                    <div
-                        class="room-preview"
-                        data-animate="float"
-                        data-delay="5"
-                    >
-                        <img
-                            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=200&h=150&fit=crop&q=90"
-                            alt="Interior"
-                        />
-                        <div class="preview-tag">
-                            <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                            >
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"
-                                ></path>
-                                <polyline
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                            Verified
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-
-    <!-- Subtle Glow Effects Instead of Grid -->
-    <div class="bg-glow glow-1"></div>
-    <div class="bg-glow glow-2"></div>
 </section>
 
 <style>
     .how-it-works {
-        position: relative;
-        padding: 120px 0;
-        overflow: hidden;
+        background: var(--color-white);
+        padding-top: 80px;
     }
 
-    .how-it-works .section-header {
-        text-align: center;
-        margin-bottom: 80px;
-    }
-
-    .how-it-works .section-title {
-        color: var(--text-inverse);
-    }
-
-    .how-it-works .section-subtitle {
-        color: var(--color-gray);
-    }
-
-    /* Content Layout */
-    .hiw-content {
-        display: grid;
-        grid-template-columns: 1fr 1.2fr;
-        gap: 80px;
-        align-items: center;
-    }
-
-    /* Steps */
-    .hiw-steps {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    .step-card {
-        display: flex;
-        gap: 20px;
-        padding: 28px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: var(--radius-xl);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        transition: all 0.4s var(--ease-out);
-    }
-
-    .step-card:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: var(--accent);
-        transform: translateX(8px);
-    }
-
-    .step-number {
-        font-family: var(--font-display);
-        font-size: var(--text-2xl);
-        font-weight: 800;
-        color: var(--accent);
-        line-height: 1;
-        flex-shrink: 0;
-    }
-
-    .step-content {
-        flex: 1;
-    }
-
-    .step-title {
-        font-family: var(--font-display);
-        font-size: var(--text-lg);
-        font-weight: 700;
-        color: var(--text-inverse);
-        margin-bottom: 8px;
-    }
-
-    .step-desc {
-        font-size: var(--text-sm);
-        color: var(--color-gray);
-        line-height: 1.6;
+    .badge {
         margin-bottom: 16px;
     }
 
-    .step-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-family: var(--font-display);
-        font-size: var(--text-sm);
-        font-weight: 600;
-        color: var(--accent);
-        transition: gap 0.3s var(--ease-out);
-    }
-
-    .step-link:hover {
-        gap: 12px;
-    }
-
-    /* Visual */
-    .hiw-visual {
+    .steps-container {
         position: relative;
+        padding: 40px 0;
+        margin-top: 40px;
     }
 
-    .visual-container {
-        position: relative;
-        border-radius: var(--radius-2xl);
-        overflow: visible;
-    }
-
-    .building-image {
-        width: 100%;
-        height: 550px;
-        object-fit: cover;
-        border-radius: var(--radius-2xl);
-    }
-
-    /* App Mockup Card - NEW! Shows actual UI instead of text */
-    .app-mockup {
+    .steps-line {
         position: absolute;
-        top: 15%;
-        left: -50px;
-        width: 220px;
-        background: var(--color-white);
-        border-radius: var(--radius-xl);
-        overflow: hidden;
-        box-shadow: var(--shadow-xl);
-        animation: floatContinuous 5s ease-in-out infinite;
-    }
-
-    .mockup-header {
-        display: flex;
-        gap: 6px;
-        padding: 12px 16px;
-        background: var(--color-cloud);
-    }
-
-    .mockup-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--color-silver);
-    }
-
-    .mockup-dot:first-child {
-        background: #ff5f57;
-    }
-    .mockup-dot:nth-child(2) {
-        background: #febc2e;
-    }
-    .mockup-dot:nth-child(3) {
-        background: #28c840;
-    }
-
-    .mockup-content {
-        padding: 16px;
-    }
-
-    .mockup-search {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 14px;
-        background: var(--color-cloud);
-        border-radius: var(--radius-md);
-        margin-bottom: 12px;
-        font-size: var(--text-xs);
-        color: var(--text-secondary);
-    }
-
-    .mockup-results {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 12px;
-    }
-
-    .mockup-result {
-        display: flex;
-        gap: 10px;
-        padding: 8px;
-        background: var(--color-cloud);
-        border-radius: var(--radius-md);
-    }
-
-    .result-img {
-        width: 40px;
-        height: 40px;
-        background: linear-gradient(
-            135deg,
-            var(--accent) 0%,
-            var(--color-lime-dark) 100%
-        );
-        border-radius: var(--radius-sm);
-    }
-
-    .result-info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .result-price {
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: var(--text-sm);
-        color: var(--text-primary);
-    }
-
-    .result-type {
-        font-size: var(--text-xs);
-        color: var(--text-muted);
-    }
-
-    .mockup-badge {
-        text-align: center;
-        padding: 8px;
-        background: var(--accent);
-        border-radius: var(--radius-md);
-        font-family: var(--font-display);
-        font-size: var(--text-xs);
-        font-weight: 600;
-        color: var(--color-dark);
-    }
-
-    /* Room Preview */
-    .room-preview {
-        position: absolute;
-        bottom: 15%;
-        right: -30px;
-        width: 150px;
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        box-shadow: var(--shadow-xl);
-        border: 4px solid var(--color-white);
-        animation: floatContinuous 4s ease-in-out infinite;
-        animation-delay: 1s;
-    }
-
-    .room-preview img {
-        width: 100%;
+        top: 60px;
+        left: 10%;
+        right: 10%;
         height: 100px;
-        object-fit: cover;
-    }
-
-    .preview-tag {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        padding: 4px 10px;
-        background: var(--accent);
-        border-radius: var(--radius-full);
-        font-size: 10px;
-        font-weight: 600;
-        color: var(--color-dark);
-    }
-
-    /* Subtle Glow Background */
-    .bg-glow {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(120px);
+        z-index: 0;
         pointer-events: none;
     }
 
-    .glow-1 {
-        width: 600px;
-        height: 600px;
-        top: -200px;
-        left: -200px;
-        background: rgba(200, 230, 68, 0.08);
+    .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        position: relative;
+        z-index: 1;
     }
 
-    .glow-2 {
-        width: 500px;
-        height: 500px;
-        bottom: -200px;
-        right: -100px;
-        background: rgba(200, 230, 68, 0.06);
+    .step-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: transform 0.3s ease;
     }
 
-    /* Responsive */
-    @media (max-width: 1024px) {
-        .hiw-content {
+    .step-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .step-icon-wrapper {
+        position: relative;
+        margin-bottom: 24px;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-white);
+        border-radius: 50%;
+        box-shadow: var(--shadow-lg);
+        z-index: 1;
+    }
+
+    .step-icon {
+        width: 40px;
+        height: 40px;
+        color: var(--color-pink-primary);
+    }
+
+    .step-icon :global(svg) {
+        width: 100%;
+        height: 100%;
+    }
+
+    .step-number {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 28px;
+        height: 28px;
+        background: var(--color-dark);
+        color: white;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid white;
+    }
+
+    .step-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: var(--text-primary);
+    }
+
+    .step-desc {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        max-width: 300px;
+    }
+
+    @media (max-width: 900px) {
+        .steps-grid {
             grid-template-columns: 1fr;
             gap: 60px;
         }
 
-        .hiw-visual {
-            order: -1;
-        }
-
-        .app-mockup {
-            left: 20px;
-            top: 10%;
-        }
-
-        .room-preview {
-            right: 20px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .how-it-works {
-            padding: 80px 0;
-        }
-
-        .step-card {
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .building-image {
-            height: 400px;
-        }
-
-        .app-mockup {
-            display: none;
-        }
-
-        .room-preview {
+        .steps-line {
             display: none;
         }
     }

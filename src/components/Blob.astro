@@ -1,0 +1,68 @@
+---
+interface Props {
+    className?: string;
+    color?: string;
+    size?: string;
+    top?: string;
+    left?: string;
+    right?: string;
+    bottom?: string;
+    delay?: string;
+    opacity?: number;
+}
+
+const {
+    className = "",
+    color = "var(--color-pink-soft)",
+    size = "400px",
+    top,
+    left,
+    right,
+    bottom,
+    delay = "0s",
+    opacity = 0.6,
+} = Astro.props;
+
+// Convert style object to string for Astro style attribute
+const styles = [
+    `width: ${size}`,
+    `height: ${size}`,
+    top && `top: ${top}`,
+    left && `left: ${left}`,
+    right && `right: ${right}`,
+    bottom && `bottom: ${bottom}`,
+    `background-color: ${color}`,
+    `animation-delay: ${delay}`,
+    `opacity: ${opacity}`,
+]
+    .filter(Boolean)
+    .join(";");
+---
+
+<div class={`blob ${className}`} style={styles}></div>
+
+<style>
+    .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        z-index: 0;
+        pointer-events: none;
+        animation: floatBlob 10s ease-in-out infinite;
+    }
+
+    @keyframes floatBlob {
+        0% {
+            transform: translate(0, 0) scale(1);
+        }
+        33% {
+            transform: translate(30px, -50px) scale(1.1);
+        }
+        66% {
+            transform: translate(-20px, 20px) scale(0.9);
+        }
+        100% {
+            transform: translate(0, 0) scale(1);
+        }
+    }
+</style>

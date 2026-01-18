@@ -1,265 +1,197 @@
 ---
-
+import Blob from "./Blob.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <section class="hero">
-    <!-- Full Bleed Background Image -->
+    <!-- Background Decor -->
     <div class="hero-bg">
-        <img
-            src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1920&h=1080&fit=crop&q=90"
-            alt="Modern luxury home"
-            class="bg-image"
-        />
-        <div class="bg-overlay"></div>
+        <div class="blob-1">
+            <Blob
+                color="var(--color-pink-primary)"
+                size="600px"
+                opacity={0.1}
+            />
+        </div>
+        <div class="blob-2">
+            <Blob
+                color="var(--color-peach)"
+                size="500px"
+                opacity={0.15}
+                delay="2s"
+            />
+        </div>
+        <div class="blob-3">
+            <Blob
+                color="var(--color-yellow)"
+                size="300px"
+                opacity={0.1}
+                delay="4s"
+            />
+        </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="hero-container">
-        <!-- Left Content -->
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="title-line line-1">Your Home &</span>
-                <span class="title-line line-2 highlight">Savings</span>
-            </h1>
-
-            <p class="hero-desc">
-                All-in-one platform that simplifies your homebuying journey -
-                from search to closing - and find your perfect roommate.
-            </p>
-
-            <!-- SEARCH BOX - Like Travel/Hotel Sites -->
-            <div class="search-box">
-                <!-- Tab Switcher -->
-                <div class="search-tabs">
-                    <button class="search-tab active">
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                        >
-                            <path d="M12 2L2 7V10H22V7L12 2Z"></path>
-                            <path d="M4 12V22H10V16H14V22H20V12H4Z"></path>
-                        </svg>
-                        Find Room
-                    </button>
-                    <button class="search-tab">
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                        >
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
-                            ></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                        Find Roommate
-                    </button>
+    <div class="container">
+        <div class="hero-grid">
+            <!-- Left Content -->
+            <div class="hero-content">
+                <div
+                    class="badge-wrapper"
+                    data-animate="fade-down"
+                    data-delay="1"
+                >
+                    <span class="badge badge-pink">
+                        <span class="badge-icon">✨</span> #1 Roommate Finder in India
+                    </span>
                 </div>
 
-                <!-- Search Fields -->
-                <div class="search-fields">
-                    <!-- Location -->
-                    <div class="search-field">
-                        <label class="field-label">
-                            <svg
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                            >
-                                <path
-                                    d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"
-                                ></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            Location
-                        </label>
-                        <select class="field-input">
-                            <option value="">Select City</option>
-                            <option value="mumbai">Mumbai</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="delhi">Delhi NCR</option>
-                            <option value="hyderabad">Hyderabad</option>
-                            <option value="pune">Pune</option>
-                            <option value="chennai">Chennai</option>
-                            <option value="kolkata">Kolkata</option>
-                        </select>
+                <!-- Main Title using Reference Style -->
+                <h1 class="hero-title" data-animate="fade-up" data-delay="2">
+                    Find your <br class="title-break" />
+                    <span class="font-script text-pink">perfect</span>
+                    roommates
+                </h1>
+
+                <p class="hero-desc" data-animate="fade-up" data-delay="3">
+                    Stop searching alone. Connect with verified people who share
+                    your vibe, lifestyle, and budget. Simple, safe, and
+                    stress-free.
+                </p>
+
+                <div class="hero-actions" data-animate="fade-up" data-delay="4">
+                    <div class="app-buttons">
+                        <a href="#" class="btn-store">
+                            <div class="store-icon">
+                                <Icon name="mdi:apple" size={28} />
+                            </div>
+                            <div class="store-text">
+                                <span>Download on the</span>
+                                <strong>App Store</strong>
+                            </div>
+                        </a>
+                        <a href="#" class="btn-store">
+                            <div class="store-icon">
+                                <Icon name="logos:google-play-icon" size={24} />
+                            </div>
+                            <div class="store-text">
+                                <span>Get it on</span>
+                                <strong>Google Play</strong>
+                            </div>
+                        </a>
                     </div>
 
-                    <div class="field-divider"></div>
-
-                    <!-- Room Type -->
-                    <div class="search-field">
-                        <label class="field-label">
-                            <svg
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                            >
-                                <rect x="3" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="14" width="7" height="7"></rect>
-                                <rect x="3" y="14" width="7" height="7"></rect>
-                            </svg>
-                            Room Type
-                        </label>
-                        <select class="field-input">
-                            <option value="">Any Type</option>
-                            <option value="single">Single Room</option>
-                            <option value="shared">Shared Room</option>
-                            <option value="1bhk">1 BHK</option>
-                            <option value="2bhk">2 BHK</option>
-                            <option value="3bhk">3 BHK</option>
-                            <option value="pg">PG / Hostel</option>
-                        </select>
+                    <div class="hero-stats">
+                        <div class="avatars">
+                            <img
+                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop&crop=faces"
+                                alt="User"
+                            />
+                            <img
+                                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop&crop=faces"
+                                alt="User"
+                            />
+                            <img
+                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&h=64&fit=crop&crop=faces"
+                                alt="User"
+                            />
+                            <div class="avatar-plus">+2k</div>
+                        </div>
+                        <p class="stats-text">
+                            <strong>2,000+</strong> people joined today!
+                        </p>
                     </div>
-
-                    <div class="field-divider"></div>
-
-                    <!-- Budget -->
-                    <div class="search-field">
-                        <label class="field-label">
-                            <svg
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                            >
-                                <line x1="12" y1="1" x2="12" y2="23"></line>
-                                <path
-                                    d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"
-                                ></path>
-                            </svg>
-                            Budget (Monthly)
-                        </label>
-                        <select class="field-input">
-                            <option value="">Any Budget</option>
-                            <option value="5000">Under ₹5,000</option>
-                            <option value="10000">₹5,000 - ₹10,000</option>
-                            <option value="15000">₹10,000 - ₹15,000</option>
-                            <option value="25000">₹15,000 - ₹25,000</option>
-                            <option value="50000">₹25,000 - ₹50,000</option>
-                            <option value="100000">₹50,000+</option>
-                        </select>
-                    </div>
-
-                    <!-- Search Button -->
-                    <button class="search-btn">
-                        <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2.5"
-                        >
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="M21 21l-4.35-4.35"></path>
-                        </svg>
-                        Search
-                    </button>
-                </div>
-
-                <!-- Quick Filters -->
-                <div class="quick-filters">
-                    <span class="filter-label">Popular:</span>
-                    <button class="filter-tag">Pet Friendly</button>
-                    <button class="filter-tag">Near Metro</button>
-                    <button class="filter-tag">Furnished</button>
-                    <button class="filter-tag">AC Rooms</button>
-                    <button class="filter-tag">Girls Only</button>
-                    <button class="filter-tag">Boys Only</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Floating Property Cards -->
-        <div class="floating-cards">
-            <!-- Main Featured Card -->
-            <div class="featured-card card-main">
-                <img
-                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop&q=90"
-                    alt="Featured property"
-                />
-                <div class="card-badge">
-                    <span class="badge-price">₹18,000/mo</span>
                 </div>
             </div>
 
-            <!-- Secondary Card -->
-            <div class="featured-card card-secondary">
-                <img
-                    src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=300&h=200&fit=crop&q=90"
-                    alt="Property interior"
-                />
-                <div class="card-info">
-                    <span class="info-price">₹25,000/mo</span>
-                    <div class="info-details">
-                        <span>2 BHK</span>
-                        <span>Furnished</span>
+            <!-- Right Content / Visual -->
+            <div class="hero-visual" data-animate="fade-left" data-delay="3">
+                <div class="visual-circle"></div>
+
+                <div class="main-image-wrapper">
+                    <img
+                        src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?w=800&q=90"
+                        alt="Happy roommate using phone"
+                        class="main-image"
+                    />
+                </div>
+
+                <!-- Floating Elements - Matching Reference -->
+                <div class="float-card card-match">
+                    <div class="match-icon">❤️</div>
+                    <div class="match-info">
+                        <strong>It's a Match!</strong>
+                        <span>98% Compatible</span>
                     </div>
                 </div>
-                <div class="card-heart">
-                    <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
+
+                <div class="float-card card-message">
+                    <div class="float-avatar">
+                        <img
+                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&h=64&fit=crop&crop=faces"
+                            alt="Sarah"
+                        />
+                    </div>
+                    <div class="message-content">
+                        <strong>Sarah sent a request</strong>
+                        <p>Hey! I love your apartment...</p>
+                    </div>
+                </div>
+
+                <div class="float-card card-location">
+                    <span class="location-icon text-pink"
+                        ><Icon name="ph:map-pin-fill" /></span
                     >
-                        <path
-                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                        ></path>
-                    </svg>
+                    <span>Koramangala, BLR</span>
                 </div>
             </div>
-
-            <!-- Price Tags -->
-            <div class="price-tag tag-1">₹12,000</div>
-            <div class="price-tag tag-2">₹35,000</div>
         </div>
-    </div>
 
-    <!-- Stats Bar at Bottom -->
-    <div class="stats-bar">
-        <div class="container">
-            <div class="stats-inner">
-                <div class="stat-item">
-                    <span class="stat-value">12,000+</span>
-                    <span class="stat-label">Verified Listings</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-value">8,000+</span>
-                    <span class="stat-label">Happy Residents</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-value">120+</span>
-                    <span class="stat-label">Cities</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-value">95%</span>
-                    <span class="stat-label">Satisfaction</span>
+        <!-- SEARCH BAR OVERLAY (New) -->
+        <div class="search-bar-floating" data-animate="fade-up" data-delay="5">
+            <div class="search-item">
+                <label>Location</label>
+                <div class="input-wrapper">
+                    <span class="icon text-pink"
+                        ><Icon name="ph:map-pin-fill" /></span
+                    >
+                    <select>
+                        <option>Bangalore</option>
+                        <option>Mumbai</option>
+                        <option>Delhi</option>
+                        <option>Pune</option>
+                    </select>
                 </div>
             </div>
+            <div class="divider"></div>
+            <div class="search-item">
+                <label>Looking For</label>
+                <div class="input-wrapper">
+                    <span class="icon text-pink"
+                        ><Icon name="ph:house-fill" /></span
+                    >
+                    <select>
+                        <option>Private Room</option>
+                        <option>Shared Room</option>
+                        <option>Entire Flat</option>
+                    </select>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="search-item">
+                <label>Budget</label>
+                <div class="input-wrapper">
+                    <span class="icon text-pink"
+                        ><Icon name="ph:currency-inr-fill" /></span
+                    >
+                    <select>
+                        <option>₹5k - ₹10k</option>
+                        <option>₹10k - ₹20k</option>
+                        <option>₹20k+</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="search-btn btn-primary"> Search </button>
         </div>
     </div>
 </section>
@@ -267,568 +199,462 @@
 <style>
     .hero {
         position: relative;
+        padding: 180px 0 140px; /* Increased bottom padding for search bar */
+        overflow: visible; /* Allow search bar to overlap */
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        overflow: hidden;
+        justify-content: center;
     }
 
-    /* Full Bleed Background */
+    /* Background Decorations */
     .hero-bg {
         position: absolute;
         inset: 0;
-        z-index: 0;
-    }
-
-    .bg-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        animation: zoomIn 20s ease-out infinite alternate;
-    }
-
-    @keyframes zoomIn {
-        0% {
-            transform: scale(1);
-        }
-        100% {
-            transform: scale(1.1);
-        }
-    }
-
-    .bg-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.97) 0%,
-            rgba(255, 255, 255, 0.92) 40%,
-            rgba(255, 255, 255, 0.4) 70%,
-            transparent 100%
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+        background: radial-gradient(
+            circle at 100% 0%,
+            rgba(255, 116, 116, 0.05) 0%,
+            transparent 40%
         );
     }
 
-    /* Container */
-    .hero-container {
-        position: relative;
-        z-index: 1;
-        flex: 1;
-        width: 100%;
-        max-width: var(--container-max);
-        margin: 0 auto;
-        padding: 140px 24px 60px;
+    .blob-1 {
+        position: absolute;
+        top: -10%;
+        left: -10%;
+    }
+    .blob-2 {
+        position: absolute;
+        bottom: 10%;
+        right: -5%;
+    }
+    .blob-3 {
+        position: absolute;
+        top: 40%;
+        left: 40%;
+    }
+
+    .hero-grid {
         display: grid;
-        grid-template-columns: 1.2fr 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 60px;
         align-items: center;
+        margin-bottom: 60px;
     }
 
-    /* Left Content */
-    .hero-content {
-        animation: slideInLeft 1s var(--ease-out) forwards;
-    }
-
-    @keyframes slideInLeft {
-        from {
-            opacity: 0;
-            transform: translateX(-60px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
+    /* Content */
     .hero-title {
-        font-family: var(--font-display);
-        font-size: clamp(2.5rem, 5vw, 3.5rem);
-        font-weight: 800;
-        line-height: 1.05;
-        letter-spacing: -0.03em;
+        font-size: clamp(3rem, 5vw, 4.5rem);
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
         color: var(--text-primary);
-        margin-bottom: 16px;
     }
 
-    .title-line {
-        display: block;
-        overflow: hidden;
-    }
-
-    .line-1 {
-        animation: revealUp 0.8s var(--ease-out) 0.2s forwards;
-        opacity: 0;
-        transform: translateY(100%);
-    }
-
-    .line-2 {
-        animation: revealUp 0.8s var(--ease-out) 0.4s forwards;
-        opacity: 0;
-        transform: translateY(100%);
-    }
-
-    @keyframes revealUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .highlight {
-        color: var(--accent);
+    .text-pink {
+        color: var(--color-pink-primary);
+        font-weight: 400;
+        display: inline-block;
+        transform: rotate(-3deg);
     }
 
     .hero-desc {
-        font-size: var(--text-lg);
-        line-height: 1.7;
+        font-size: 1.25rem;
         color: var(--text-secondary);
-        max-width: 440px;
-        margin-bottom: 28px;
-        animation: fadeInUp 0.8s var(--ease-out) 0.6s forwards;
-        opacity: 0;
+        max-width: 480px;
+        margin-bottom: 40px;
+        line-height: 1.6;
     }
 
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    /* Badge */
+    .badge-wrapper {
+        margin-bottom: 24px;
+    }
+    .badge-icon {
+        margin-right: 4px;
     }
 
-    /* ═══════════════════════════════════════════════════════════════════════════
-       SEARCH BOX - Hotel/Travel Style
-       ═══════════════════════════════════════════════════════════════════════════ */
-    .search-box {
-        background: var(--color-white);
-        border-radius: var(--radius-2xl);
-        padding: 24px;
-        box-shadow: var(--shadow-xl);
-        animation: fadeInUp 0.8s var(--ease-out) 0.8s forwards;
-        opacity: 0;
-    }
-
-    /* Tabs */
-    .search-tabs {
+    /* Buttons */
+    .hero-actions {
         display: flex;
-        gap: 8px;
-        margin-bottom: 20px;
+        flex-direction: column;
+        gap: 32px;
     }
 
-    .search-tab {
+    .app-buttons {
+        display: flex;
+        gap: 16px;
+    }
+
+    .btn-store {
         display: flex;
         align-items: center;
-        gap: 8px;
-        padding: 12px 20px;
-        border-radius: var(--radius-full);
-        font-family: var(--font-display);
-        font-size: var(--text-sm);
-        font-weight: 600;
-        color: var(--text-secondary);
-        background: var(--color-cloud);
-        transition: all 0.3s var(--ease-out);
+        gap: 12px;
+        background: var(--color-darker);
+        color: var(--color-white);
+        padding: 12px 24px;
+        border-radius: 16px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s var(--ease-spring);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .search-tab:hover {
-        background: var(--color-silver);
+    .btn-store:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 24px rgba(0, 0, 0, 0.15);
+        background: black;
     }
 
-    .search-tab.active {
-        background: var(--color-dark);
-        color: var(--text-inverse);
-    }
-
-    .search-tab.active svg {
-        stroke: var(--accent);
-    }
-
-    /* Fields */
-    .search-fields {
+    .store-text {
         display: flex;
-        align-items: stretch;
-        gap: 0;
-        background: var(--color-cloud);
-        border-radius: var(--radius-xl);
-        padding: 8px;
+        flex-direction: column;
+        line-height: 1.2;
     }
 
-    .search-field {
-        flex: 1;
-        padding: 12px 16px;
-        min-width: 0;
+    .store-text span {
+        font-size: 11px;
+        opacity: 0.8;
+    }
+    .store-text strong {
+        font-size: 15px;
+        font-weight: 600;
     }
 
-    .field-label {
+    /* Stats */
+    .hero-stats {
         display: flex;
         align-items: center;
-        gap: 6px;
-        font-family: var(--font-display);
-        font-size: var(--text-xs);
-        font-weight: 600;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 6px;
+        gap: 16px;
     }
 
-    .field-label svg {
-        color: var(--accent);
+    .avatars {
+        display: flex;
     }
 
-    .field-input {
-        width: 100%;
-        border: none;
-        background: transparent;
-        font-family: var(--font-display);
-        font-size: var(--text-sm);
-        font-weight: 600;
-        color: var(--text-primary);
-        cursor: pointer;
-        appearance: none;
-        -webkit-appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 0 center;
-        padding-right: 20px;
+    .avatars img,
+    .avatar-plus {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 4px solid var(--color-white);
+        object-fit: cover;
+        margin-left: -16px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
 
-    .field-input:focus {
-        outline: none;
+    .avatars img:first-child {
+        margin-left: 0;
     }
 
-    .field-divider {
-        width: 1px;
-        background: var(--color-silver);
-        margin: 8px 0;
-    }
-
-    /* Search Button */
-    .search-btn {
+    .avatar-plus {
+        background: var(--color-pink-primary);
+        color: white;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
-        padding: 16px 28px;
-        background: var(--accent);
-        color: var(--color-dark);
-        border-radius: var(--radius-lg);
-        font-family: var(--font-display);
-        font-size: var(--text-sm);
+        font-size: 12px;
         font-weight: 700;
-        white-space: nowrap;
-        transition: all 0.3s var(--ease-spring);
     }
 
-    .search-btn:hover {
-        background: var(--accent-hover);
-        transform: scale(1.02);
-        box-shadow: var(--shadow-glow);
-    }
-
-    /* Quick Filters */
-    .quick-filters {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 16px;
-        flex-wrap: wrap;
-    }
-
-    .filter-label {
-        font-size: var(--text-xs);
-        color: var(--text-muted);
-        font-weight: 500;
-    }
-
-    .filter-tag {
-        padding: 6px 14px;
-        background: transparent;
-        border: 1px solid var(--color-silver);
-        border-radius: var(--radius-full);
-        font-size: var(--text-xs);
-        font-weight: 500;
+    .stats-text {
+        font-size: 0.95rem;
         color: var(--text-secondary);
-        transition: all 0.3s var(--ease-out);
     }
 
-    .filter-tag:hover {
-        background: var(--accent);
-        border-color: var(--accent);
-        color: var(--color-dark);
+    /* Visual / Right Side */
+    .hero-visual {
+        position: relative;
+        height: 650px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-image-wrapper {
+        position: relative;
+        z-index: 2;
+        width: 420px;
+        height: 520px;
+        border-radius: 200px 200px 40px 40px; /* Arch shape */
+        overflow: hidden;
+        box-shadow: var(--shadow-xl);
+        background: #f0f0f0;
+    }
+
+    .visual-circle {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+            circle,
+            var(--color-pink-light) 0%,
+            rgba(255, 255, 255, 0) 70%
+        );
+        border-radius: 50%;
+        z-index: 1;
+        opacity: 0.3;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .main-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     /* Floating Cards */
-    .floating-cards {
-        position: relative;
-        height: 500px;
-    }
-
-    .featured-card {
+    .float-card {
         position: absolute;
-        background: var(--color-white);
-        border-radius: var(--radius-xl);
-        overflow: hidden;
-        box-shadow: var(--shadow-xl);
-    }
-
-    .card-main {
-        top: 20px;
-        right: 0;
-        width: 260px;
-        animation:
-            floatIn 1s var(--ease-spring) 0.5s forwards,
-            floatContinuous 5s ease-in-out 1.5s infinite;
-        opacity: 0;
-        transform: translateY(40px) rotate(3deg);
-    }
-
-    .card-main img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-    }
-
-    .card-secondary {
-        top: 180px;
-        right: 180px;
-        width: 200px;
-        animation:
-            floatIn 1s var(--ease-spring) 0.7s forwards,
-            floatContinuous 4s ease-in-out 1.7s infinite;
-        opacity: 0;
-        transform: translateY(40px) rotate(-2deg);
-    }
-
-    .card-secondary img {
-        width: 100%;
-        height: 120px;
-        object-fit: cover;
-    }
-
-    @keyframes floatIn {
-        to {
-            opacity: 1;
-            transform: translateY(0) rotate(0);
-        }
-    }
-
-    @keyframes floatContinuous {
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-12px);
-        }
-    }
-
-    .card-badge {
-        position: absolute;
-        bottom: 12px;
-        left: 12px;
-        padding: 8px 14px;
-        background: var(--accent);
-        border-radius: var(--radius-full);
-    }
-
-    .badge-price {
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: var(--text-sm);
-        color: var(--color-dark);
-    }
-
-    .card-info {
-        padding: 12px;
-        background: var(--color-white);
-    }
-
-    .info-price {
-        font-family: var(--font-display);
-        font-weight: 700;
-        font-size: var(--text-sm);
-        color: var(--text-primary);
-        display: block;
-        margin-bottom: 4px;
-    }
-
-    .info-details {
-        display: flex;
-        gap: 10px;
-        font-size: var(--text-xs);
-        color: var(--text-muted);
-    }
-
-    .card-heart {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 30px;
-        height: 30px;
+        z-index: 3;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 14px 20px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* Softer, deeper shadow */
         display: flex;
         align-items: center;
-        justify-content: center;
-        background: var(--color-white);
+        gap: 12px;
+        animation: floatContinuous 4s ease-in-out infinite;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10px);
+    }
+
+    .card-match {
+        top: 80px;
+        right: 20px;
+        animation-delay: 0s;
+    }
+
+    .match-icon {
+        width: 40px;
+        height: 40px;
+        background: #fff0f0;
         border-radius: 50%;
-        color: var(--text-muted);
-    }
-
-    /* Price Tags */
-    .price-tag {
-        position: absolute;
-        padding: 8px 14px;
-        background: var(--color-white);
-        border-radius: var(--radius-full);
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: var(--text-sm);
-        color: var(--text-primary);
-        box-shadow: var(--shadow-lg);
-    }
-
-    .tag-1 {
-        bottom: 140px;
-        left: 20px;
-        animation:
-            floatIn 1s var(--ease-spring) 0.9s forwards,
-            floatContinuous 4.5s ease-in-out 1.9s infinite;
-        opacity: 0;
-        transform: translateY(40px);
-    }
-
-    .tag-2 {
-        bottom: 200px;
-        left: 120px;
-        animation:
-            floatIn 1s var(--ease-spring) 1.1s forwards,
-            floatContinuous 5.5s ease-in-out 2.1s infinite;
-        opacity: 0;
-        transform: translateY(40px);
-    }
-
-    /* Stats Bar */
-    .stats-bar {
-        position: relative;
-        z-index: 2;
-        background: var(--color-dark);
-        padding: 28px 0;
-        margin-top: auto;
-    }
-
-    .stats-inner {
         display: flex;
-        justify-content: center;
         align-items: center;
-        gap: 60px;
+        justify-content: center;
+        font-size: 20px;
     }
 
-    .stat-item {
+    .match-info {
         display: flex;
         flex-direction: column;
+        line-height: 1.3;
+    }
+
+    .match-info strong {
+        font-size: 14px;
+        color: var(--text-primary);
+    }
+    .match-info span {
+        font-size: 12px;
+        color: var(--text-muted);
+    }
+
+    .card-message {
+        bottom: 120px;
+        left: -20px;
+        animation-delay: 1.5s;
+        padding-right: 30px;
+    }
+
+    .float-avatar img {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .message-content {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.3;
+    }
+
+    .message-content strong {
+        font-size: 14px;
+        color: var(--text-primary);
+    }
+    .message-content p {
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+
+    .card-location {
+        top: 45%;
+        left: -60px;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--text-primary);
+        animation-delay: 1s;
+    }
+
+    /* -------------------------------------------------------------
+       SEARCH BAR FLOATING
+       ------------------------------------------------------------- */
+    .search-bar-floating {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 24px; /* Larger radius */
+        padding: 16px; /* More padding */
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1); /* Deeper premium shadow */
+        display: flex;
         align-items: center;
-        gap: 4px;
+        gap: 20px;
+        max-width: 960px; /* Slightly wider */
+        margin: 0 auto;
+        position: relative;
+        z-index: 10;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(12px);
     }
 
-    .stat-value {
-        font-family: var(--font-display);
-        font-size: var(--text-2xl);
-        font-weight: 800;
-        color: var(--text-inverse);
+    .search-item {
+        flex: 1;
+        padding: 8px 16px;
     }
 
-    .stat-label {
-        font-size: var(--text-sm);
-        color: var(--color-gray);
+    .search-item label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
 
-    .stat-divider {
+    .input-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .input-wrapper .icon {
+        font-size: 1.1rem;
+    }
+
+    .input-wrapper select {
+        border: none;
+        background: transparent;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        width: 100%;
+        outline: none;
+        cursor: pointer;
+        padding-right: 16px;
+        appearance: none; /* Hide default arrow to be cleaner */
+    }
+
+    .divider {
         width: 1px;
         height: 40px;
-        background: rgba(255, 255, 255, 0.15);
+        background: var(--color-gray);
+        opacity: 0.2;
+    }
+
+    .search-btn {
+        padding: 16px 32px;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: transform 0.2s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .search-btn:hover {
+        transform: scale(1.05);
     }
 
     /* Responsive */
-    @media (max-width: 1200px) {
-        .search-fields {
-            flex-wrap: wrap;
-        }
-
-        .search-field {
-            flex: 1 1 140px;
-        }
-
-        .field-divider {
-            display: none;
-        }
-
-        .search-btn {
-            width: 100%;
-            margin-top: 8px;
-        }
-    }
-
     @media (max-width: 1024px) {
-        .hero-container {
+        .hero-grid {
             grid-template-columns: 1fr;
+            text-align: center;
+            gap: 60px;
         }
 
-        .floating-cards {
+        .title-break {
             display: none;
         }
-
-        .bg-overlay {
-            background: linear-gradient(
-                180deg,
-                rgba(255, 255, 255, 0.97) 0%,
-                rgba(255, 255, 255, 0.9) 100%
-            );
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero-container {
-            padding-top: 100px;
+        .hero-desc {
+            margin: 0 auto 40px;
         }
 
-        .hero-title {
-            font-size: 2rem;
+        .hero-actions {
+            align-items: center;
         }
-
-        .search-tabs {
-            flex-wrap: wrap;
-        }
-
-        .search-tab {
-            flex: 1;
+        .hero-stats {
             justify-content: center;
         }
 
-        .stats-inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
+        .hero-visual {
+            height: 500px;
+            margin-top: 20px;
+        }
+        .main-image-wrapper {
+            width: 340px;
+            height: 420px;
         }
 
-        .stat-divider {
-            display: none;
+        .card-match {
+            right: 0;
+        }
+        .card-location {
+            left: 0;
+        }
+        .card-message {
+            left: 0;
         }
 
-        .quick-filters {
+        .search-bar-floating {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+            padding: 20px;
+        }
+
+        .divider {
             display: none;
+        }
+        .search-item {
+            padding: 0;
+        }
+        .input-wrapper {
+            background: var(--color-cloud);
+            padding: 12px;
+            border-radius: 12px;
         }
     }
-</style>
 
-<script>
-    // Tab switching
-    const tabs = document.querySelectorAll(".search-tab");
-    tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-            tabs.forEach((t) => t.classList.remove("active"));
-            tab.classList.add("active");
-        });
-    });
-</script>
+    @media (max-width: 600px) {
+        .hero {
+            padding-top: 120px;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .app-buttons {
+            flex-direction: column;
+            width: 100%;
+            max-width: 300px;
+        }
+        .btn-store {
+            width: 100%;
+            justify-content: start;
+        }
+
+        .float-card {
+            transform: scale(0.9);
+        }
+        .card-location {
+            display: none;
+        } /* Hide some floaters on mobile */
+    }
+</style>
