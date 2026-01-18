@@ -1,0 +1,304 @@
+---
+
+---
+
+<section class="trusted-section">
+    <div class="container">
+        <div class="trusted-header">
+            <p class="trusted-label">
+                Trusted by leading companies across India
+            </p>
+        </div>
+
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <div class="marquee-content">
+                    <div class="partner-logo">
+                        <span class="logo-text">Infosys</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">TCS</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Wipro</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">HCL Tech</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Tech Mahindra</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Cognizant</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Accenture</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Flipkart</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Amazon</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Google</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Microsoft</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Swiggy</span>
+                    </div>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="marquee-content">
+                    <div class="partner-logo">
+                        <span class="logo-text">Infosys</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">TCS</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Wipro</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">HCL Tech</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Tech Mahindra</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Cognizant</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Accenture</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Flipkart</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Amazon</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Google</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Microsoft</span>
+                    </div>
+                    <div class="partner-logo">
+                        <span class="logo-text">Swiggy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="trusted-stats">
+            <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Corporate Partners</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number">2M+</span>
+                <span class="stat-label">Employee Housing</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Cities Covered</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .trusted-section {
+        background: var(--bg-secondary);
+        padding: 48px 0;
+        border-top: 1px solid var(--glass-border);
+        border-bottom: 1px solid var(--glass-border);
+        overflow: hidden;
+    }
+
+    .trusted-header {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+    .trusted-label {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 500;
+    }
+
+    /* Marquee */
+    .marquee-container {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 40px;
+    }
+
+    .marquee-container::before,
+    .marquee-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100px;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .marquee-container::before {
+        left: 0;
+        background: linear-gradient(
+            90deg,
+            var(--bg-secondary) 0%,
+            transparent 100%
+        );
+    }
+
+    .marquee-container::after {
+        right: 0;
+        background: linear-gradient(
+            -90deg,
+            var(--bg-secondary) 0%,
+            transparent 100%
+        );
+    }
+
+    .marquee-track {
+        display: flex;
+        animation: marquee 40s linear infinite;
+    }
+
+    .marquee-track:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .marquee-content {
+        display: flex;
+        gap: 48px;
+        padding: 0 24px;
+    }
+
+    .partner-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 32px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-lg);
+        white-space: nowrap;
+        transition: all 0.3s var(--ease-out);
+    }
+
+    .partner-logo:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+    }
+
+    .logo-text {
+        font-family: var(--font-body);
+        font-size: var(--text-lg);
+        font-weight: 700;
+        color: var(--text-secondary);
+        letter-spacing: -0.02em;
+    }
+
+    .partner-logo:hover .logo-text {
+        color: var(--text-primary);
+    }
+
+    /* Stats */
+    .trusted-stats {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 48px;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-number {
+        display: block;
+        font-family: var(--font-display);
+        font-size: var(--text-3xl);
+        font-style: italic;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .stat-label {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+    }
+
+    .stat-divider {
+        width: 1px;
+        height: 40px;
+        background: var(--glass-border);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .trusted-section {
+            padding: 36px 0;
+        }
+
+        .marquee-content {
+            gap: 24px;
+        }
+
+        .partner-logo {
+            padding: 12px 20px;
+        }
+
+        .logo-text {
+            font-size: var(--text-base);
+        }
+
+        .trusted-stats {
+            gap: 24px;
+        }
+
+        .stat-number {
+            font-size: var(--text-2xl);
+        }
+
+        .stat-divider {
+            height: 32px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .trusted-stats {
+            flex-wrap: wrap;
+            gap: 24px 32px;
+        }
+
+        .stat-divider {
+            display: none;
+        }
+
+        .stat-item {
+            flex: 1 1 auto;
+            min-width: 100px;
+        }
+    }
+</style>

@@ -1,203 +1,240 @@
 ---
-const listings = [
+const properties = [
     {
-        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=450&fit=crop&q=90",
-        price: "₹18,000",
-        period: "/month",
-        title: "Andheri East, Mumbai",
-        beds: 4,
-        baths: 2,
-        sqft: "1,850 sq ft",
-        tag: "Popular",
-    },
-    {
+        id: 1,
         image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=450&fit=crop&q=90",
-        price: "₹22,000",
-        period: "/month",
-        title: "Whitefield, Bangalore",
-        beds: 3,
-        baths: 2,
-        sqft: "1,950 sq ft",
-        tag: "New",
-    },
-    {
-        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=450&fit=crop&q=90",
-        price: "₹15,000",
-        period: "/month",
-        title: "Hinjewadi, Pune",
-        beds: 2,
-        baths: 2,
-        sqft: "1,250 sq ft",
-        tag: null,
-    },
-    {
-        image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&h=450&fit=crop&q=90",
-        price: "₹35,000",
-        period: "/month",
-        title: "Dwarka, Delhi",
+        price: "₹1.85 Cr",
+        priceLabel: "",
+        title: "Luxury Sea-View Villa",
+        location: "Bandra West, Mumbai",
         beds: 4,
         baths: 3,
-        sqft: "2,100 sq ft",
-        tag: "Premium",
+        sqft: "3,200",
+        tag: "Featured",
+        verified: true,
     },
     {
-        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=450&fit=crop&q=90",
-        price: "₹19,000",
-        period: "/month",
-        title: "Anna Nagar, Chennai",
+        id: 2,
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=450&fit=crop&q=90",
+        price: "₹45,000",
+        priceLabel: "/mo",
+        title: "Modern 3BHK Apartment",
+        location: "Koramangala, Bangalore",
         beds: 3,
         baths: 2,
-        sqft: "1,650 sq ft",
-        tag: null,
+        sqft: "1,800",
+        tag: "Hot",
+        verified: true,
     },
     {
-        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=450&fit=crop&q=90",
-        price: "₹28,000",
-        period: "/month",
-        title: "Gachibowli, Hyderabad",
-        beds: 4,
+        id: 3,
+        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=450&fit=crop&q=90",
+        price: "₹92 Lac",
+        priceLabel: "",
+        title: "Premium Gated Community",
+        location: "Whitefield, Bangalore",
+        beds: 3,
         baths: 2,
-        sqft: "1,850 sq ft",
-        tag: "Hot",
+        sqft: "1,650",
+        verified: true,
+    },
+    {
+        id: 4,
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=450&fit=crop&q=90",
+        price: "₹2.4 Cr",
+        priceLabel: "",
+        title: "Designer Penthouse",
+        location: "Golf Course Road, Gurgaon",
+        beds: 4,
+        baths: 4,
+        sqft: "4,500",
+        tag: "New",
+        verified: true,
+    },
+    {
+        id: 5,
+        image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&h=450&fit=crop&q=90",
+        price: "₹28,000",
+        priceLabel: "/mo",
+        title: "Furnished Studio Apartment",
+        location: "Hinjewadi, Pune",
+        beds: 1,
+        baths: 1,
+        sqft: "650",
+        verified: true,
+    },
+    {
+        id: 6,
+        image: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&h=450&fit=crop&q=90",
+        price: "₹1.1 Cr",
+        priceLabel: "",
+        title: "Spacious Family Home",
+        location: "Adyar, Chennai",
+        beds: 3,
+        baths: 3,
+        sqft: "2,100",
+        verified: true,
     },
 ];
 ---
 
-<section class="properties section" id="listings">
+<section class="section properties-section">
     <div class="container">
         <!-- Section Header -->
-        <div class="properties-header" data-animate="fade-up">
-            <div class="header-left">
-                <span class="section-label">Featured Listings</span>
-                <h2 class="section-title">Find Your Perfect Space</h2>
+        <div class="section-header">
+            <div class="header-content">
+                <span class="section-eyebrow">Explore Properties</span>
+                <h2 class="section-title">
+                    Discover Your <em class="text-coral">Dream</em> Home
+                </h2>
                 <p class="section-subtitle">
-                    Homes people are exploring right now
+                    Handpicked properties across India's top cities, verified
+                    and ready for you to explore
                 </p>
             </div>
-            <a
-                href="/properties"
-                class="btn btn-outline"
-                data-animate="fade-left"
-                data-delay="1"
-            >
-                View All Properties
-                <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </a>
+            <div class="header-actions">
+                <div class="filter-tabs">
+                    <button class="filter-tab active">All</button>
+                    <button class="filter-tab">For Sale</button>
+                    <button class="filter-tab">For Rent</button>
+                </div>
+            </div>
         </div>
 
         <!-- Properties Grid -->
         <div class="properties-grid">
             {
-                listings.map((listing, i) => (
+                properties.map((property, index) => (
                     <article
                         class="property-card"
                         data-animate="fade-up"
-                        data-delay={i + 1}
+                        data-delay={index + 1}
                     >
-                        <div class="property-image">
+                        <div class="card-image img-zoom">
                             <img
-                                src={listing.image}
-                                alt={listing.title}
+                                src={property.image}
+                                alt={property.title}
                                 loading="lazy"
                             />
-
-                            {/* Floating Price Tag */}
-                            <div class="price-badge">
-                                <span class="price">{listing.price}</span>
-                                <span class="period">{listing.period}</span>
-                            </div>
-
-                            {/* Tag */}
-                            {listing.tag && (
-                                <span class="property-tag">{listing.tag}</span>
-                            )}
-
-                            {/* Favorite Button */}
-                            <button
-                                class="favorite-btn"
-                                aria-label="Add to favorites"
-                            >
-                                <svg
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
+                            <div class="card-overlay">
+                                <button
+                                    class="card-action"
+                                    aria-label="Save property"
                                 >
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                                </svg>
-                            </button>
-
-                            {/* Quick View Overlay - NEW! */}
-                            <div class="quick-view-overlay">
-                                <button class="quick-view-btn">
                                     <svg
-                                        width="18"
-                                        height="18"
+                                        width="20"
+                                        height="20"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
                                         stroke-width="2"
                                     >
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                        <circle cx="12" cy="12" r="3" />
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                                     </svg>
-                                    Quick View
                                 </button>
-                                <button class="schedule-btn">
-                                    Schedule Tour
+                                <button
+                                    class="card-action"
+                                    aria-label="Compare property"
+                                >
+                                    <svg
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <line x1="18" y1="20" x2="18" y2="10" />
+                                        <line x1="12" y1="20" x2="12" y2="4" />
+                                        <line x1="6" y1="20" x2="6" y2="14" />
+                                    </svg>
                                 </button>
                             </div>
+                            {property.tag && (
+                                <span
+                                    class={`card-tag ${property.tag.toLowerCase()}`}
+                                >
+                                    {property.tag}
+                                </span>
+                            )}
+                            {property.verified && (
+                                <span class="verified-badge">
+                                    <svg
+                                        width="12"
+                                        height="12"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="3"
+                                    >
+                                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                                        <polyline points="22 4 12 14.01 9 11.01" />
+                                    </svg>
+                                </span>
+                            )}
                         </div>
-
-                        <div class="property-content">
-                            <h3 class="property-title">{listing.title}</h3>
-
-                            <div class="property-meta">
-                                <span class="meta-item">
-                                    <svg
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                    >
-                                        <path d="M3 12h18M3 6h18M3 18h18" />
-                                    </svg>
-                                    {listing.beds} Beds
+                        <div class="card-content">
+                            <div class="card-price">
+                                <span class="price-value">
+                                    {property.price}
                                 </span>
-                                <span class="meta-item">
+                                {property.priceLabel && (
+                                    <span class="price-label">
+                                        {property.priceLabel}
+                                    </span>
+                                )}
+                            </div>
+                            <h3 class="card-title">{property.title}</h3>
+                            <p class="card-location">
+                                <svg
+                                    width="14"
+                                    height="14"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                                {property.location}
+                            </p>
+                            <div class="card-specs">
+                                <span class="spec">
                                     <svg
                                         width="16"
                                         height="16"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
-                                        stroke-width="1.5"
+                                        stroke-width="2"
                                     >
-                                        <path d="M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01" />
+                                        <path d="M3 7v11a2 2 0 002 2h14a2 2 0 002-2V7" />
+                                        <path d="M21 7H3l2-4h14l2 4z" />
                                     </svg>
-                                    {listing.baths} Baths
+                                    {property.beds} Beds
                                 </span>
-                                <span class="meta-item">
+                                <span class="spec">
                                     <svg
                                         width="16"
                                         height="16"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
-                                        stroke-width="1.5"
+                                        stroke-width="2"
+                                    >
+                                        <path d="M9 6l6 6-6 6" />
+                                    </svg>
+                                    {property.baths} Baths
+                                </span>
+                                <span class="spec">
+                                    <svg
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
                                     >
                                         <rect
                                             x="3"
@@ -205,9 +242,10 @@ const listings = [
                                             width="18"
                                             height="18"
                                             rx="2"
+                                            ry="2"
                                         />
                                     </svg>
-                                    {listing.sqft}
+                                    {property.sqft} sqft
                                 </span>
                             </div>
                         </div>
@@ -216,19 +254,20 @@ const listings = [
             }
         </div>
 
-        <!-- See More Button -->
-        <div class="see-more" data-animate="fade-up">
-            <a href="/properties" class="btn btn-lime">
+        <!-- View All CTA -->
+        <div class="section-cta">
+            <a href="/properties" class="btn btn-primary btn-lg">
                 Explore All Properties
                 <svg
-                    width="16"
-                    height="16"
+                    width="20"
+                    height="20"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
                 >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
             </a>
         </div>
@@ -236,264 +275,300 @@ const listings = [
 </section>
 
 <style>
-    .properties {
-        background: var(--bg-secondary);
+    .properties-section {
+        background: var(--bg-primary);
+        padding: 140px 0;
     }
 
-    /* Header */
-    .properties-header {
+    .section-header {
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        margin-bottom: 48px;
-        flex-wrap: wrap;
-        gap: 24px;
+        gap: 40px;
+        margin-bottom: 60px;
     }
 
-    .header-left {
-        flex: 1;
+    .header-content {
+        max-width: 600px;
     }
 
-    .section-label {
+    .section-eyebrow {
         display: inline-block;
-        font-family: var(--font-display);
         font-size: var(--text-sm);
         font-weight: 600;
         color: var(--accent);
         text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 12px;
-        padding: 6px 14px;
-        background: var(--color-lime-glow);
+        letter-spacing: 0.1em;
+        margin-bottom: 16px;
+    }
+
+    .section-title {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 4vw, var(--text-5xl));
+        font-style: italic;
+        color: var(--text-primary);
+        margin-bottom: 16px;
+        line-height: 1.1;
+    }
+
+    .section-subtitle {
+        font-size: var(--text-lg);
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    .filter-tabs {
+        display: flex;
+        gap: 8px;
+        padding: 6px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--glass-border);
         border-radius: var(--radius-full);
     }
 
-    .properties .section-title {
-        margin-bottom: 8px;
+    .filter-tab {
+        padding: 10px 20px;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        color: var(--text-secondary);
+        border-radius: var(--radius-full);
+        transition: all 0.3s var(--ease-out);
     }
 
-    .properties .section-subtitle {
-        text-align: left;
-        margin: 0;
+    .filter-tab:hover {
+        color: var(--text-primary);
     }
 
-    /* Grid */
+    .filter-tab.active {
+        background: var(--accent);
+        color: var(--text-inverse);
+    }
+
+    /* Properties Grid */
     .properties-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 28px;
-        margin-bottom: 48px;
+        gap: 32px;
     }
 
-    /* Card */
+    /* Property Card */
     .property-card {
-        background: var(--color-white);
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
         border-radius: var(--radius-xl);
         overflow: hidden;
-        box-shadow: var(--shadow-sm);
-        transition: all 0.4s var(--ease-spring);
+        transition: all 0.4s var(--ease-out);
     }
 
     .property-card:hover {
         transform: translateY(-8px);
         box-shadow: var(--shadow-xl);
+        border-color: rgba(255, 255, 255, 0.12);
     }
 
-    .property-card:hover .property-image img {
-        transform: scale(1.08);
-    }
-
-    /* Image */
-    .property-image {
+    .card-image {
         position: relative;
-        aspect-ratio: 4/3;
+        height: 240px;
         overflow: hidden;
     }
 
-    .property-image img {
+    .card-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.6s var(--ease-out);
     }
 
-    /* Price Badge */
-    .price-badge {
+    .property-card:hover .card-image img {
+        transform: scale(1.08);
+    }
+
+    .card-overlay {
         position: absolute;
-        bottom: 16px;
-        left: 16px;
+        top: 12px;
+        right: 12px;
         display: flex;
-        align-items: baseline;
-        gap: 4px;
-        padding: 10px 16px;
+        flex-direction: column;
+        gap: 8px;
+        opacity: 0;
+        transform: translateX(10px);
+        transition: all 0.3s var(--ease-out);
+    }
+
+    .property-card:hover .card-overlay {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .card-action {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--bg-elevated);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--glass-border);
+        border-radius: 50%;
+        color: var(--text-primary);
+        transition: all 0.3s var(--ease-out);
+    }
+
+    .card-action:hover {
         background: var(--accent);
-        border-radius: var(--radius-full);
-        box-shadow: var(--shadow-md);
-    }
-
-    .price {
-        font-family: var(--font-display);
-        font-size: var(--text-lg);
-        font-weight: 700;
-        color: var(--color-dark);
-    }
-
-    .period {
-        font-size: var(--text-sm);
-        color: rgba(0, 0, 0, 0.6);
-    }
-
-    /* Property Tag */
-    .property-tag {
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        padding: 6px 14px;
-        background: var(--color-dark);
         color: var(--text-inverse);
+        border-color: var(--accent);
+    }
+
+    .card-tag {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        padding: 6px 14px;
         border-radius: var(--radius-full);
-        font-family: var(--font-display);
         font-size: var(--text-xs);
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.05em;
     }
 
-    /* Favorite Button */
-    .favorite-btn {
+    .card-tag.featured {
+        background: var(--accent);
+        color: var(--text-inverse);
+    }
+
+    .card-tag.hot {
+        background: var(--color-error);
+        color: white;
+    }
+
+    .card-tag.new {
+        background: var(--color-success);
+        color: var(--text-inverse);
+    }
+
+    .verified-badge {
         position: absolute;
-        top: 16px;
-        right: 16px;
-        width: 40px;
-        height: 40px;
+        bottom: 12px;
+        right: 12px;
+        width: 28px;
+        height: 28px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--color-white);
+        background: var(--color-success);
         border-radius: 50%;
-        color: var(--text-secondary);
-        box-shadow: var(--shadow-md);
-        transition: all 0.3s var(--ease-out);
-        z-index: 5;
+        color: white;
     }
 
-    .favorite-btn:hover {
-        color: #ef4444;
-        transform: scale(1.1);
+    .card-content {
+        padding: 24px;
     }
 
-    /* Quick View Overlay - NEW! */
-    .quick-view-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        padding: 16px;
-        background: linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.8) 0%,
-            transparent 100%
-        );
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.4s var(--ease-out);
-        z-index: 4;
+    .card-price {
+        margin-bottom: 8px;
     }
 
-    .property-card:hover .quick-view-overlay {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .quick-view-btn,
-    .schedule-btn {
-        padding: 10px 16px;
-        border-radius: var(--radius-full);
-        font-family: var(--font-display);
-        font-size: var(--text-sm);
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        transition: all 0.3s var(--ease-out);
-    }
-
-    .quick-view-btn {
-        background: var(--color-white);
+    .price-value {
+        font-family: var(--font-body);
+        font-size: var(--text-xl);
+        font-weight: 700;
         color: var(--text-primary);
     }
 
-    .quick-view-btn:hover {
-        background: var(--accent);
-        color: var(--color-dark);
+    .price-label {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
     }
 
-    .schedule-btn {
-        background: var(--accent);
-        color: var(--color-dark);
-    }
-
-    .schedule-btn:hover {
-        background: var(--accent-hover);
-        transform: scale(1.02);
-    }
-
-    /* Content */
-    .property-content {
-        padding: 20px;
-    }
-
-    .property-title {
-        font-family: var(--font-display);
+    .card-title {
+        font-family: var(--font-body);
         font-size: var(--text-lg);
         font-weight: 600;
         color: var(--text-primary);
-        margin-bottom: 12px;
+        margin-bottom: 8px;
+        line-height: 1.3;
     }
 
-    .property-meta {
+    .card-location {
         display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
+        align-items: center;
+        gap: 6px;
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+        margin-bottom: 16px;
     }
 
-    .meta-item {
-        display: inline-flex;
+    .card-location svg {
+        color: var(--accent);
+        flex-shrink: 0;
+    }
+
+    .card-specs {
+        display: flex;
+        gap: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--glass-border);
+    }
+
+    .spec {
+        display: flex;
         align-items: center;
         gap: 6px;
         font-size: var(--text-sm);
         color: var(--text-muted);
     }
 
-    .meta-item svg {
-        color: var(--color-gray);
+    .spec svg {
+        color: var(--text-muted);
     }
 
-    /* See More */
-    .see-more {
+    /* Section CTA */
+    .section-cta {
         display: flex;
         justify-content: center;
+        margin-top: 60px;
     }
 
     /* Responsive */
     @media (max-width: 1024px) {
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
         .properties-grid {
             grid-template-columns: repeat(2, 1fr);
         }
     }
 
     @media (max-width: 768px) {
-        .properties-header {
-            flex-direction: column;
-            align-items: flex-start;
+        .properties-section {
+            padding: 80px 0;
         }
 
         .properties-grid {
             grid-template-columns: 1fr;
         }
+
+        .filter-tabs {
+            width: 100%;
+            justify-content: center;
+        }
     }
 </style>
+
+<script>
+    // Filter tab functionality
+    const filterTabs = document.querySelectorAll(".filter-tab");
+
+    filterTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            filterTabs.forEach((t) => t.classList.remove("active"));
+            tab.classList.add("active");
+        });
+    });
+</script>

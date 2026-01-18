@@ -1,0 +1,243 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+// import Pricing from "../components/Pricing.astro";
+import FAQ from "../components/FAQ.astro";
+import Footer from "../components/Footer.astro";
+
+const title = "Pricing Plans | HomeDaze";
+const description =
+    "Choose the perfect plan for your home search journey. From free browsing to premium features with priority access and advanced matching.";
+---
+
+<Layout title={title} description={description}>
+    <Navbar />
+
+    <main class="pricing-page">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="header-content">
+                    <nav class="breadcrumb">
+                        <a href="/">Home</a>
+                        <span>/</span>
+                        <span>Pricing</span>
+                    </nav>
+                    <h1 class="page-title">
+                        Simple, <em class="text-coral">Transparent</em> Pricing
+                    </h1>
+                    <p class="page-subtitle">
+                        Choose the plan that matches your home-finding needs.
+                        Upgrade or cancel anytime.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <Pricing />
+
+        <!-- FAQ Section -->
+        <section class="faq-wrapper">
+            <div class="container">
+                <div class="faq-header">
+                    <h2 class="section-title">
+                        Frequently Asked <em class="text-coral">Questions</em>
+                    </h2>
+                    <p class="section-subtitle">
+                        Everything you need to know about our plans
+                    </p>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4 class="faq-question">
+                            Can I switch plans anytime?
+                        </h4>
+                        <p class="faq-answer">
+                            Yes! You can upgrade or downgrade your plan at any
+                            time. Changes take effect immediately, and we'll
+                            prorate any remaining balance.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h4 class="faq-question">
+                            What's included in the free plan?
+                        </h4>
+                        <p class="faq-answer">
+                            The free plan includes basic property browsing,
+                            saving up to 5 properties, and 5 roommate profile
+                            views per month. Perfect for casual exploration.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h4 class="faq-question">
+                            How does the student discount work?
+                        </h4>
+                        <p class="faq-answer">
+                            Students get 30% off all paid plans! Simply verify
+                            your student status with a valid .edu email or
+                            student ID during signup.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h4 class="faq-question">
+                            What payment methods do you accept?
+                        </h4>
+                        <p class="faq-answer">
+                            We accept all major credit/debit cards, UPI, net
+                            banking, and popular wallets like Paytm and PhonePe.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h4 class="faq-question">Is there a refund policy?</h4>
+                        <p class="faq-answer">
+                            Yes, we offer a 7-day money-back guarantee for all
+                            new subscriptions. If you're not satisfied, contact
+                            us for a full refund.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h4 class="faq-question">
+                            What's the profile visibility boost?
+                        </h4>
+                        <p class="faq-answer">
+                            Premium users get their roommate profiles shown
+                            first in search results, increasing your chances of
+                            finding the perfect match by up to 5x.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</Layout>
+
+<style>
+    .pricing-page {
+        background: var(--bg-primary);
+        min-height: 100vh;
+    }
+
+    /* Page Header */
+    .page-header {
+        padding: 160px 0 40px;
+        background: linear-gradient(
+            180deg,
+            var(--bg-secondary) 0%,
+            var(--bg-primary) 100%
+        );
+        text-align: center;
+    }
+
+    .header-content {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        margin-bottom: 24px;
+    }
+
+    .breadcrumb a {
+        color: var(--text-secondary);
+        transition: color 0.3s;
+    }
+
+    .breadcrumb a:hover {
+        color: var(--accent);
+    }
+
+    .page-title {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 5vw, var(--text-5xl));
+        font-style: italic;
+        color: var(--text-primary);
+        margin-bottom: 16px;
+        line-height: 1.1;
+    }
+
+    .page-subtitle {
+        font-size: var(--text-lg);
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    /* FAQ Section */
+    .faq-wrapper {
+        padding: 80px 0 120px;
+        background: var(--bg-secondary);
+    }
+
+    .faq-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-title {
+        font-family: var(--font-display);
+        font-size: clamp(1.75rem, 3vw, var(--text-4xl));
+        font-style: italic;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+        font-size: var(--text-base);
+        color: var(--text-secondary);
+    }
+
+    .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .faq-item {
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        transition: all 0.3s var(--ease-out);
+    }
+
+    .faq-item:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+        transform: translateY(-2px);
+    }
+
+    .faq-question {
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+    }
+
+    .faq-answer {
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .page-header {
+            padding: 120px 0 40px;
+        }
+
+        .faq-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

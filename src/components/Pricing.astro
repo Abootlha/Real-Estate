@@ -1,0 +1,542 @@
+---
+const plans = [
+    {
+        name: "Free",
+        price: "₹0",
+        description: "Perfect for casual browsing",
+        features: [
+            { text: "Browse all listings", included: true },
+            { text: "Save up to 5 properties", included: true },
+            { text: "Basic search filters", included: true },
+            { text: "5 roommate views/month", included: true },
+            { text: "Email support", included: true },
+            { text: "Advanced matching", included: false },
+            { text: "Priority listings access", included: false },
+            { text: "Profile visibility boost", included: false },
+        ],
+        cta: "Get Started",
+        highlighted: false,
+    },
+    {
+        name: "Pro",
+        price: "₹499",
+        period: "/mo",
+        description: "Best for active home seekers",
+        badge: "Most Popular",
+        features: [
+            { text: "Everything in Free", included: true },
+            { text: "Unlimited saved properties", included: true },
+            { text: "Advanced search filters", included: true },
+            { text: "Unlimited roommate views", included: true },
+            { text: "Smart compatibility matching", included: true },
+            { text: "Priority customer support", included: true },
+            { text: "Real-time listing alerts", included: true },
+            { text: "Profile visibility boost", included: false },
+        ],
+        cta: "Upgrade to Pro",
+        highlighted: true,
+    },
+    {
+        name: "Premium",
+        price: "₹999",
+        period: "/mo",
+        description: "For serious buyers & relocators",
+        features: [
+            { text: "Everything in Pro", included: true },
+            { text: "Profile visibility boost", included: true },
+            { text: "Featured profile badge", included: true },
+            { text: "Exclusive new listings", included: true },
+            { text: "Property comparison tools", included: true },
+            { text: "Dedicated account manager", included: true },
+            { text: "Deep market insights", included: true },
+            { text: "Priority connections", included: true },
+        ],
+        cta: "Go Premium",
+        highlighted: false,
+    },
+];
+---
+
+<section class="section pricing-section" id="pricing">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="section-header" data-animate="fade-up">
+            <span class="section-eyebrow">Pricing Plans</span>
+            <h2 class="section-title">
+                Unlock <em class="text-coral">Premium</em> Features
+            </h2>
+            <p class="section-subtitle">
+                Choose the plan that fits your journey. Upgrade anytime for more
+                features and faster results.
+            </p>
+
+            <!-- Student Discount Badge -->
+            <div class="student-badge">
+                <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+                <span
+                    >Students get <strong>30% off</strong> on all paid plans!</span
+                >
+            </div>
+        </div>
+
+        <!-- Billing Toggle -->
+        <div class="billing-toggle" data-animate="fade-up" data-delay="1">
+            <button class="toggle-btn active" data-period="monthly"
+                >Monthly</button
+            >
+            <button class="toggle-btn" data-period="yearly">
+                Yearly
+                <span class="savings-badge">Save 20%</span>
+            </button>
+        </div>
+
+        <!-- Pricing Cards -->
+        <div class="pricing-grid">
+            {
+                plans.map((plan, index) => (
+                    <div
+                        class={`pricing-card ${plan.highlighted ? "highlighted" : ""}`}
+                        data-animate="fade-up"
+                        data-delay={index + 2}
+                    >
+                        {plan.badge && (
+                            <span class="card-badge">{plan.badge}</span>
+                        )}
+                        <div class="card-header">
+                            <h3 class="plan-name">{plan.name}</h3>
+                            <div class="plan-price">
+                                <span class="price-value">{plan.price}</span>
+                                {plan.period && (
+                                    <span class="price-period">
+                                        {plan.period}
+                                    </span>
+                                )}
+                            </div>
+                            <p class="plan-description">{plan.description}</p>
+                        </div>
+                        <ul class="feature-list">
+                            {plan.features.map((feature) => (
+                                <li
+                                    class={`feature-item ${feature.included ? "" : "disabled"}`}
+                                >
+                                    {feature.included ? (
+                                        <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2.5"
+                                        >
+                                            <polyline points="20 6 9 17 4 12" />
+                                        </svg>
+                                    ) : (
+                                        <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <line
+                                                x1="18"
+                                                y1="6"
+                                                x2="6"
+                                                y2="18"
+                                            />
+                                            <line
+                                                x1="6"
+                                                y1="6"
+                                                x2="18"
+                                                y2="18"
+                                            />
+                                        </svg>
+                                    )}
+                                    <span>{feature.text}</span>
+                                </li>
+                            ))}
+                        </ul>
+                        <button
+                            class={`btn ${plan.highlighted ? "btn-primary" : "btn-secondary"} btn-lg`}
+                        >
+                            {plan.cta}
+                        </button>
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Trust Indicators -->
+        <div class="trust-section" data-animate="fade-up">
+            <div class="trust-item">
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"
+                    ></rect>
+                    <path d="M7 11V7a5 5 0 0110 0v4"></path>
+                </svg>
+                <span>Secure payments</span>
+            </div>
+            <div class="trust-item">
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>Cancel anytime</span>
+            </div>
+            <div class="trust-item">
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path
+                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                    ></path>
+                </svg>
+                <span>24/7 support</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .pricing-section {
+        background: var(--bg-primary);
+        position: relative;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .section-eyebrow {
+        display: inline-block;
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 16px;
+    }
+
+    .section-title {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 4vw, var(--text-5xl));
+        font-style: italic;
+        color: var(--text-primary);
+        margin-bottom: 16px;
+        line-height: 1.1;
+    }
+
+    .section-subtitle {
+        font-size: var(--text-lg);
+        color: var(--text-secondary);
+        max-width: 500px;
+        margin: 0 auto 24px;
+        line-height: 1.6;
+    }
+
+    .student-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 20px;
+        background: linear-gradient(
+            135deg,
+            rgba(255, 107, 90, 0.1) 0%,
+            rgba(251, 191, 36, 0.1) 100%
+        );
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        border-radius: var(--radius-full);
+        color: var(--color-warning);
+        font-size: var(--text-sm);
+    }
+
+    .student-badge strong {
+        font-weight: 700;
+    }
+
+    /* Billing Toggle */
+    .billing-toggle {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        padding: 6px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-full);
+        width: fit-content;
+        margin: 0 auto 60px;
+    }
+
+    .toggle-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        color: var(--text-secondary);
+        border-radius: var(--radius-full);
+        transition: all 0.3s var(--ease-out);
+    }
+
+    .toggle-btn:hover {
+        color: var(--text-primary);
+    }
+
+    .toggle-btn.active {
+        background: var(--accent);
+        color: var(--text-inverse);
+    }
+
+    .savings-badge {
+        padding: 2px 8px;
+        background: var(--color-success);
+        color: white;
+        font-size: var(--text-xs);
+        font-weight: 600;
+        border-radius: var(--radius-full);
+    }
+
+    .toggle-btn.active .savings-badge {
+        background: var(--text-inverse);
+        color: var(--accent);
+    }
+
+    /* Pricing Grid */
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        margin-bottom: 60px;
+    }
+
+    /* Pricing Card */
+    .pricing-card {
+        position: relative;
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-xl);
+        padding: 32px;
+        transition: all 0.4s var(--ease-out);
+    }
+
+    .pricing-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .pricing-card.highlighted {
+        background: linear-gradient(
+            180deg,
+            var(--bg-elevated) 0%,
+            var(--bg-secondary) 100%
+        );
+        border-color: var(--accent);
+        box-shadow: var(--shadow-glow);
+        transform: scale(1.05);
+    }
+
+    .pricing-card.highlighted:hover {
+        transform: scale(1.05) translateY(-8px);
+    }
+
+    .card-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 6px 16px;
+        background: var(--accent);
+        color: var(--text-inverse);
+        font-size: var(--text-xs);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-radius: var(--radius-full);
+    }
+
+    .card-header {
+        text-align: center;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--glass-border);
+        margin-bottom: 24px;
+    }
+
+    .plan-name {
+        font-family: var(--font-body);
+        font-size: var(--text-lg);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 16px;
+    }
+
+    .plan-price {
+        margin-bottom: 8px;
+    }
+
+    .price-value {
+        font-family: var(--font-display);
+        font-size: var(--text-4xl);
+        font-style: italic;
+        color: var(--text-primary);
+    }
+
+    .price-period {
+        font-size: var(--text-base);
+        color: var(--text-muted);
+    }
+
+    .plan-description {
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+    }
+
+    /* Feature List */
+    .feature-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 32px;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: var(--text-sm);
+        color: var(--text-primary);
+    }
+
+    .feature-item svg {
+        color: var(--color-success);
+        flex-shrink: 0;
+    }
+
+    .feature-item.disabled {
+        color: var(--text-muted);
+    }
+
+    .feature-item.disabled svg {
+        color: var(--text-muted);
+    }
+
+    .pricing-card .btn {
+        width: 100%;
+    }
+
+    /* Trust Section */
+    .trust-section {
+        display: flex;
+        justify-content: center;
+        gap: 48px;
+    }
+
+    .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+    }
+
+    .trust-item svg {
+        color: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .pricing-grid {
+            grid-template-columns: 1fr;
+            max-width: 400px;
+            margin: 0 auto 60px;
+        }
+
+        .pricing-card.highlighted {
+            transform: none;
+        }
+
+        .pricing-card.highlighted:hover {
+            transform: translateY(-8px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .billing-toggle {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            justify-content: center;
+        }
+
+        .trust-section {
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+    }
+</style>
+
+<script>
+    // Billing toggle functionality
+    const toggleBtns = document.querySelectorAll(".toggle-btn");
+    const priceValues = document.querySelectorAll(".price-value");
+
+    const prices = {
+        monthly: ["₹0", "₹499", "₹999"],
+        yearly: ["₹0", "₹399", "₹799"],
+    };
+
+    toggleBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            toggleBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const period = btn.getAttribute("data-period") as
+                | "monthly"
+                | "yearly";
+            priceValues.forEach((el, index) => {
+                if (index > 0) {
+                    // Skip "Free" plan
+                    el.textContent = prices[period][index];
+                }
+            });
+        });
+    });
+</script>

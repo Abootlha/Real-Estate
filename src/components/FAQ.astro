@@ -1,71 +1,69 @@
 ---
 const faqs = [
     {
-        question: "How does RoomieMatch work?",
-        answer: "Simply create a profile, set your preferences for location, budget, and roommate characteristics. Our AI-powered matching system will suggest compatible listings and roommates. You can browse, connect, and schedule visits all within our platform.",
-        isOpen: true,
+        question: "How does HomeDaze verify listings?",
+        answer: "Every property listing goes through a multi-step verification process. Our team verifies ownership documents, conducts virtual/physical inspections, and cross-checks photos to ensure accuracy. Verified listings display a green badge.",
     },
     {
-        question: "Are the listings verified?",
-        answer: "Yes! Every listing on RoomieMatch goes through our verification process. We verify property ownership, photos, and ensure all details are accurate before publishing.",
-        isOpen: false,
+        question: "Is the roommate matching really accurate?",
+        answer: "Our AI-powered matching considers 40+ lifestyle and preference factors including budget, work schedule, cleanliness habits, and social preferences. Most users report 85%+ satisfaction with their matched roommates.",
     },
     {
-        question: "How much does it cost to use RoomieMatch?",
-        answer: "Searching and browsing listings is completely free. We only charge a small service fee when you successfully find and move into a property through our platform.",
-        isOpen: false,
+        question: "Can I list my property for free?",
+        answer: "Yes! Basic property listings are completely free. Premium listing features like priority placement, featured badges, and advanced analytics are available through our subscription plans.",
     },
     {
-        question: "Can I schedule property visits through the app?",
-        answer: "Absolutely! You can request visits directly through our platform. Property owners will receive your request and you'll be notified once they confirm a time slot.",
-        isOpen: false,
+        question: "How do I contact a property owner or roommate?",
+        answer: "Free users can send 5 connection requests per month. Pro and Premium subscribers get unlimited connections with direct messaging, plus the ability to share contact details securely within the platform.",
     },
     {
-        question: "What if I have issues with my roommate or property?",
-        answer: "We have a dedicated support team available 24/7 to help resolve any disputes. We also offer mediation services and can help you find alternative accommodations if needed.",
-        isOpen: false,
+        question: "What cities do you operate in?",
+        answer: "We currently operate in 150+ cities across India, with major presence in Mumbai, Bangalore, Delhi NCR, Hyderabad, Pune, and Chennai. We're constantly expanding to new locations.",
+    },
+    {
+        question: "How do subscription payments work?",
+        answer: "We accept all major payment methods including credit/debit cards, UPI, and net banking. Subscriptions auto-renew monthly/yearly, but you can cancel anytime from your account settings.",
     },
 ];
 ---
 
-<section class="faq section">
+<section class="section faq-section">
     <div class="container">
-        <div class="faq-layout">
-            <!-- Left: Content -->
-            <div class="faq-content">
-                <span class="section-label" data-animate="fade-up">FAQs</span>
-                <h2 class="section-title" data-animate="fade-up" data-delay="1">
-                    Frequently Asked<br />Questions
+        <div class="faq-grid">
+            <div class="faq-header" data-animate="fade-right">
+                <span class="section-eyebrow">FAQs</span>
+                <h2 class="section-title">
+                    Got <em class="text-coral">Questions?</em>
                 </h2>
-                <p class="faq-intro" data-animate="fade-up" data-delay="2">
-                    Everything you need to know about finding your perfect home
-                    with RoomieMatch.
+                <p class="section-subtitle">
+                    Find answers to commonly asked questions about HomeDaze, our
+                    features, and how we can help you find your perfect home.
                 </p>
-
-                <div class="faq-cta" data-animate="fade-up" data-delay="3">
-                    <p>Still have questions?</p>
-                    <a href="/contact" class="btn btn-lime">Contact Support</a>
-                </div>
+                <a href="/contact" class="btn btn-secondary">
+                    Contact Support
+                    <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
             </div>
 
-            <!-- Right: FAQ List -->
-            <div class="faq-list">
+            <div class="faq-list" data-animate="fade-left">
                 {
                     faqs.map((faq, index) => (
-                        <details
-                            class="faq-item"
-                            open={faq.isOpen}
-                            data-animate="fade-left"
-                            data-delay={index + 1}
-                        >
+                        <details class="faq-item">
                             <summary class="faq-question">
-                                <span class="question-number">
-                                    {String(index + 1).padStart(2, "0")}
-                                </span>
                                 <span class="question-text">
                                     {faq.question}
                                 </span>
-                                <span class="faq-icon">
+                                <span class="question-icon">
                                     <svg
                                         width="20"
                                         height="20"
@@ -74,7 +72,8 @@ const faqs = [
                                         stroke="currentColor"
                                         stroke-width="2"
                                     >
-                                        <path d="M12 5v14M5 12h14" />
+                                        <line x1="12" y1="5" x2="12" y2="19" />
+                                        <line x1="5" y1="12" x2="19" y2="12" />
                                     </svg>
                                 </span>
                             </summary>
@@ -90,53 +89,47 @@ const faqs = [
 </section>
 
 <style>
-    .faq {
-        background: var(--bg-secondary);
+    .faq-section {
+        background: var(--bg-primary);
     }
 
-    .faq-layout {
+    .faq-grid {
         display: grid;
         grid-template-columns: 1fr 1.5fr;
         gap: 80px;
-        align-items: start;
+        align-items: flex-start;
     }
 
-    /* Left Content */
-    .faq-content {
+    /* Header */
+    .faq-header {
         position: sticky;
         top: 120px;
     }
 
-    .section-label {
+    .section-eyebrow {
         display: inline-block;
-        font-family: var(--font-display);
         font-size: var(--text-sm);
         font-weight: 600;
         color: var(--accent);
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.1em;
         margin-bottom: 16px;
-        padding: 6px 14px;
-        background: var(--color-lime-glow);
-        border-radius: var(--radius-full);
     }
 
-    .faq .section-title {
+    .section-title {
+        font-family: var(--font-display);
         font-size: clamp(2rem, 4vw, var(--text-4xl));
+        font-style: italic;
+        color: var(--text-primary);
         margin-bottom: 16px;
+        line-height: 1.1;
     }
 
-    .faq-intro {
-        font-size: var(--text-lg);
+    .section-subtitle {
+        font-size: var(--text-base);
         color: var(--text-secondary);
         line-height: 1.7;
         margin-bottom: 32px;
-    }
-
-    .faq-cta p {
-        font-size: var(--text-sm);
-        color: var(--text-muted);
-        margin-bottom: 12px;
     }
 
     /* FAQ List */
@@ -147,107 +140,89 @@ const faqs = [
     }
 
     .faq-item {
-        background: var(--color-white);
-        border-radius: var(--radius-xl);
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-lg);
         overflow: hidden;
-        box-shadow: var(--shadow-sm);
         transition: all 0.3s var(--ease-out);
     }
 
     .faq-item:hover {
-        box-shadow: var(--shadow-md);
+        border-color: rgba(255, 255, 255, 0.12);
     }
 
     .faq-item[open] {
-        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+        box-shadow: 0 0 30px var(--color-coral-glow);
     }
 
     .faq-question {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 16px;
-        padding: 24px;
-        font-family: var(--font-display);
-        font-size: var(--text-base);
-        font-weight: 600;
-        color: var(--text-primary);
+        padding: 20px 24px;
         cursor: pointer;
         list-style: none;
-        transition: background 0.3s var(--ease-out);
-    }
-
-    .faq-question:hover {
-        background: var(--color-cloud);
     }
 
     .faq-question::-webkit-details-marker {
         display: none;
     }
 
-    .question-number {
-        font-family: var(--font-display);
-        font-size: var(--text-sm);
-        font-weight: 700;
-        color: var(--accent);
-        flex-shrink: 0;
-    }
-
     .question-text {
-        flex: 1;
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        font-weight: 600;
+        color: var(--text-primary);
+        padding-right: 16px;
     }
 
-    .faq-icon {
-        width: 36px;
-        height: 36px;
+    .question-icon {
+        width: 32px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--color-cloud);
+        background: var(--bg-elevated);
         border-radius: 50%;
         color: var(--text-secondary);
         transition: all 0.3s var(--ease-out);
         flex-shrink: 0;
     }
 
-    .faq-item[open] .faq-icon {
+    .faq-item[open] .question-icon {
         background: var(--accent);
-        color: var(--color-dark);
+        color: var(--text-inverse);
         transform: rotate(45deg);
     }
 
     .faq-answer {
-        padding: 0 24px 24px 56px;
+        padding: 0 24px 20px;
     }
 
     .faq-answer p {
-        font-size: var(--text-base);
-        line-height: 1.7;
+        font-size: var(--text-sm);
         color: var(--text-secondary);
+        line-height: 1.7;
     }
 
     /* Responsive */
     @media (max-width: 1024px) {
-        .faq-layout {
+        .faq-grid {
             grid-template-columns: 1fr;
             gap: 48px;
         }
 
-        .faq-content {
-            position: static;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .faq-question {
-            padding: 20px;
+        .faq-header {
+            position: relative;
+            top: 0;
+            text-align: center;
         }
 
-        .faq-answer {
-            padding: 0 20px 20px 20px;
-        }
-
-        .question-number {
-            display: none;
+        .faq-header .btn {
+            display: inline-flex;
         }
     }
 </style>

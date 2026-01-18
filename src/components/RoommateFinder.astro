@@ -1,0 +1,582 @@
+---
+const roommates = [
+    {
+        id: 1,
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&q=90",
+        name: "Arjun Mehta",
+        age: 24,
+        occupation: "Software Engineer",
+        company: "Google",
+        budget: "₹15,000 - ₹20,000",
+        location: "Koramangala, Bangalore",
+        moveIn: "Immediate",
+        compatibility: 94,
+        verified: true,
+        tags: ["Non-Smoker", "Early Riser", "Vegetarian", "Fitness"],
+    },
+    {
+        id: 2,
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&q=90",
+        name: "Priya Sharma",
+        age: 26,
+        occupation: "Product Manager",
+        company: "Microsoft",
+        budget: "₹18,000 - ₹25,000",
+        location: "Indiranagar, Bangalore",
+        moveIn: "Feb 1st",
+        compatibility: 89,
+        verified: true,
+        tags: ["Pet Friendly", "Night Owl", "Non-Vegetarian"],
+    },
+    {
+        id: 3,
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&q=90",
+        name: "Rahul Verma",
+        age: 23,
+        occupation: "Data Scientist",
+        company: "Amazon",
+        budget: "₹12,000 - ₹18,000",
+        location: "Whitefield, Bangalore",
+        moveIn: "Immediate",
+        compatibility: 86,
+        verified: true,
+        tags: ["Non-Smoker", "Quiet", "Work from Home"],
+    },
+];
+---
+
+<section class="section roommate-section section-pattern">
+    <div class="container">
+        <div class="roommate-grid">
+            <!-- Left Content -->
+            <div class="roommate-content" data-animate="fade-right">
+                <span class="section-eyebrow">Roommate Finder</span>
+                <h2 class="section-title">
+                    Find Your <em class="text-coral">Perfect</em> Roommate
+                </h2>
+                <p class="section-subtitle">
+                    Connect with verified roommates who match your lifestyle,
+                    budget, and preferences. Make shared living safer and more
+                    reliable.
+                </p>
+
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="feature-icon">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"
+                                ></path>
+                                <polyline points="22 4 12 14.01 9 11.01"
+                                ></polyline>
+                            </svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Verified Profiles</h4>
+                            <p>ID and background verified for your safety</p>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-icon">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                                ></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Smart Matching</h4>
+                            <p>AI-powered compatibility based on lifestyle</p>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-icon">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Secure Messaging</h4>
+                            <p>Chat securely before meeting in person</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="roommate-cta">
+                    <a href="/roommates" class="btn btn-primary">
+                        Find Roommates
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="/roommates" class="btn btn-ghost">
+                        List Yourself
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right - Roommate Cards -->
+            <div class="roommate-cards" data-animate="fade-left">
+                {
+                    roommates.map((roommate, index) => (
+                        <article
+                            class="roommate-card"
+                            style={`--delay: ${index * 0.1}s`}
+                        >
+                            <div class="card-header">
+                                <div class="avatar-wrapper">
+                                    <img
+                                        src={roommate.image}
+                                        alt={roommate.name}
+                                        class="avatar"
+                                    />
+                                    {roommate.verified && (
+                                        <span class="verified-dot">
+                                            <svg
+                                                width="10"
+                                                height="10"
+                                                viewBox="0 0 24 24"
+                                                fill="currentColor"
+                                            >
+                                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                                                <polyline
+                                                    points="22 4 12 14.01 9 11.01"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="3"
+                                                />
+                                            </svg>
+                                        </span>
+                                    )}
+                                </div>
+                                <div class="card-info">
+                                    <h4 class="card-name">{roommate.name}</h4>
+                                    <p class="card-job">
+                                        {roommate.occupation} at{" "}
+                                        {roommate.company}
+                                    </p>
+                                </div>
+                                <div class="compatibility-badge">
+                                    <span class="compat-value">
+                                        {roommate.compatibility}%
+                                    </span>
+                                    <span class="compat-label">Match</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-details">
+                                    <span class="detail">
+                                        <svg
+                                            width="14"
+                                            height="14"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <circle cx="12" cy="12" r="10" />
+                                            <line
+                                                x1="12"
+                                                y1="8"
+                                                x2="12"
+                                                y2="12"
+                                            />
+                                            <line
+                                                x1="12"
+                                                y1="16"
+                                                x2="12.01"
+                                                y2="16"
+                                            />
+                                        </svg>
+                                        {roommate.age} years
+                                    </span>
+                                    <span class="detail">
+                                        <svg
+                                            width="14"
+                                            height="14"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <line
+                                                x1="12"
+                                                y1="1"
+                                                x2="12"
+                                                y2="23"
+                                            />
+                                            <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                                        </svg>
+                                        {roommate.budget}/mo
+                                    </span>
+                                    <span class="detail">
+                                        <svg
+                                            width="14"
+                                            height="14"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <rect
+                                                x="3"
+                                                y="4"
+                                                width="18"
+                                                height="18"
+                                                rx="2"
+                                                ry="2"
+                                            />
+                                            <line
+                                                x1="16"
+                                                y1="2"
+                                                x2="16"
+                                                y2="6"
+                                            />
+                                            <line x1="8" y1="2" x2="8" y2="6" />
+                                        </svg>
+                                        {roommate.moveIn}
+                                    </span>
+                                </div>
+                                <div class="card-tags">
+                                    {roommate.tags.slice(0, 3).map((tag) => (
+                                        <span class="lifestyle-tag">{tag}</span>
+                                    ))}
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-secondary btn-sm">
+                                    View Profile
+                                </button>
+                                <button class="btn btn-primary btn-sm">
+                                    Connect
+                                </button>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .roommate-section {
+        background: var(--bg-secondary);
+        overflow: hidden;
+    }
+
+    .roommate-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 80px;
+        align-items: center;
+    }
+
+    /* Left Content */
+    .roommate-content {
+        padding-right: 40px;
+    }
+
+    .section-eyebrow {
+        display: inline-block;
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 16px;
+    }
+
+    .section-title {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 4vw, var(--text-4xl));
+        font-style: italic;
+        color: var(--text-primary);
+        margin-bottom: 20px;
+        line-height: 1.1;
+    }
+
+    .section-subtitle {
+        font-size: var(--text-lg);
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 40px;
+    }
+
+    .feature-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 40px;
+    }
+
+    .feature-item {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .feature-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-coral-subtle);
+        border: 1px solid rgba(255, 107, 90, 0.2);
+        border-radius: var(--radius-md);
+        color: var(--accent);
+        flex-shrink: 0;
+    }
+
+    .feature-text h4 {
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+    }
+
+    .feature-text p {
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+    }
+
+    .roommate-cta {
+        display: flex;
+        gap: 16px;
+    }
+
+    /* Roommate Cards Stack */
+    .roommate-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .roommate-card {
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-xl);
+        padding: 20px;
+        transition: all 0.4s var(--ease-out);
+        animation: slideIn 0.6s var(--ease-out) var(--delay) backwards;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .roommate-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+
+    .avatar-wrapper {
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--glass-border);
+    }
+
+    .verified-dot {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-success);
+        border-radius: 50%;
+        color: white;
+        border: 2px solid var(--bg-secondary);
+    }
+
+    .card-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .card-name {
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 2px;
+    }
+
+    .card-job {
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .compatibility-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 8px 12px;
+        background: var(--color-coral-subtle);
+        border: 1px solid rgba(255, 107, 90, 0.2);
+        border-radius: var(--radius-md);
+    }
+
+    .compat-value {
+        font-size: var(--text-lg);
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
+    }
+
+    .compat-label {
+        font-size: var(--text-xs);
+        color: var(--accent);
+        opacity: 0.8;
+    }
+
+    .card-body {
+        margin-bottom: 16px;
+    }
+
+    .card-details {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 12px;
+    }
+
+    .detail {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+    }
+
+    .detail svg {
+        color: var(--accent);
+    }
+
+    .card-tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .lifestyle-tag {
+        padding: 4px 10px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-full);
+        font-size: var(--text-xs);
+        color: var(--text-secondary);
+    }
+
+    .card-footer {
+        display: flex;
+        gap: 12px;
+        padding-top: 16px;
+        border-top: 1px solid var(--glass-border);
+    }
+
+    .card-footer .btn {
+        flex: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .roommate-grid {
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+
+        .roommate-content {
+            padding-right: 0;
+            text-align: center;
+        }
+
+        .feature-list {
+            max-width: 400px;
+            margin: 0 auto 40px;
+        }
+
+        .feature-item {
+            text-align: left;
+        }
+
+        .roommate-cta {
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .card-details {
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card-footer {
+            flex-direction: column;
+        }
+    }
+</style>
