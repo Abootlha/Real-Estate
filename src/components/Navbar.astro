@@ -63,8 +63,9 @@ const cities = [
         <div class="container">
             <div class="top-bar-inner">
                 <a href="/" class="logo">
-                    <span class="logo-text"
-                        >roomie<span class="logo-accent">match</span></span
+                    <img src="/logo.webp" alt="R" class="logo-image" /><span
+                        class="logo-text"
+                        >ental<span class="logo-accent">Matchup</span></span
                     >
                 </a>
 
@@ -385,12 +386,21 @@ const cities = [
     .logo {
         display: flex;
         align-items: center;
+        gap: 0;
         flex-shrink: 0;
+    }
+
+    .logo-image {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        border-radius: 12px;
+        margin: -30px -25px -30px 0;
     }
 
     .logo-text {
         font-family: var(--font-display);
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: 800;
         color: var(--text-primary);
         letter-spacing: -0.02em;
