@@ -80,7 +80,7 @@ const properties = [
     </div>
 </section>
 
-<!-- Cities Grid Section -->
+<!-- Cities Bento Grid Section -->
 <section class="cities section" id="cities">
     <div class="container">
         <div class="section-header" data-animate="fade-up">
@@ -90,312 +90,523 @@ const properties = [
             </p>
         </div>
 
-        <div class="cities-grid">
-            {
-                cities.map((city, i) => (
-                    <a
-                        href={`/city/${city.name.toLowerCase()}`}
-                        class="city-card"
-                        data-animate="pop"
-                        data-delay={i + 1}
-                    >
-                        <div class="city-image">
-                            <img
-                                src={city.image}
-                                alt={city.name}
-                                loading="lazy"
-                            />
-                        </div>
-                        <div class="city-info">
-                            <h3 class="city-name">{city.name}</h3>
-                            <span class="city-count">
-                                {city.count} listings
-                            </span>
-                        </div>
-                    </a>
-                ))
-            }
+        <div class="bento-wrapper">
+            <!-- Corner Gradient Glows -->
+            <div class="corner-glow corner-glow-tl"></div>
+            <div class="corner-glow corner-glow-tr"></div>
+            <div class="corner-glow corner-glow-bl"></div>
+            <div class="corner-glow corner-glow-br"></div>
+
+            <div class="bento-grid">
+                <!-- Large Card - Mumbai -->
+                <a
+                    href="/city/mumbai"
+                    class="bento-card bento-large"
+                    data-animate="pop"
+                    data-delay="1"
+                >
+                    <div class="bento-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=600&h=400&fit=crop&q=90"
+                            alt="Mumbai"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="bento-overlay">
+                        <h3 class="bento-name">Mumbai</h3>
+                        <span class="bento-count">2,450+ listings</span>
+                    </div>
+                </a>
+
+                <!-- Medium Card - Delhi -->
+                <a
+                    href="/city/delhi"
+                    class="bento-card bento-medium"
+                    data-animate="pop"
+                    data-delay="2"
+                >
+                    <div class="bento-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=400&h=400&fit=crop&q=90"
+                            alt="Delhi"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="bento-overlay">
+                        <h3 class="bento-name">Delhi</h3>
+                        <span class="bento-count">2,100+ listings</span>
+                    </div>
+                </a>
+
+                <!-- Small Card - Bangalore -->
+                <a
+                    href="/city/bangalore"
+                    class="bento-card bento-small"
+                    data-animate="pop"
+                    data-delay="3"
+                >
+                    <div class="bento-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=300&h=300&fit=crop&q=90"
+                            alt="Bangalore"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="bento-overlay">
+                        <h3 class="bento-name">Bangalore</h3>
+                        <span class="bento-count">1,820+ listings</span>
+                    </div>
+                </a>
+
+                <!-- Small Card - Hyderabad -->
+                <a
+                    href="/city/hyderabad"
+                    class="bento-card bento-small"
+                    data-animate="pop"
+                    data-delay="4"
+                >
+                    <div class="bento-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1572445271230-a78b5944a659?w=300&h=300&fit=crop&q=90"
+                            alt="Hyderabad"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="bento-overlay">
+                        <h3 class="bento-name">Hyderabad</h3>
+                        <span class="bento-count">1,350+ listings</span>
+                    </div>
+                </a>
+
+                <!-- Small Card - Pune -->
+                <a
+                    href="/city/pune"
+                    class="bento-card bento-small"
+                    data-animate="pop"
+                    data-delay="5"
+                >
+                    <div class="bento-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=400&fit=crop&q=90"
+                            alt="Pune"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="bento-overlay">
+                        <h3 class="bento-name">Pune</h3>
+                        <span class="bento-count">1,150+ listings</span>
+                    </div>
+                </a>
+
+                <!-- Small Card - Chennai -->
+                <a
+                    href="/city/chennai"
+                    class="bento-card bento-small"
+                    data-animate="pop"
+                    data-delay="6"
+                >
+                    <div class="bento-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=300&h=300&fit=crop&q=90"
+                            alt="Chennai"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="bento-overlay">
+                        <h3 class="bento-name">Chennai</h3>
+                        <span class="bento-count">980+ listings</span>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
-</section>
 
-<!-- Map Initialization Script -->
-<script define:vars={{ properties }}>
-    // Wait for DOM and Leaflet to be ready
-    document.addEventListener("DOMContentLoaded", () => {
-        // Check if Leaflet is loaded
-        if (typeof L === "undefined") {
-            console.log("Leaflet not loaded yet");
-            return;
-        }
+    <!-- Map Initialization Script -->
+    <script define:vars={{ properties }}>
+        // Wait for DOM and Leaflet to be ready
+        document.addEventListener("DOMContentLoaded", () => {
+            // Check if Leaflet is loaded
+            if (typeof L === "undefined") {
+                console.log("Leaflet not loaded yet");
+                return;
+            }
 
-        // Initialize the map centered on India
-        const map = L.map("india-map", {
-            center: [20.5937, 78.9629],
-            zoom: 5,
-            zoomControl: false,
-            attributionControl: false,
-            scrollWheelZoom: false,
-            dragging: true,
-        });
-
-        // Add Light-themed map tiles (CartoDB Positron) for cleaner look
-        L.tileLayer(
-            "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-            {
-                subdomains: "abcd",
-                maxZoom: 19,
-            },
-        ).addTo(map);
-
-        // Custom marker icon
-        const priceIcon = (price) =>
-            L.divIcon({
-                className: "custom-price-marker",
-                html: `<div class="price-marker">${price}</div>`,
-                iconSize: [80, 32],
-                iconAnchor: [40, 16],
+            // Initialize the map centered on India
+            const map = L.map("india-map", {
+                center: [20.5937, 78.9629],
+                zoom: 5,
+                zoomControl: false,
+                attributionControl: false,
+                scrollWheelZoom: false,
+                dragging: true,
             });
 
-        // Add property markers
-        properties.forEach((prop) => {
-            L.marker([prop.lat, prop.lng], { icon: priceIcon(prop.price) })
-                .addTo(map)
-                .bindPopup(
-                    `<strong>${prop.city}</strong><br>${prop.price}/month`,
-                );
+            // Add Light-themed map tiles (CartoDB Positron) for cleaner look
+            L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+                    subdomains: "abcd",
+                    maxZoom: 19,
+                },
+            ).addTo(map);
+
+            // Custom marker icon
+            const priceIcon = (price) =>
+                L.divIcon({
+                    className: "custom-price-marker",
+                    html: `<div class="price-marker">${price}</div>`,
+                    iconSize: [80, 32],
+                    iconAnchor: [40, 16],
+                });
+
+            // Add property markers
+            properties.forEach((prop) => {
+                L.marker([prop.lat, prop.lng], { icon: priceIcon(prop.price) })
+                    .addTo(map)
+                    .bindPopup(
+                        `<strong>${prop.city}</strong><br>${prop.price}/month`,
+                    );
+            });
+
+            // Add zoom control to bottom right
+            L.control.zoom({ position: "bottomright" }).addTo(map);
         });
+    </script>
 
-        // Add zoom control to bottom right
-        L.control.zoom({ position: "bottomright" }).addTo(map);
-    });
-</script>
-
-<style>
-    /* ═══════════════════════════════════════════════════════════════════════════
+    <style>
+        /* ═══════════════════════════════════════════════════════════════════════════
        EXPLORE MAP SECTION - With Real Leaflet Map
        ═══════════════════════════════════════════════════════════════════════════ */
-    .explore-map {
-        position: relative;
-        padding: 0;
-        overflow: hidden;
-        min-height: 600px;
-        background: var(--color-white);
-    }
-
-    .map-wrapper {
-        position: relative;
-        height: 600px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Leaflet Map */
-    .leaflet-map {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        mix-blend-mode: multiply; /* Blends map nicely with bg */
-        opacity: 0.8;
-    }
-
-    /* Custom Price Markers */
-    :global(.custom-price-marker) {
-        background: none;
-        border: none;
-    }
-
-    :global(.price-marker) {
-        padding: 8px 16px;
-        background: var(--color-white);
-        border-radius: 9999px;
-        font-family: var(--font-display);
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--color-pink-primary);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        white-space: nowrap;
-        animation: markerPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        border: 2px solid var(--color-pink-primary);
-    }
-
-    :global(.price-marker:hover) {
-        background: var(--color-pink-primary);
-        color: white;
-        transform: scale(1.1);
-        cursor: pointer;
-    }
-
-    @keyframes markerPop {
-        from {
-            opacity: 0;
-            transform: scale(0.5) translateY(10px);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-    }
-
-    /* Content Overlay */
-    .map-content {
-        position: relative;
-        z-index: 10;
-        text-align: center;
-        padding: 40px;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-radius: var(--radius-2xl);
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    .map-title {
-        font-family: var(--font-display);
-        font-size: clamp(1.75rem, 3vw, var(--text-3xl));
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 12px;
-    }
-
-    .map-subtitle {
-        font-size: var(--text-base);
-        color: var(--text-secondary);
-        margin-bottom: 24px;
-        line-height: 1.6;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════════════════
-       CITIES SECTION
-       ═══════════════════════════════════════════════════════════════════════════ */
-    .cities {
-        background: var(--bg-primary);
-        padding-top: 80px;
-    }
-
-    .cities-grid {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 24px;
-    }
-
-    .city-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-        padding: 24px;
-        background: var(--bg-secondary);
-        border-radius: var(--radius-xl);
-        transition: all 0.4s var(--ease-spring);
-    }
-
-    .city-card:hover {
-        transform: translateY(-10px) scale(1.02);
-        background: var(--color-white);
-        box-shadow: var(--shadow-xl);
-    }
-
-    .city-image {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        overflow: hidden;
-        box-shadow: var(--shadow-md);
-        transition: transform 0.4s var(--ease-spring);
-        border: 3px solid white;
-    }
-
-    .city-card:hover .city-image {
-        transform: scale(1.1) rotate(-3deg);
-    }
-
-    .city-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .city-info {
-        text-align: center;
-    }
-
-    .city-name {
-        font-family: var(--font-display);
-        font-size: var(--text-base);
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 4px;
-    }
-
-    .city-count {
-        font-size: var(--text-sm);
-        color: var(--text-muted);
-    }
-
-    /* Responsive */
-    @media (max-width: 1200px) {
-        .cities-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    @media (max-width: 768px) {
-        .cities-grid {
-            grid-template-columns: repeat(2, 1fr);
+        .explore-map {
+            position: relative;
+            padding: 0;
+            overflow: hidden;
+            min-height: 600px;
+            background: var(--color-white);
         }
 
         .map-wrapper {
-            height: 500px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .map-wrapper {
-            height: 450px;
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .city-card {
-            padding: 16px;
+        /* Leaflet Map */
+        .leaflet-map {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            mix-blend-mode: multiply; /* Blends map nicely with bg */
+            opacity: 0.8;
         }
 
-        .city-image {
-            width: 70px;
-            height: 70px;
+        /* Custom Price Markers */
+        :global(.custom-price-marker) {
+            background: none;
+            border: none;
         }
 
+        :global(.price-marker) {
+            padding: 8px 16px;
+            background: var(--color-white);
+            border-radius: 9999px;
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--color-pink-primary);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+            animation: markerPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid var(--color-pink-primary);
+        }
+
+        :global(.price-marker:hover) {
+            background: var(--color-pink-primary);
+            color: white;
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        @keyframes markerPop {
+            from {
+                opacity: 0;
+                transform: scale(0.5) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Content Overlay */
         .map-content {
-            margin: 20px;
-            padding: 24px;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-2xl);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
-    }
-</style>
 
-<style is:global>
-    /* Leaflet Popup Customization - Light Theme */
-    .leaflet-popup-content-wrapper {
-        background: #fff;
-        color: #1a1a1a;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
+        .map-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3vw, var(--text-3xl));
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
 
-    .leaflet-popup-content {
-        margin: 12px 16px;
-        font-family: "Plus Jakarta Sans", sans-serif;
-    }
+        .map-subtitle {
+            font-size: var(--text-base);
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
 
-    .leaflet-popup-content strong {
-        color: var(--color-pink-primary);
-    }
+        /* ═══════════════════════════════════════════════════════════════════════════
+       CITIES SECTION - TRUE BENTO GRID
+       ═══════════════════════════════════════════════════════════════════════════ */
+        .cities {
+            background: var(--bg-primary);
+            padding-top: 80px;
+            padding-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .leaflet-popup-tip {
-        background: #fff;
-    }
+        /* Bento Wrapper with Corner Glows */
+        .bento-wrapper {
+            position: relative;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 32px;
+            overflow: hidden;
+        }
 
-    .leaflet-container {
-        font-family: "Plus Jakarta Sans", sans-serif;
-    }
-</style>
+        /* Corner Gradient Glows */
+        .corner-glow {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            filter: blur(50px);
+            opacity: 1;
+        }
+
+        .corner-glow-tl {
+            top: -80px;
+            left: -80px;
+            background: radial-gradient(
+                circle,
+                rgba(255, 105, 135, 0.7) 0%,
+                rgba(255, 150, 170, 0.5) 40%,
+                transparent 70%
+            );
+        }
+
+        .corner-glow-tr {
+            top: -80px;
+            right: -80px;
+            background: radial-gradient(
+                circle,
+                rgba(255, 120, 150, 0.65) 0%,
+                rgba(255, 160, 180, 0.45) 40%,
+                transparent 70%
+            );
+        }
+
+        .corner-glow-bl {
+            bottom: -80px;
+            left: -80px;
+            background: radial-gradient(
+                circle,
+                rgba(255, 130, 160, 0.6) 0%,
+                rgba(255, 170, 190, 0.4) 40%,
+                transparent 70%
+            );
+        }
+
+        .corner-glow-br {
+            bottom: -80px;
+            right: -80px;
+            background: radial-gradient(
+                circle,
+                rgba(255, 105, 135, 0.65) 0%,
+                rgba(255, 150, 170, 0.45) 40%,
+                transparent 70%
+            );
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 200px;
+            gap: 20px;
+        }
+
+        .bento-card {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: all 0.4s var(--ease-spring);
+        }
+
+        .bento-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Size variants */
+        .bento-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .bento-medium {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+
+        .bento-small {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .bento-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bento-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .bento-card:hover .bento-image img {
+            transform: scale(1.1);
+        }
+
+        .bento-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.7) 0%,
+                rgba(0, 0, 0, 0.2) 50%,
+                transparent 100%
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            transition: background 0.3s ease;
+        }
+
+        .bento-card:hover .bento-overlay {
+            background: linear-gradient(
+                to top,
+                rgba(255, 90, 95, 0.8) 0%,
+                rgba(255, 90, 95, 0.3) 50%,
+                transparent 100%
+            );
+        }
+
+        .bento-name {
+            font-family: var(--font-display);
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 4px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .bento-small .bento-name {
+            font-size: var(--text-lg);
+        }
+
+        .bento-count {
+            font-size: var(--text-sm);
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+
+            .bento-large {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .bento-medium,
+            .bento-small {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .bento-card {
+                min-height: 200px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-large,
+            .bento-medium,
+            .bento-small {
+                grid-column: span 1;
+            }
+
+            .bento-card {
+                min-height: 180px;
+            }
+        }
+    </style>
+
+    <style is:global>
+        /* Leaflet Popup Customization - Light Theme */
+        .leaflet-popup-content-wrapper {
+            background: #fff;
+            color: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .leaflet-popup-content {
+            margin: 12px 16px;
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+
+        .leaflet-popup-content strong {
+            color: var(--color-pink-primary);
+        }
+
+        .leaflet-popup-tip {
+            background: #fff;
+        }
+
+        .leaflet-container {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+    </style>
+</section>

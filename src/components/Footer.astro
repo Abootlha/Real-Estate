@@ -1,263 +1,487 @@
 ---
 import { Icon } from "astro-icon/components";
+
+const cities = [
+    { name: "Mumbai", href: "/cities/mumbai" },
+    { name: "Delhi", href: "/cities/delhi" },
+    { name: "Bangalore", href: "/cities/bangalore" },
+    { name: "Pune", href: "/cities/pune" },
+    { name: "Hyderabad", href: "/cities/hyderabad" },
+    { name: "Chennai", href: "/cities/chennai" },
+    { name: "Kolkata", href: "/cities/kolkata" },
+    { name: "Goa", href: "/cities/goa" },
+    { name: "Jaipur", href: "/cities/jaipur" },
+    { name: "Ahmedabad", href: "/cities/ahmedabad" },
+    { name: "Lucknow", href: "/cities/lucknow" },
+    { name: "Chandigarh", href: "/cities/chandigarh" },
+    { name: "Noida", href: "/cities/noida" },
+    { name: "Gurgaon", href: "/cities/gurgaon" },
+    { name: "Kochi", href: "/cities/kochi" },
+    { name: "Indore", href: "/cities/indore" },
+];
 ---
 
 <footer class="footer">
-    <div class="container">
-        <!-- Main Footer -->
-        <div class="footer-main">
-            <!-- Brand -->
-            <div class="footer-brand" data-animate="fade-up">
-                <a href="/" class="footer-logo">
-                    <div class="logo-icon">
-                        <Icon name="ph:house-fill" size={24} />
+    <!-- Main Footer Content -->
+    <div class="footer-main">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand & App Section -->
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">
+                        <span class="logo-text"
+                            >roomie<span class="logo-accent">match</span></span
+                        >
+                    </a>
+                    <p class="footer-tagline">
+                        India's leading platform for verified rooms and
+                        flatmates. Find your perfect home across 100+ cities.
+                    </p>
+
+                    <!-- List Property CTA -->
+                    <a href="/list-property" class="list-property-btn">
+                        <Icon name="ph:house-line" size={20} />
+                        List your property
+                    </a>
+
+                    <!-- App Download -->
+                    <div class="app-download">
+                        <span class="app-label"
+                            >Download RoomieMatch app for exciting offers</span
+                        >
+                        <div class="app-badges">
+                            <a
+                                href="#"
+                                class="app-badge"
+                                aria-label="Download on App Store"
+                            >
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                                    alt="App Store"
+                                />
+                            </a>
+                            <a
+                                href="#"
+                                class="app-badge"
+                                aria-label="Get it on Google Play"
+                            >
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                    alt="Google Play"
+                                />
+                            </a>
+                        </div>
                     </div>
-                    <span>RoomieMatch</span>
-                </a>
-                <p class="footer-tagline">
-                    Helping you find a home that fits your life. Simple, safe,
-                    and joyful.
+                </div>
+
+                <!-- Links Columns -->
+                <div class="footer-links-section">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="/about">About Us</a></li>
+                            <li><a href="/careers">Teams / Careers</a></li>
+                            <li><a href="/blog">Blog</a></li>
+                            <li><a href="/support">Support</a></li>
+                            <li>
+                                <a href="/investor-relations"
+                                    >Investor Relations</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Policies</h4>
+                        <ul>
+                            <li><a href="/terms">Terms and conditions</a></li>
+                            <li><a href="/guest-policy">Guest Policies</a></li>
+                            <li><a href="/privacy">Privacy Policy</a></li>
+                            <li>
+                                <a href="/trust-safety">Trust And Safety</a>
+                            </li>
+                            <li>
+                                <a href="/cyber-security">Cyber Security</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="/how-it-works">How It Works</a></li>
+                            <li><a href="/faq">FAQs</a></li>
+                            <li><a href="/safety-tips">Safety Tips</a></li>
+                            <li><a href="/membership">Become a Member</a></li>
+                            <li>
+                                <a href="/list-property">Advertise your Rooms</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li>
+                                <a href="mailto:support@roomiematch.com">
+                                    <Icon name="ph:envelope-simple" size={16} />
+                                    support@roomiematch.com
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:+911234567890">
+                                    <Icon name="ph:phone" size={16} />
+                                    +91 124 620 1611
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <Icon name="ph:map-pin" size={16} />
+                                    Pune, Maharashtra
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- City Directory Section -->
+    <div class="footer-cities">
+        <div class="container">
+            <h4>Rooms and Flats in Popular Cities</h4>
+            <div class="cities-grid">
+                {
+                    cities.map((city) => (
+                        <a href={city.href} class="city-directory-link">
+                            Rooms in {city.name}
+                        </a>
+                    ))
+                }
+                <a href="/cities" class="city-directory-link all-cities"
+                    >All Cities</a
+                >
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-inner">
+                <p class="copyright">
+                    &copy; 2025-2026 RoomieMatch. All rights reserved.
                 </p>
-                <div class="footer-social">
+
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook" class="social-link">
+                        <Icon name="mdi:facebook" size={20} />
+                    </a>
                     <a href="#" aria-label="Instagram" class="social-link">
                         <Icon name="mdi:instagram" size={20} />
                     </a>
                     <a href="#" aria-label="Twitter" class="social-link">
                         <Icon name="mdi:twitter" size={20} />
                     </a>
-                    <a href="#" aria-label="LinkedIn" class="social-link">
-                        <Icon name="mdi:linkedin" size={20} />
-                    </a>
                     <a href="#" aria-label="YouTube" class="social-link">
                         <Icon name="mdi:youtube" size={20} />
                     </a>
+                    <a href="#" aria-label="LinkedIn" class="social-link">
+                        <Icon name="mdi:linkedin" size={20} />
+                    </a>
                 </div>
-            </div>
-
-            <!-- Links -->
-            <div class="footer-links" data-animate="fade-up" data-delay="1">
-                <h4>Explore</h4>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/properties">Find Rooms</a></li>
-                    <li><a href="/cities">Cities</a></li>
-                    <li><a href="/about">About Us</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links" data-animate="fade-up" data-delay="2">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="/faq">FAQs</a></li>
-                    <li><a href="#">How It Works</a></li>
-                    <li><a href="#">Safety Tips</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links" data-animate="fade-up" data-delay="3">
-                <h4>Contact</h4>
-                <ul>
-                    <li>
-                        <a href="mailto:support@roomiematch.com">
-                            <Icon name="ph:envelope-simple-fill" size={18} />
-                            support@roomiematch.com
-                        </a>
-                    </li>
-                    <li>
-                        <a href="tel:+911234567890">
-                            <Icon name="ph:phone-fill" size={18} />
-                            +91 123 456 7890
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <Icon name="ph:map-pin-fill" size={18} />
-                            Pune, India
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Bottom Bar -->
-        <div class="footer-bottom" data-animate="fade-up" data-delay="4">
-            <p>&copy; 2025 RoomieMatch. All rights reserved.</p>
-            <div class="footer-legal">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Cookie Policy</a>
             </div>
         </div>
     </div>
 </footer>
 
 <style>
+    /* ═══════════════════════════════════════════════════════════════════════════
+       FOOTER - LIGHT THEME DESIGN
+       ═══════════════════════════════════════════════════════════════════════════ */
     .footer {
-        background: var(--bg-secondary);
-        padding: 80px 0 32px;
+        background: var(--color-white);
+        color: var(--text-secondary);
+        border-top: 1px solid var(--color-silver);
     }
 
+    /* ═══════════════════════════════════════════════════════════════════════════
+       MAIN FOOTER CONTENT
+       ═══════════════════════════════════════════════════════════════════════════ */
     .footer-main {
+        padding: 60px 0 40px;
+        border-bottom: 1px solid var(--color-silver);
+    }
+
+    .footer-grid {
         display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-        gap: 48px;
-        margin-bottom: 60px;
+        grid-template-columns: 1.2fr 2fr;
+        gap: 60px;
     }
 
-    /* Brand */
+    /* Brand Section */
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
     .footer-logo {
-        display: flex;
+        display: inline-flex;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 16px;
     }
 
-    .footer-logo .logo-icon {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--accent);
-        border-radius: var(--radius-md);
-        color: var(--color-dark);
-    }
-
-    .footer-logo span {
+    .footer-logo .logo-text {
         font-family: var(--font-display);
-        font-size: var(--text-xl);
-        font-weight: 700;
+        font-size: 28px;
+        font-weight: 800;
         color: var(--text-primary);
+        letter-spacing: -0.03em;
+    }
+
+    .footer-logo .logo-accent {
+        color: var(--color-pink-primary);
     }
 
     .footer-tagline {
-        font-size: var(--text-base);
-        color: var(--text-secondary);
+        font-size: 14px;
         line-height: 1.7;
-        margin-bottom: 24px;
+        color: var(--text-secondary);
         max-width: 280px;
     }
 
+    /* List Property Button */
+    .list-property-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-pink-primary);
+        background: transparent;
+        border: 1px solid var(--color-pink-primary);
+        border-radius: var(--radius-sm);
+        transition: all 0.3s ease;
+        width: fit-content;
+    }
+
+    .list-property-btn:hover {
+        background: var(--color-pink-primary);
+        color: var(--color-white);
+    }
+
+    /* App Download */
+    .app-download {
+        margin-top: 8px;
+    }
+
+    .app-label {
+        display: block;
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 12px;
+    }
+
+    .app-badges {
+        display: flex;
+        gap: 12px;
+    }
+
+    .app-badge {
+        display: block;
+        transition: transform 0.2s ease;
+    }
+
+    .app-badge:hover {
+        transform: scale(1.05);
+    }
+
+    .app-badge img {
+        height: 38px;
+        width: auto;
+    }
+
+    /* Links Section */
+    .footer-links-section {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+    }
+
+    .footer-column h4 {
+        font-family: var(--font-display);
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .footer-column ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .footer-column a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--text-secondary);
+        transition: all 0.2s ease;
+    }
+
+    .footer-column a:hover {
+        color: var(--color-pink-primary);
+        transform: translateX(4px);
+    }
+
+    .footer-column a svg {
+        flex-shrink: 0;
+        color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       CITY DIRECTORY SECTION
+       ═══════════════════════════════════════════════════════════════════════════ */
+    .footer-cities {
+        padding: 40px 0;
+        background: #5a6368;
+    }
+
+    .footer-cities h4 {
+        font-family: var(--font-display);
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--color-white);
+        margin-bottom: 24px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .cities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 12px 24px;
+    }
+
+    .city-directory-link {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7);
+        transition: all 0.2s ease;
+    }
+
+    .city-directory-link:hover {
+        color: var(--color-white);
+    }
+
+    .city-directory-link.all-cities {
+        color: var(--color-pink-primary);
+        font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       BOTTOM BAR
+       ═══════════════════════════════════════════════════════════════════════════ */
+    .footer-bottom {
+        padding: 24px 0;
+        background: #4a5357;
+    }
+
+    .footer-bottom-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .copyright {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
     /* Social Links */
-    .footer-social {
+    .social-links {
         display: flex;
         gap: 12px;
     }
 
     .social-link {
-        width: 44px;
-        height: 44px;
+        width: 36px;
+        height: 36px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--color-white);
-        border-radius: var(--radius-md);
-        color: var(--text-secondary);
-        box-shadow: var(--shadow-sm);
-        transition: all 0.3s var(--ease-spring);
+        color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transition: all 0.3s ease;
     }
 
     .social-link:hover {
-        background: var(--accent);
-        color: var(--color-dark);
-        transform: translateY(-4px);
+        background: var(--color-pink-primary);
+        color: var(--color-white);
+        transform: translateY(-3px);
     }
 
-    /* Links */
-    .footer-links h4 {
-        font-family: var(--font-display);
-        font-size: var(--text-base);
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 20px;
-    }
-
-    .footer-links ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-    }
-
-    .footer-links a {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font-size: var(--text-sm);
-        color: var(--text-secondary);
-        transition: all 0.3s var(--ease-out);
-    }
-
-    .footer-links a:hover {
-        color: var(--accent);
-        transform: translateX(4px);
-    }
-
-    .footer-links a svg {
-        color: var(--text-muted);
-        flex-shrink: 0;
-    }
-
-    /* Bottom */
-    .footer-bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 32px;
-        border-top: 1px solid var(--color-silver);
-    }
-
-    .footer-bottom p {
-        font-size: var(--text-sm);
-        color: var(--text-muted);
-    }
-
-    .footer-legal {
-        display: flex;
-        gap: 24px;
-    }
-
-    .footer-legal a {
-        font-size: var(--text-sm);
-        color: var(--text-secondary);
-        transition: color 0.3s var(--ease-out);
-    }
-
-    .footer-legal a:hover {
-        color: var(--accent);
-    }
-
-    /* Responsive */
+    /* ═══════════════════════════════════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
-        .footer-main {
-            grid-template-columns: 1fr 1fr;
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .footer-links-section {
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .footer-brand {
-            grid-column: span 2;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-tagline {
+            max-width: 100%;
+        }
+
+        .app-badges {
+            justify-content: center;
         }
     }
 
     @media (max-width: 768px) {
         .footer-main {
+            padding: 40px 0 32px;
+        }
+
+        .footer-links-section {
             grid-template-columns: 1fr;
             gap: 32px;
         }
 
-        .footer-brand {
-            grid-column: span 1;
-        }
-
-        .footer-bottom {
-            flex-direction: column;
-            gap: 16px;
+        .footer-column {
             text-align: center;
         }
 
-        .footer-legal {
-            flex-wrap: wrap;
-            justify-content: center;
+        .footer-column ul {
+            align-items: center;
+        }
+
+        .cities-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-bottom-inner {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
         }
     }
 </style>

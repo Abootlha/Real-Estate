@@ -59,6 +59,14 @@
     --gradient-primary: linear-gradient(135deg, #FF5A5F 0%, #FF8F94 100%);
     --gradient-glow: linear-gradient(135deg, rgba(255, 90, 95, 0.4) 0%, rgba(255, 143, 148, 0.1) 100%);
 
+    /* OYO-Style Colors */
+    --color-oyo-green: #1AB64F;
+    --color-oyo-green-hover: #159942;
+    --color-footer-bg: #5A6368;
+    --color-footer-dark: #4A5357;
+    --color-footer-darker: #3D4448;
+    --color-footer-text: rgba(255, 255, 255, 0.75);
+
     /* ═══════════════════════════════════════════════════════════════════════
        TYPOGRAPHY
        ═══════════════════════════════════════════════════════════════════════ */
